@@ -1,103 +1,233 @@
 <!doctype html>
 <html lang="zh-CN">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "高源",
-  "affiliation": {
-    "@type": "Organization",
-    "name": "上海交通大学"
-  },
-  "url": "https://gaoyuanhelsinki.github.io/",
-  "email": "mailto:gaoshanyuanquan@hotmail.com",
-  "image": "https://gaoyuanhelsinki.github.io/avatar.png",
-  "sameAs": [
-    "https://github.com/gaoyuanhelsinki"
-  ],
-  "knowsAbout": [
-    "欧洲思想史",
-    "文明互鉴",
-    "北欧区域国别研究"
-  ]
-}
-</script>
-  <head>
- <meta name="robots" content="index,follow" />
-<link rel="canonical" href="https://gaoyuanhelsinki.github.io/" />
-    <meta charset="utf-8" />
+<head>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>高源 - 上海交通大学｜主页｜研究方向｜论文与项目｜联系方式</title>
- <meta name="description" content="高源 - 上海交通大学：简介、研究方向、论文与项目、联系方式" />
+
+  <!-- ✅ 搜索结果标题（强匹配：高源 + 上海交通大学 + 欧洲文化高等研究院 + 人文学院） -->
+  <title>高源 - 上海交通大学｜欧洲文化高等研究院｜人文学院｜个人主页</title>
+
+  <!-- ✅ 搜索摘要（百度/必应常取此处） -->
+  <meta name="description" content="高源 - 上海交通大学｜欧洲文化高等研究院｜人文学院。个人主页包含简介、研究方向、论文与项目、简历下载与联系方式。研究领域：欧洲思想史、文明互鉴、北欧区域国别研究。" />
+
+  <!-- ✅ 关键词（对部分引擎仍有帮助；注意自然即可） -->
+  <meta name="keywords" content="高源,上海交通大学,欧洲文化高等研究院,人文学院,欧洲思想史,文明互鉴,北欧区域国别研究,个人主页,简历,论文,项目" />
+
+  <!-- ✅ 允许索引 -->
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://gaoyuanhelsinki.github.io/" />
+
+  <!-- ✅ 分享卡片（微信/社交平台更好看，也有助于抓取） -->
+  <meta property="og:title" content="高源 - 上海交通大学｜欧洲文化高等研究院｜人文学院" />
+  <meta property="og:description" content="个人主页：简介、研究方向、论文与项目、简历与联系方式。" />
+  <meta property="og:url" content="https://gaoyuanhelsinki.github.io/" />
+  <meta property="og:image" content="https://gaoyuanhelsinki.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- ✅ 结构化数据：搜索引擎更懂“你是谁” -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "高源",
+    "url": "https://gaoyuanhelsinki.github.io/",
+    "image": "https://gaoyuanhelsinki.github.io/avatar.png",
+    "email": "mailto:gaoshanyuanquan@hotmail.com",
+    "affiliation": [
+      { "@type": "Organization", "name": "上海交通大学" },
+      { "@type": "Organization", "name": "欧洲文化高等研究院" },
+      { "@type": "Organization", "name": "人文学院" }
+    ],
+    "knowsAbout": [
+      "欧洲思想史",
+      "文明互鉴",
+      "北欧区域国别研究",
+      "中欧思想传统比较"
+    ],
+    "sameAs": [
+      "https://github.com/gaoyuanhelsinki"
+    ]
+  }
+  </script>
 
   <style>
     :root{
-      --bg:#070b18; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.56); --link:#9bd1ff;
+      --bg:#070b18;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.56);
+      --link:#9bd1ff;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; color:var(--text);
+      margin:0;
+      color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
-        radial-gradient(1000px 700px at 20% 0%, rgba(103,189,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 90% 20%, rgba(190,120,255,.14), transparent 55%),
+        radial-gradient(1100px 800px at 15% 0%, rgba(103,189,255,.18), transparent 60%),
+        radial-gradient(1000px 800px at 92% 18%, rgba(190,120,255,.14), transparent 55%),
         var(--bg);
     }
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1080px; margin:0 auto; padding:56px 18px 80px;}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 18px 90px;}
+
+    /* 顶部导航（官方简洁） */
     .nav{
-      position:sticky; top:0; backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,11,24,.78), rgba(7,11,24,.35));
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(7,11,24,.85), rgba(7,11,24,.35));
       border-bottom:1px solid rgba(255,255,255,.06);
-      z-index:10;
     }
-    .navin{max-width:1080px; margin:0 auto; padding:14px 18px; display:flex; gap:14px; align-items:center; justify-content:space-between}
-    .brand{font-weight:700; letter-spacing:.3px}
-    .nav a{color:var(--muted); font-size:14px}
-    .nav a:hover{color:var(--text); text-decoration:none}
+    .navin{
+      max-width:1100px; margin:0 auto;
+      padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      font-weight:750; letter-spacing:.3px;
+      display:flex; align-items:baseline; gap:10px;
+      white-space:nowrap;
+    }
+    .brand small{color:var(--muted); font-weight:600}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{color:var(--muted); font-size:14px}
+    .navlinks a:hover{color:var(--text); text-decoration:none}
+
+    /* 主卡片（海报级首屏） */
+    .hero{
+      margin-top:20px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius:26px;
+      padding:34px 30px 28px;
+      box-shadow: 0 22px 90px rgba(0,0,0,.35);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(circle at 18% 18%, rgba(155,209,255,.20), transparent 50%),
+                  radial-gradient(circle at 85% 20%, rgba(190,120,255,.18), transparent 50%);
+      pointer-events:none;
+      filter: blur(2px);
+    }
+    .heroInner{
+      position:relative;
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap:26px;
+      align-items:center;
+    }
+
+    /* 海报头像：不变形 + 高级描边 + 阴影 */
+    .poster{
+      width:320px; height:420px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 26px 90px rgba(0,0,0,.45);
+      overflow:hidden;
+      position:relative;
+    }
+    .poster::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(circle at 30% 20%, rgba(155,209,255,.40), rgba(190,120,255,.26), rgba(255,255,255,.06));
+      opacity:.55;
+      pointer-events:none;
+    }
+    .poster img{
+      position:relative;
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position:50% 10%; /* 头顶切：改小如 6%；脸太靠下：改大如 14% */
+      transform: scale(1.03);
+      filter: contrast(1.02) saturate(1.03);
+    }
+
+    .h1{
+      font-size:46px;
+      margin:0 0 8px;
+      letter-spacing:.6px;
+      line-height:1.12;
+    }
+    .affil{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+    }
+    .subtitle{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
+    }
+
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 8px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px;
+      padding:10px 14px;
+      border-radius:999px;
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      color:var(--text); font-size:14px;
+      color:var(--text);
+      font-size:14px;
     }
     .btn:hover{background: rgba(255,255,255,.12); text-decoration:none}
-    .hero{
-      margin-top:26px;
-      border:1px solid var(--border); background: var(--card);
-      border-radius:24px; padding:34px 30px;
-      box-shadow: 0 20px 80px rgba(0,0,0,.35);
-    }
-    .h1{font-size:44px; margin:0 0 10px; letter-spacing:.6px}
-    .subtitle{color:var(--muted); font-size:18px; line-height:1.7; margin:0 0 18px}
-    .tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
     .tag{
       padding:7px 11px; border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      color:var(--muted); font-size:13px;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
     }
-    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; margin-top:18px}
+
+    /* 内容区块 */
+    .grid{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; margin-top:18px}
     .card{
-      border:1px solid var(--border); background: var(--card);
-      border-radius:20px; padding:20px 18px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius:20px;
+      padding:20px 18px;
     }
     h2{margin:0 0 10px; font-size:18px; letter-spacing:.2px}
-    p{margin:0; color:var(--muted); line-height:1.75}
+    p{margin:0; color:var(--muted); line-height:1.8}
     .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-    .item{margin:12px 0}
-    .k{color:var(--text)}
-    .small{color:var(--muted2); font-size:13px; line-height:1.6}
-    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-    .footer{margin-top:22px; color:var(--muted2); font-size:13px}
+    .item{margin:10px 0}
+    .k{color:var(--text); font-weight:650}
+    .small{color:var(--muted2); font-size:13px; line-height:1.7}
+
+    .cards2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .mini{
+      border:1px solid rgba(255,255,255,.10);
+      background: var(--card2);
+      border-radius:18px;
+      padding:16px 14px;
+    }
+    .mini .title{font-weight:700; margin-bottom:6px}
+    .mini .meta{color:var(--muted2); font-size:13px; margin-bottom:8px}
+
+    .footer{margin-top:16px; color:var(--muted2); font-size:13px}
+
+    /* 移动端适配 */
+    @media (max-width: 980px){
+      .heroInner{grid-template-columns:1fr; justify-items:center; text-align:left}
+      .poster{width:min(92vw, 360px); height:460px}
+      .h1{font-size:38px}
+    }
     @media (max-width: 880px){
       .grid{grid-template-columns:1fr}
-      .h1{font-size:36px}
-      .cols{grid-template-columns:1fr}
+      .cards2{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -105,8 +235,10 @@
 <body>
   <div class="nav">
     <div class="navin">
-      <div class="brand">高源</div>
-      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;">
+      <div class="brand">
+        高源 <small>上海交通大学 · 欧洲文化高等研究院 · 人文学院</small>
+      </div>
+      <div class="navlinks">
         <a href="#about">简介</a>
         <a href="#highlights">亮点</a>
         <a href="#projects">项目/研究</a>
@@ -118,145 +250,132 @@
   </div>
 
   <div class="wrap">
+    <!-- 海报级首屏 -->
     <section class="hero">
-<div style="
-  width:156px;height:156px;border-radius:999px;
-  padding:4px;
-  background: radial-gradient(circle at 30% 20%, rgba(155,209,255,.55), rgba(190,120,255,.35), rgba(255,255,255,.08));
-  box-shadow: 0 22px 70px rgba(0,0,0,.45);
-  margin-bottom:18px;">
-  <img src="avatar.png" alt="高源头像" style="
-    width:100%;height:100%;border-radius:999px;
-    object-fit:cover; object-position:50% 12%;
-    border:1px solid rgba(255,255,255,.16);">
-/* Avatar responsive + premium ring */
-.avatarWrap{
-  width:156px;
-  height:156px;
-  border-radius:999px;
-  padding:4px;
-  background: radial-gradient(circle at 30% 20%, rgba(155,209,255,.55), rgba(190,120,255,.35), rgba(255,255,255,.08));
-  box-shadow: 0 22px 70px rgba(0,0,0,.45);
-  margin-bottom:18px;
-}
+      <div class="heroInner">
+        <div class="poster" aria-label="高源头像海报">
+          <img src="avatar.png" alt="高源 - 上海交通大学 头像">
+        </div>
 
-.avatarImg{
-  width:100%;
-  height:100%;
-  border-radius:999px;
-  object-fit:cover;
-  object-position:50% 12%; /* 头顶被切：把 12% 改小，比如 8%；脸太靠下：改大，比如 16% */
-  border:1px solid rgba(255,255,255,.16);
-}
+        <div>
+          <h1 class="h1">高源</h1>
+          <p class="affil">
+            上海交通大学｜欧洲文化高等研究院｜人文学院
+          </p>
+          <p class="subtitle">
+            研究方向：欧洲思想史、文明互鉴、北欧区域国别研究。关注中欧思想传统比较、文明交流互鉴与区域国别研究方法。
+          </p>
 
-/* Mobile: shrink avatar */
-@media (max-width: 520px){
-  .avatarWrap{
-    width:120px;
-    height:120px;
-  }
-}
-</div>
-      <div class="avatarWrap">
-  <img class="avatarImg" src="avatar.png" alt="高源头像">
-</div>
-     <h1 class="h1">高源 <span style="font-size:18px; color:rgba(255,255,255,.68); font-weight:600; margin-left:10px;">上海交通大学</span></h1>
-      <p class="subtitle">
-        一句话定位：例如「欧洲思想史 / 文明互鉴 / 北欧区域国别研究」或你的职业身份（研究员 / 博士后 / 数据科学等）。
-      </p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:gaoshanyuanquan@hotmail.com">📮 邮箱联系</a>
+            <a class="btn" href="cv.pdf" target="_blank" rel="noreferrer">⬇️ 下载简历（PDF）</a>
+            <a class="btn" href="#projects">✨ 代表作</a>
+          </div>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" href="mailto:gaoshanyuanquan@hotmail.com">📮 邮箱联系</a>
-        <a class="btn" href="#cv">⬇️ 下载简历</a>
-        <a class="btn" href="#projects">✨ 代表作</a>
-      </div>
+          <div class="tags" aria-label="关键词">
+            <span class="tag">欧洲思想史</span>
+            <span class="tag">文明互鉴</span>
+            <span class="tag">北欧区域国别研究</span>
+            <span class="tag">区域国别研究方法</span>
+            <span class="tag">中欧思想传统比较</span>
+          </div>
 
-      <div class="tags">
-        <span class="tag">研究方向 1</span>
-        <span class="tag">研究方向 2</span>
-        <span class="tag">方法/技能</span>
-        <span class="tag">双语/国际经历</span>
+          <div class="footer">
+            邮箱：<a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a> ·
+            GitHub：<a href="https://github.com/gaoyuanhelsinki" target="_blank" rel="noreferrer">gaoyuanhelsinki</a>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- 简介 + 亮点 -->
     <div class="grid">
       <section id="about" class="card">
         <h2>简介</h2>
         <p>
-          这里写 4–6 句：你目前的身份/机构、研究主题、你关注的关键问题、你擅长的方法或跨学科能力、你希望合作的方向。
+          （这里写 4–6 句更正式的简介：你的身份/机构、研究主题、核心问题意识、方法与跨学科能力、以及合作方向。）
+          建议用“学术机构主页”口吻：准确、克制、有信息密度。
         </p>
         <ul class="list">
-          <li class="item"><span class="k">现任：</span>（机构/城市）</li>
-          <li class="item"><span class="k">研究兴趣：</span>（3–5 个关键词）</li>
-          <li class="item"><span class="k">联系：</span><a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
+          <li class="item"><span class="k">单位：</span>上海交通大学 · 欧洲文化高等研究院 · 人文学院</li>
+          <li class="item"><span class="k">研究兴趣：</span>欧洲思想史 / 文明互鉴 / 北欧区域国别研究</li>
+          <li class="item"><span class="k">邮箱：</span><a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
         </ul>
-        <div class="footer">建议：把“你是谁”和“你能提供什么”说清楚，短而有力量。</div>
+        <div class="small">提示：把最关键的身份与研究方向放在前两句，可显著提升搜索命中与页面“官方感”。</div>
       </section>
 
       <section id="highlights" class="card">
         <h2>亮点（可量化）</h2>
         <ul class="list">
-          <li class="item">代表论文/著作：XXX（年份）｜（期刊/出版社）</li>
-          <li class="item">项目/课题：XXX（你负责的部分 + 结果）</li>
+          <li class="item">代表论文/著作：XXX（年份）｜期刊/出版社（可附 DOI/链接）</li>
+          <li class="item">项目/课题：XXX（角色 + 贡献 + 结果）</li>
           <li class="item">奖项/荣誉：XXX（年份）</li>
-          <li class="item">学术服务：审稿 / 组织会议 / 课程等</li>
+          <li class="item">学术服务：审稿 / 会议组织 / 课程等</li>
         </ul>
-        <div class="small">提示：尽量用“结果 + 影响”，比如引用、媒体报道、项目规模、合作机构等。</div>
+        <div class="small">建议尽量用“结果 + 影响”，例如：引用、合作单位、项目规模、媒体报道或政策影响。</div>
       </section>
     </div>
 
+    <!-- 项目 / 研究 -->
     <section id="projects" class="card" style="margin-top:18px;">
       <h2>项目 / 研究（精选）</h2>
-      <div class="cols">
-        <div class="card" style="background:rgba(255,255,255,.04);">
-          <div class="k">项目/研究 1 标题</div>
-          <div class="small">时间：YYYY–YYYY｜角色：负责人/核心成员</div>
-          <p style="margin-top:8px;">一句话说明背景与问题 → 方法 → 产出（论文/报告/工具/政策建议）。</p>
+      <div class="cards2">
+        <div class="mini">
+          <div class="title">项目/研究 1 标题</div>
+          <div class="meta">时间：YYYY–YYYY｜角色：负责人/核心成员</div>
+          <p>一句话背景 → 方法 → 产出（论文/报告/工具/政策建议）。突出你的个人贡献。</p>
           <div style="margin-top:10px;">
             <a class="btn" href="#" target="_blank" rel="noreferrer">链接</a>
           </div>
         </div>
-        <div class="card" style="background:rgba(255,255,255,.04);">
-          <div class="k">项目/研究 2 标题</div>
-          <div class="small">时间：YYYY–YYYY｜角色：…</div>
-          <p style="margin-top:8px;">一句话说明背景与问题 → 方法 → 产出。</p>
+
+        <div class="mini">
+          <div class="title">项目/研究 2 标题</div>
+          <div class="meta">时间：YYYY–YYYY｜角色：…</div>
+          <p>一句话背景 → 方法 → 产出。写清楚可验证成果：发表/报告/数据/合作方。</p>
           <div style="margin-top:10px;">
             <a class="btn" href="#" target="_blank" rel="noreferrer">链接</a>
           </div>
         </div>
       </div>
+
       <div class="small" style="margin-top:10px;">
-        你可以放 3–6 个。每个项目写清楚：你做了什么（贡献）+ 结果是什么（影响）。
+        建议放 3–6 个条目。每个 3–5 行：问题、方法、产出、影响、你的贡献。
       </div>
     </section>
 
+    <!-- 论文 -->
     <section id="pubs" class="card" style="margin-top:18px;">
       <h2>论文 / 著作</h2>
       <ul class="list">
-        <li class="item">[2026] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
-        <li class="item">[2025] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
-        <li class="item">[2024] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+        <li class="item">[2026] 高源. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+        <li class="item">[2025] 高源. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+        <li class="item">[2024] 高源. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
       </ul>
-      <div class="small">建议同时放：Google Scholar / ResearchGate / ORCID 链接。</div>
+      <div class="small">如果你有 Google Scholar / ORCID / ResearchGate，建议添加到“联系与链接”。</div>
     </section>
 
+    <!-- 简历下载 -->
     <section id="cv" class="card" style="margin-top:18px;">
       <h2>简历（下载）</h2>
-      <p>把你的 PDF 简历文件命名为 <span class="k">cv.pdf</span> 上传到仓库根目录，然后这里就能直接下载。</p>
+      <p>
+        请将你的简历 PDF 命名为 <span class="k">cv.pdf</span> 上传到仓库根目录（与 index.html 同级），即可启用下载按钮。
+      </p>
       <div style="margin-top:12px;">
         <a class="btn" href="cv.pdf" target="_blank" rel="noreferrer">⬇️ 下载 CV（PDF）</a>
       </div>
-      <div class="small" style="margin-top:10px;">上传方法：仓库首页 → Add file → Upload files → 选择 cv.pdf → Commit。</div>
+      <div class="small" style="margin-top:10px;">上传路径：仓库 → Add file → Upload files → 选择 cv.pdf → Commit。</div>
     </section>
 
+    <!-- 联系 -->
     <section id="contact" class="card" style="margin-top:18px;">
       <h2>联系与链接</h2>
       <ul class="list">
-        <li class="item">邮箱：<a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
-        <li class="item">GitHub：<a href="https://github.com/gaoyuanhelsinki" target="_blank" rel="noreferrer">github.com/gaoyuanhelsinki</a></li>
-        <li class="item">Google Scholar：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
-        <li class="item">ORCID：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
-        <li class="item">LinkedIn/微博/公众号：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+        <li class="item"><span class="k">邮箱：</span><a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
+        <li class="item"><span class="k">GitHub：</span><a href="https://github.com/gaoyuanhelsinki" target="_blank" rel="noreferrer">github.com/gaoyuanhelsinki</a></li>
+        <li class="item"><span class="k">Google Scholar：</span><a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+        <li class="item"><span class="k">ORCID：</span><a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+        <li class="item"><span class="k">个人简介/学院主页：</span><a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
       </ul>
       <div class="footer">© <span id="y"></span> 高源 · Hosted on GitHub Pages</div>
     </section>
