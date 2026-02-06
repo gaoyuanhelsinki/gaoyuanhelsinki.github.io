@@ -3,26 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>高源的个人主页</title>
+  <title>高源｜个人主页</title>
+  <meta name="description" content="高源的个人主页：简介、研究方向、论文与项目、联系方式" />
+
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; margin: 0; padding: 64px 20px; background:#0b1020; color:#e8ecff;}
-    .card { max-width: 880px; margin: 0 auto; padding: 40px; border-radius: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); }
-    h1 { margin: 0 0 12px; font-size: 36px; letter-spacing: .5px; }
-    p { margin: 8px 0; line-height: 1.7; color: rgba(232,236,255,.82); }
-    a { color: #9bd1ff; text-decoration: none; }
-    .tag { display:inline-block; padding:6px 10px; margin: 10px 8px 0 0; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); font-size: 14px;}
+    :root{
+      --bg:#070b18; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.56); --link:#9bd1ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1000px 700px at 20% 0%, rgba(103,189,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, rgba(190,120,255,.14), transparent 55%),
+        var(--bg);
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1080px; margin:0 auto; padding:56px 18px 80px;}
+    .nav{
+      position:sticky; top:0; backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(7,11,24,.78), rgba(7,11,24,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:10;
+    }
+    .navin{max-width:1080px; margin:0 auto; padding:14px 18px; display:flex; gap:14px; align-items:center; justify-content:space-between}
+    .brand{font-weight:700; letter-spacing:.3px}
+    .nav a{color:var(--muted); font-size:14px}
+    .nav a:hover{color:var(--text); text-decoration:none}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text); font-size:14px;
+    }
+    .btn:hover{background: rgba(255,255,255,.12); text-decoration:none}
+    .hero{
+      margin-top:26px;
+      border:1px solid var(--border); background: var(--card);
+      border-radius:24px; padding:34px 30px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.35);
+    }
+    .h1{font-size:44px; margin:0 0 10px; letter-spacing:.6px}
+    .subtitle{color:var(--muted); font-size:18px; line-height:1.7; margin:0 0 18px}
+    .tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .tag{
+      padding:7px 11px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--muted); font-size:13px;
+    }
+    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; margin-top:18px}
+    .card{
+      border:1px solid var(--border); background: var(--card);
+      border-radius:20px; padding:20px 18px;
+    }
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.2px}
+    p{margin:0; color:var(--muted); line-height:1.75}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .item{margin:12px 0}
+    .k{color:var(--text)}
+    .small{color:var(--muted2); font-size:13px; line-height:1.6}
+    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .footer{margin-top:22px; color:var(--muted2); font-size:13px}
+    @media (max-width: 880px){
+      .grid{grid-template-columns:1fr}
+      .h1{font-size:36px}
+      .cols{grid-template-columns:1fr}
+    }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>高源</h1>
-    <p>这里是我的个人主页（GitHub Pages 免费托管）。</p>
-    <p>邮箱：<a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></p>
-    <div>
-      <span class="tag">作品集</span>
-      <span class="tag">博客</span>
-      <span class="tag">简历</span>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">高源</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;">
+        <a href="#about">简介</a>
+        <a href="#highlights">亮点</a>
+        <a href="#projects">项目/研究</a>
+        <a href="#pubs">论文</a>
+        <a href="#cv">简历</a>
+        <a href="#contact">联系</a>
+      </div>
     </div>
   </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="h1">高源</div>
+      <p class="subtitle">
+        一句话定位：例如「欧洲思想史 / 文明互鉴 / 北欧区域国别研究」或你的职业身份（研究员 / 博士后 / 数据科学等）。
+      </p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="mailto:gaoshanyuanquan@hotmail.com">📮 邮箱联系</a>
+        <a class="btn" href="#cv">⬇️ 下载简历</a>
+        <a class="btn" href="#projects">✨ 代表作</a>
+      </div>
+
+      <div class="tags">
+        <span class="tag">研究方向 1</span>
+        <span class="tag">研究方向 2</span>
+        <span class="tag">方法/技能</span>
+        <span class="tag">双语/国际经历</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section id="about" class="card">
+        <h2>简介</h2>
+        <p>
+          这里写 4–6 句：你目前的身份/机构、研究主题、你关注的关键问题、你擅长的方法或跨学科能力、你希望合作的方向。
+        </p>
+        <ul class="list">
+          <li class="item"><span class="k">现任：</span>（机构/城市）</li>
+          <li class="item"><span class="k">研究兴趣：</span>（3–5 个关键词）</li>
+          <li class="item"><span class="k">联系：</span><a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
+        </ul>
+        <div class="footer">建议：把“你是谁”和“你能提供什么”说清楚，短而有力量。</div>
+      </section>
+
+      <section id="highlights" class="card">
+        <h2>亮点（可量化）</h2>
+        <ul class="list">
+          <li class="item">代表论文/著作：XXX（年份）｜（期刊/出版社）</li>
+          <li class="item">项目/课题：XXX（你负责的部分 + 结果）</li>
+          <li class="item">奖项/荣誉：XXX（年份）</li>
+          <li class="item">学术服务：审稿 / 组织会议 / 课程等</li>
+        </ul>
+        <div class="small">提示：尽量用“结果 + 影响”，比如引用、媒体报道、项目规模、合作机构等。</div>
+      </section>
+    </div>
+
+    <section id="projects" class="card" style="margin-top:18px;">
+      <h2>项目 / 研究（精选）</h2>
+      <div class="cols">
+        <div class="card" style="background:rgba(255,255,255,.04);">
+          <div class="k">项目/研究 1 标题</div>
+          <div class="small">时间：YYYY–YYYY｜角色：负责人/核心成员</div>
+          <p style="margin-top:8px;">一句话说明背景与问题 → 方法 → 产出（论文/报告/工具/政策建议）。</p>
+          <div style="margin-top:10px;">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">链接</a>
+          </div>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.04);">
+          <div class="k">项目/研究 2 标题</div>
+          <div class="small">时间：YYYY–YYYY｜角色：…</div>
+          <p style="margin-top:8px;">一句话说明背景与问题 → 方法 → 产出。</p>
+          <div style="margin-top:10px;">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">链接</a>
+          </div>
+        </div>
+      </div>
+      <div class="small" style="margin-top:10px;">
+        你可以放 3–6 个。每个项目写清楚：你做了什么（贡献）+ 结果是什么（影响）。
+      </div>
+    </section>
+
+    <section id="pubs" class="card" style="margin-top:18px;">
+      <h2>论文 / 著作</h2>
+      <ul class="list">
+        <li class="item">[2026] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+        <li class="item">[2025] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+        <li class="item">[2024] 作者. 题目. 期刊/出版社. <a href="#" target="_blank" rel="noreferrer">DOI/链接</a></li>
+      </ul>
+      <div class="small">建议同时放：Google Scholar / ResearchGate / ORCID 链接。</div>
+    </section>
+
+    <section id="cv" class="card" style="margin-top:18px;">
+      <h2>简历（下载）</h2>
+      <p>把你的 PDF 简历文件命名为 <span class="k">cv.pdf</span> 上传到仓库根目录，然后这里就能直接下载。</p>
+      <div style="margin-top:12px;">
+        <a class="btn" href="cv.pdf" target="_blank" rel="noreferrer">⬇️ 下载 CV（PDF）</a>
+      </div>
+      <div class="small" style="margin-top:10px;">上传方法：仓库首页 → Add file → Upload files → 选择 cv.pdf → Commit。</div>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px;">
+      <h2>联系与链接</h2>
+      <ul class="list">
+        <li class="item">邮箱：<a href="mailto:gaoshanyuanquan@hotmail.com">gaoshanyuanquan@hotmail.com</a></li>
+        <li class="item">GitHub：<a href="https://github.com/gaoyuanhelsinki" target="_blank" rel="noreferrer">github.com/gaoyuanhelsinki</a></li>
+        <li class="item">Google Scholar：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+        <li class="item">ORCID：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+        <li class="item">LinkedIn/微博/公众号：<a href="#" target="_blank" rel="noreferrer">填写链接</a></li>
+      </ul>
+      <div class="footer">© <span id="y"></span> 高源 · Hosted on GitHub Pages</div>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
