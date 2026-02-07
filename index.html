@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ✅ 搜索结果标题（强匹配：高源 + 上海交通大学 + 欧洲文化高等研究院 + 人文学院） -->
-  <title>高源  上海交通大学 </title>
+  <title>高源 上海交通大学 · 芬兰赫尔辛基大学</title>
 
   <!-- ✅ 搜索摘要（百度/必应常取此处） -->
   <meta name="description" content="高源 - 上海交通大学｜欧洲文化高等研究院｜人文学院。主页包含简介、研究方向、论文与项目、简历下载与联系方式。研究领域：欧洲思想史、文明互鉴、北欧区域国别研究。" />
@@ -34,7 +34,7 @@
     "image": "https://gaoyuanhelsinki.github.io/avatar.png",
     "email": "mailto:gaoshanyuanquan@hotmail.com",
     "affiliation": [
-      { "@type": "Organization", "name": "上海交通大学" },
+      { "@type": "Organization", "name": "" },
       { "@type": "Organization", "name": "欧洲文化高等研究院" },
       { "@type": "Organization", "name": "人文学院" }
     ],
@@ -49,7 +49,39 @@
     ]
   }
   </script>
+/* 单位行：更“官网感” */
+.affil{
+  margin: 10px 0 14px;
+  font-size: 20px;                 /* 18~22 都可以 */
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.82);
+  text-shadow: 0 10px 35px rgba(0,0,0,.45);
+}
 
+/* 精致大圆点：像“徽章点” */
+.dotBig{
+  display:inline-block;
+  width: 10px;
+  height: 10px;                    /* 想更大：12px */
+  border-radius: 999px;
+  vertical-align: middle;
+  margin: 0 14px;                  /* 两边留白更大气 */
+  transform: translateY(-1px);     /* 微调居中 */
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255,255,255,.95),
+    rgba(155,209,255,.85) 45%,
+    rgba(140,120,255,.65) 80%);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.10),
+              0 12px 28px rgba(0,0,0,.35);
+}
+
+/* 移动端稍微收敛一点 */
+@media (max-width: 980px){
+  .affil{ font-size: 18px; }
+  .dotBig{ width:9px; height:9px; margin: 0 10px; }
+}
   <style>
     :root{
       --bg:#070b18;
@@ -316,14 +348,14 @@ ol li, ul li{
     <section class="hero">
       <div class="heroInner">
         <div class="poster" aria-label="高源头像海报">
-          <img src="avatar.png" alt="高源 - 上海交通大学 头像">
+          <img src="avatar.png" alt="高源 -  头像">
         </div>
 
         <div>
-          <h1 class="h1">高源</h1>
+          <h1 class="h1">高 源</h1>
           <p class="affil">
-            上海交通大学
-          </p>
+         上海交通大学 <span class="dotBig" aria-hidden="true"></span> 芬兰赫尔辛基大学
+         </p>
           <p class="subtitle">
   研究方向：欧洲区域国别学｜欧洲思想史｜欧洲情感哲学传统｜一带一路研究｜冰上数字丝路｜中欧文明互鉴｜北欧思想流派｜中华文明精神（儒佛道）国际诠释与价值传播
 </p>
