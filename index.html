@@ -356,28 +356,37 @@ ol li, ul li{
 #projects {
   text-align: left;     /* 项目内容左对齐 */
 }
-/* 全局宽度调整，最大化填充页面 */
+/* 调整wrap宽度和页边距 */
 .wrap {
-  max-width: 100%;  /* 将宽度设置为100%，填充整个页面宽度 */
-  margin: 0 auto;  /* 居中显示 */
-  padding: 20px 5%; /* 设置两边的padding，使内容有一定的边距，不至于紧贴两边 */
+  max-width: 95%;  /* 在大屏幕上最大宽度为95%，在中小屏幕上将占据更多宽度 */
+  margin: 0 auto;  /* 保证内容居中 */
+  padding: 20px 3%; /* 左右3%的内边距，留有空白的边距 */
 }
 
 @media (min-width: 1920px) {
   .wrap {
-    max-width: 90%; /* 在大屏幕上将最大宽度限制为90% */
+    max-width: 85%; /* 在超大屏幕上最大宽度为85%，保持舒适的阅读体验 */
   }
 }
 
-/* 内容区域调整，使文字适应大屏，避免过度紧凑 */
+/* 调整标题的显示，避免居中 */
+.affil {
+  font-size: 20px;  /* 设置字号 */
+  font-weight: 600;  /* 字体加粗 */
+  text-align: left;  /* 使标题靠左对齐 */
+  margin-top: 10px;
+}
+
+/* 内容文字的左右对齐 */
 .content {
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px 10px;  /* 增加上下左右的内边距，使页面内容舒适 */
+  padding: 20px 10px;
   text-align: justify; /* 内容两边对齐 */
-  line-height: 1.8;  /* 增加行距，提升可读性 */
+  line-height: 1.8;
   font-size: 18px; /* 可根据需要调整字体大小 */
 }
+
   </style>
 </head>
 
