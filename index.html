@@ -709,8 +709,8 @@ ol li, ul li{
 <!-- 样式部分 -->
 <style>
 .academic-part-time {
-  margin-left: 20%; /* 左边距 */
-  margin-right: 20%; /* 右边距 */
+  margin-left: 10%; /* 左边距 */
+  margin-right: 10%; /* 右边距 */
   padding: 20px;
   background-color: var(--bg); /* 设置背景色与网页背景一致 */
   border-radius: 10px; /* 圆角边框 */
@@ -727,18 +727,23 @@ ol li, ul li{
 }
 
 .academic-part-time p {
-  font-size: 19px; /* 调整字体大小 */
+  font-size: 18px; /* 调整字体大小 */
   color: var(--text); /* 设置颜色 */
 }
 
 .academic-part-time ul {
-  font-size: 19px; /* 列表字体大小 */
+  font-size: 16px; /* 列表字体大小 */
   color: var(--text);
   padding-left: 20px; /* 左边距 */
+  list-style-type: none; /* 移除默认的列表项标志 */
 }
 
 .academic-part-time ul li {
   margin-bottom: 10px; /* 列表项的间距 */
+}
+
+.academic-part-time ul li::before {
+  content: none; /* 去除数字序号前的点号 */
 }
 </style>
   
