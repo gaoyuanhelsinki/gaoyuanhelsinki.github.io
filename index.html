@@ -356,28 +356,28 @@ ol li, ul li{
 #projects {
   text-align: left;     /* 项目内容左对齐 */
 }
-/* 设置页面最大宽度，适应大屏幕 */
+/* 全局宽度调整，最大化填充页面 */
 .wrap {
-  max-width: 90%;  /* 限制最大宽度为屏幕的90%，适应4K大屏 */
+  max-width: 100%;  /* 将宽度设置为100%，填充整个页面宽度 */
   margin: 0 auto;  /* 居中显示 */
-  padding: 20px;    /* 设置内边距，保持与内容边缘有适当距离 */
+  padding: 20px 5%; /* 设置两边的padding，使内容有一定的边距，不至于紧贴两边 */
 }
 
 @media (min-width: 1920px) {
   .wrap {
-    max-width: 1200px; /* 超过1920px的屏幕，最大宽度为1200px */
+    max-width: 90%; /* 在大屏幕上将最大宽度限制为90% */
   }
 }
 
-/* 为主要内容区域设置自适应布局 */
+/* 内容区域调整，使文字适应大屏，避免过度紧凑 */
 .content {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 20px;  /* 设置两边的内边距 */
+  padding: 20px 10px;  /* 增加上下左右的内边距，使页面内容舒适 */
   text-align: justify; /* 内容两边对齐 */
   line-height: 1.8;  /* 增加行距，提升可读性 */
+  font-size: 18px; /* 可根据需要调整字体大小 */
 }
-
   </style>
 </head>
 
