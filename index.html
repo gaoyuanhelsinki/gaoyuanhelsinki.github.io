@@ -394,6 +394,32 @@ ol li, ul li{
   border-radius: 50%;  /* 使其变为圆形 */
   margin: 0 10px;  /* 设置圆点左右的间距 */
 }
+/* ===== 强制全站左右边距 15%（放在 <style> 最末尾）===== */
+:root{
+  --side: 15%;
+}
+
+/* 你页面主内容容器一般是 .wrap；如果你不是这个类名也没关系，下面还有 body/main 兜底 */
+.wrap{
+  max-width: none !important;
+  width: auto !important;
+  margin-left: var(--side) !important;
+  margin-right: var(--side) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 兜底：如果内容不是放在 .wrap，而是 main 或 body 里 */
+main{
+  margin-left: var(--side) !important;
+  margin-right: var(--side) !important;
+}
+
+/* 如果你之前给 body 有 padding，可能会叠加，这里清掉 */
+body{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
   </style>
 </head>
