@@ -505,14 +505,14 @@ body{
       <span class="k">一体：</span>
       区域国别视野下的欧洲思想传统、文明互鉴与北极国家战略研究
     </li>
-    <li class="item">
-      <span class="k">三位：</span>
-      <ol style="margin:8px 0 0; padding-left:18px; color:var(--muted); line-height:1.8;">
-        <li>区域国别与欧洲思想传统（思想根基）</li>
-        <li>中欧文明互鉴与国家战略（现实维度）</li>
-        <li>海上/冰上丝路与国家安全（战略延展）</li>
-      </ol>
-    </li>
+    <li class="item item-3lines">
+  <span class="k">三位：</span>
+  <ol class="triple">
+    <li>区域国别与欧洲思想传统（思想根基）</li>
+    <li>中欧文明互鉴与国家战略（现实维度）</li>
+    <li>海上/冰上丝路与国家安全（战略延展）</li>
+  </ol>
+</li>
   </ul>
 
   <h2 style="margin-top:18px;">特色研究</h2>
@@ -969,6 +969,69 @@ body{
 
   /* 9) 图片/媒体不溢出 */
   img, video, iframe{ max-width: 100%; height: auto; }
+}
+  
+/* ===== 手机端再微调：导航一行 + 副标题一行 + 三条三行（追加到CSS末尾） ===== */
+@media screen and (max-width: 768px){
+
+  /* A. 顶部导航：压缩到一行（不换行） */
+  .nav ul{
+    gap: 6px !important;
+    padding: 8px 8px !important;
+    flex-wrap: nowrap !important;     /* 永不换行 */
+  }
+  .nav a{
+    font-size: 12.5px !important;     /* 再小一点 */
+    padding: 7px 10px !important;     /* 再紧凑一点 */
+    border-radius: 999px !important;
+  }
+
+  /* B. “芬兰赫尔辛基大学 · 北欧芬兰学派” 小一号 + 强制一行 */
+  /* 兼容：它可能是 h2/h3/p/div 的某一个，所以都兜住 */
+  .hero h2,
+  .hero h3,
+  .hero .subtitle,
+  .hero .subline{
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* C. 三条：固定为三行（每条一行） */
+  .focus3{
+    margin-top: 10px !important;
+    padding: 0 !important;
+  }
+  .focus3 .item{
+    display: block !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    margin: 6px 0 !important;
+    text-align: left !important;      /* 手机阅读更自然 */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* 让三条区域更“铺屏”，不要缩进 */
+  .focus3, .focus3 .item{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+  
+@media screen and (max-width: 768px){
+  /* 三位：固定三行（每条一行），更贴近手机阅读 */
+  .item-3lines .triple{
+    margin: 8px 0 0 !important;
+    padding-left: 18px !important;   /* 保留有序列表的层级感 */
+    line-height: 1.6 !important;     /* 稍紧凑，视觉更“官方” */
+    color: var(--muted) !important;
+  }
+  .item-3lines .triple li{
+    margin: 6px 0 !important;        /* 每条之间的节奏 */
+  }
 }
 
 </style>
