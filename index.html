@@ -448,14 +448,19 @@ body{
           <img src="avatar.png" alt="高源 -  头像">
         </div>
 
-        <div>
-          <h1 class="h1">高 源</h1>
-          <p class="affil">
-         芬兰赫尔辛基大学 <span class="dotBig" aria-hidden="true"></span> 北欧芬兰学派
-         </p>
-          <p class="subtitle">
-  研究方向：欧洲区域国别学｜欧洲思想史｜欧洲情感哲学传统｜一带一路研究｜冰上数字丝路｜中欧文明互鉴｜北欧思想流派｜中华文明精神（儒佛道）国际诠释与价值传播
-</p>
+       <div>
+  <h1 class="h1">高 源</h1>
+
+  <!-- 副标题：强制一行显示（手机端） -->
+  <p class="affil subline">
+    芬兰赫尔辛基大学 <span class="dotBig" aria-hidden="true"></span> 北欧芬兰学派
+  </p>
+
+  <!-- 研究方向：手机端允许自然换行（2-3行），不要 nowrap -->
+  <p class="subtitle">
+    研究方向：欧洲区域国别学｜欧洲思想史｜欧洲情感哲学传统｜一带一路研究｜冰上数字丝路｜中欧文明互鉴｜北欧思想流派｜中华文明精神（儒佛道）国际诠释与价值传播
+  </p>
+</div>
 
 
           <div class="btnRow">
@@ -988,16 +993,30 @@ body{
 
   /* B. “芬兰赫尔辛基大学 · 北欧芬兰学派” 小一号 + 强制一行 */
   /* 兼容：它可能是 h2/h3/p/div 的某一个，所以都兜住 */
-  .hero h2,
-  .hero h3,
-  .hero .subtitle,
-  .hero .subline{
-    font-size: 14px !important;
-    line-height: 1.35 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
+  /* B. 只压“芬兰赫尔辛基大学 · 北欧芬兰学派”为一行（避免误伤研究方向） */
+.hero .subline{
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: center !important;
+}
+
+/* 研究方向：允许正常换行（2-3行更自然） */
+.hero .subtitle{
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+
+  /* 最多显示 3 行（可选） */
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+}
 
   /* C. 三条：固定为三行（每条一行） */
   .focus3{
@@ -1031,6 +1050,139 @@ body{
   }
   .item-3lines .triple li{
     margin: 6px 0 !important;        /* 每条之间的节奏 */
+  }
+}
+/* ===== 手机端最终补丁：导航一行 / 头像适中居中 / 研究方向2-3行 ===== */
+@media screen and (max-width: 768px){
+
+  /* 0) 页面尽量铺屏（统一左右边距） */
+  .wrap{
+    max-width: 100% !important;
+    padding: 10px 10px 44px !important;
+  }
+
+  /* 1) 顶部导航：强制一行（超出可横向滑动） */
+  .nav, nav.nav{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .nav ul, nav.nav ul, .nav .navList, .nav .navLinks{
+    display: flex !important;
+    flex-wrap: nowrap !important;       /* 永不换行 */
+    white-space: nowrap !important;
+    gap: 6px !important;
+    padding: 8px 8px !important;
+    margin: 0 !important;
+    overflow-x: auto !important;        /* 一行放不下就滑 */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav ul::-webkit-scrollbar{ display:none; }
+
+  .nav a, nav.nav a{
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px !important;         /* 再压缩 */
+    padding: 7px 9px !important;
+    border-radius: 999px !important;
+  }
+
+  /* 2) 照片：适中、居中、不要裁一半 */
+  .poster{
+    width: 100% !important;
+    max-width: 520px !important;
+    margin: 0 auto !important;
+
+    /* 关键：限制高度，避免“海报太高导致裁切过多” */
+    max-height: 56vh !important;
+    height: auto !important;
+
+    /* 不再强制海报比例，否则容易裁掉大半 */
+    aspect-ratio: auto !important;
+
+    border-radius: 22px !important;
+    overflow: hidden !important;
+  }
+  .poster img{
+    width: 100% !important;
+    height: 100% !important;
+
+    /* 用 contain：保证人物不被裁掉（更符合“证件照/官方展示”） */
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    background: rgba(255,255,255,.03);  /* contain 会有留白，用背景兜底 */
+    transform: none !important;
+  }
+
+  /* 3) “芬兰赫尔辛基大学 · 北欧芬兰学派”：小一号 + 一行 */
+  /* ⚠️ 只对这一行做 nowrap；不要影响“研究方向” */
+  .subline{
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+  }
+
+  /* 4) 研究方向：允许正常换行，并控制为2-3行（不乱切） */
+  .researchline{
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+
+    /* 限制显示 3 行（你说“2-3行”，这里给 3 行上限） */
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+
+    margin-top: 10px !important;
+  }
+
+  /* 5) 防止全站某处误用 nowrap/justify 把字切碎：把正文统一回正常换行 */
+  section p, section li{
+    white-space: normal !important;
+    word-spacing: normal !important;
+    letter-spacing: .2px !important;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 768px){
+
+  /* 副标题：一行显示 */
+  .hero .subline{
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+  }
+
+  /* 研究方向：自然换行，最多 3 行 */
+  .hero .subtitle{
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+
+    margin-top: 10px !important;
   }
 }
 
