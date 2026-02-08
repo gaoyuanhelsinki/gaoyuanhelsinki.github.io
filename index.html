@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <link rel="canonical" href="https://gaoyuanhelsinki.cn/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
 
   <!-- ✅ 搜索结果标题（强匹配：高源 + 上海交通大学 + 北欧 + 欧洲文化高等研究院 + 人文学院 + 芬兰赫尔辛基大学 + 冰上丝绸之路 + 区域国别学 + 北极命运共同体） -->
   <title>高 源 芬兰赫尔辛基大学 · 北欧芬兰学派 · 欧洲区域国别学 </title>
@@ -421,80 +421,9 @@ body{
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-    /* ====== 手机变形紧急修复代码 (粘贴到CSS文件末尾) ====== */
-@media (max-width: 600px) {
-    /* 1. 核心容器修复：强制单列，去除浮动和奇怪定位 */
-    body > *:not(script),
-    .heroInner,
-    .grid,
-    .cards2,
-    div[class*="container"],
-    section, main, header, footer {
-        display: block !important;
-        float: none !important;
-        position: static !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 2. 文本与断行修复：强制合理断词，确保可读性 */
-    body, p, h1, h2, h3, h4, .h1, .intro-text, .research-area {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        word-break: keep-all !important; /* 中文优先保持完整词 */
-        hyphens: manual !important;
-        text-align: left !important;
-        line-height: 1.6 !important;
-    }
-
-    /* 3. 特定标题修复（针对截图中的“高源”和“研究方向”行） */
-    .h1 {
-        font-size: 32px !important;
-        margin-top: 20px !important;
-        margin-bottom: 15px !important;
-        white-space: normal !important;
-        display: block !important;
-    }
-
-    /* 4. 导航栏修复（针对截图上方的“简介 亮点...”选项卡） */
-    nav, .tabs, .nav-menu, [class*="navigation"] {
-        flex-wrap: wrap !important;
-        justify-content: space-around !important;
-        font-size: 14px !important;
-    }
-    nav a, .tabs a {
-        padding: 8px 5px !important;
-        margin: 2px !important;
-    }
-
-    /* 5. 列表项修复（针对截图中编号列表的挤压） */
-    ol, ul {
-        padding-left: 1.5em !important;
-    }
-    li {
-        margin-bottom: 0.8em !important;
-        display: list-item !important;
-    }
-
-    /* 6. 终极宽度清理：所有内部盒子模型重置 */
-    * {
-        box-sizing: border-box !important;
-        max-width: 100% !important;
-    }
-    img, .poster, [class*="image"] {
-        height: auto !important;
-        display: block !important;
-        margin: 10px auto !important;
-    }
-}
 
   </style>
+  
 </head>
 
 <body>
@@ -862,96 +791,78 @@ body{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-
- /* --- 手机端强效适配方案（不改颜色，只改排版） --- */
-@media screen and (max-width: 768px) {
-    /* 1. 强制重置所有带坐标的元素，解决堆叠和变形 */
-    div, p, span, a, img, header, footer {
-        position: static !important; /* 彻底废除电脑端的 left, top 坐标 */
-        width: auto !important;
-        max-width: 94% !important;   /* 确保不超出屏幕 */
-        height: auto !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        margin-top: 15px !important;
-        margin-bottom: 15px !important;
-        display: block !important;    /* 解决文字竖排，强制横向撑开 */
-        left: auto !important;
-        top: auto !important;
-        float: none !important;      /* 防止浮动导致乱码堆叠 */
-        transform: none !important;
+ /* ====== 手机变形紧急修复代码 (粘贴到CSS文件末尾) ====== */
+@media (max-width: 600px) {
+    /* 1. 核心容器修复：强制单列，去除浮动和奇怪定位 */
+    body > *:not(script),
+    .heroInner,
+    .grid,
+    .cards2,
+    div[class*="container"],
+    section, main, header, footer {
+        display: block !important;
+        float: none !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
         box-sizing: border-box !important;
     }
 
-    /* 2. 修正行间距与字体大小 */
-    p, span, div, li {
-        font-size: 16px !important;   /* 手机端稍微加大字号方便阅读 */
-        line-height: 1.5 !important;  /* 增加行高，防止文字挤在一起 */
-        letter-spacing: 0.5px !important; /* 修正字间距 */
+    /* 2. 文本与断行修复：强制合理断词，确保可读性 */
+    body, p, h1, h2, h3, h4, .h1, .intro-text, .research-area {
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
-        white-space: normal !important; /* 强制正常换行，解决乱码感 */
+        word-break: keep-all !important; /* 中文优先保持完整词 */
+        hyphens: manual !important;
+        text-align: left !important;
+        line-height: 1.6 !important;
     }
 
-    /* 3. 针对底端乱码和间距的特别修正 */
-    #footer, .footer, footer, div[style*="bottom"] {
-        width: 100% !important;
-        padding: 40px 10px !important;
-        margin-top: 50px !important;
-        text-align: center !important;
-        position: relative !important;
-        clear: both !important;
-        display: block !important;
-    }
-
-    /* 4. 图片居中且不变形 */
-    img {
-        display: block !important;
-        margin: 20px auto !important;
-        max-width: 80% !important;
-    }
-} 
-/* 彻底解决手机端重叠与代码外泄 - 覆盖替换版 */
-@media screen and (max-width: 768px) {
-    /* 1. 强制所有元素回归屏幕内，解决变形 */
-    * {
-        position: static !important; 
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        left: auto !important;
-        top: auto !important;
-        transform: none !important;
-    }
-
-    body {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 5px !important;
-        overflow-x: hidden !important; /* 切断横向溢出的代码杂质 */
-        display: block !important;
-    }
-
-    /* 2. 解决文字竖排和行间距 */
-    div, p, span, a, section {
-        display: block !important; 
-        width: 94% !important;
-        margin: 12px auto !important; /* 左右居中，上下留空 */
-        font-size: 18px !important;
-        line-height: 1.8 !important;
-        word-wrap: break-word !important;
+    /* 3. 特定标题修复（针对截图中的“高源”和“研究方向”行） */
+    .h1 {
+        font-size: 32px !important;
+        margin-top: 20px !important;
+        margin-bottom: 15px !important;
         white-space: normal !important;
-        height: auto !important;
+        display: block !important;
     }
 
-    /* 3. 彻底隐藏由于标签未闭合导致的底部代码碎片 */
-    #footer, footer, .footer, body > :not(div):not(p):not(span) {
-        position: relative !important;
-        margin-top: 40px !important;
-        padding: 20px 0 !important;
-        clear: both !important;
+    /* 4. 导航栏修复（针对截图上方的“简介 亮点...”选项卡） */
+    nav, .tabs, .nav-menu, [class*="navigation"] {
+        flex-wrap: wrap !important;
+        justify-content: space-around !important;
+        font-size: 14px !important;
+    }
+    nav a, .tabs a {
+        padding: 8px 5px !important;
+        margin: 2px !important;
+    }
+
+    /* 5. 列表项修复（针对截图中编号列表的挤压） */
+    ol, ul {
+        padding-left: 1.5em !important;
+    }
+    li {
+        margin-bottom: 0.8em !important;
+        display: list-item !important;
+    }
+
+    /* 6. 终极宽度清理：所有内部盒子模型重置 */
+    * {
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+    }
+    img, .poster, [class*="image"] {
+        height: auto !important;
+        display: block !important;
+        margin: 10px auto !important;
     }
 }
-/* 必须紧接着写下面这行闭合标签 */
 </style>
   
 
