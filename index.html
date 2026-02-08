@@ -792,50 +792,160 @@ body{
   -webkit-backdrop-filter: blur(10px);
 }
   
-/* --- 手机端最终强效适配 --- */
+/* =========================
+   手机端排版（不影响电脑端）
+   把你原来的移动端 @media 整段删掉，换成这一段
+   ========================= */
 @media screen and (max-width: 768px) {
-    /* 1. 强制所有容器回归屏幕，消除重叠和变形 */
-    div, p, span, a, img, section {
-        position: static !important; /* 核心：取消所有绝对坐标 */
-        width: 100% !important;
-        max-width: 92% !important;   /* 左右留出安全边距 */
-        margin: 15px auto !important; /* 自动居中 */
-        display: block !important;    /* 解决文字竖排，强制横向铺开 */
-        left: auto !important;
-        top: auto !important;
-        height: auto !important;
-        transform: none !important;
-        word-wrap: break-word !important; /* 防止长文本撑破屏幕 */
-    }
 
-    body {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow-x: hidden !important; /* 严禁左右晃动 */
-    }
+  /* 1) 全局阅读尺度：字号/行距/页边距统一 */
+  html { -webkit-text-size-adjust: 100%; }
+  body{
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  .wrap{
+    max-width: 100%;
+    padding: 14px 14px 44px;   /* 手机页边距：左右 14px */
+  }
 
-    /* 2. 优化行间距、字体和字间距 */
-    p, div, span {
-        font-size: 14px !important;
-        line-height: 1.5 !important; /* 增加行距，不再拥挤 */
-        letter-spacing: 0.5px !important;
-        text-align: justify !important; /* 文字两端对齐，更精美 */
-    }
+  /* 2) 顶部导航：横向排列，可横向滑动，不换行挤乱 */
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  /* 兼容：无论你的导航是 ul/li 结构还是直接一排 a，都尽量兜住 */
+  .nav ul{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 10px 10px;
+    margin: 0;
+    list-style: none;
+    scrollbar-width: none;
+  }
+  .nav ul::-webkit-scrollbar{ display:none; }
 
-    /* 3. 图片自适应 */
-    img {
-        max-width: 90% !important;
-        height: auto !important;
-        margin: 20px auto !important;
-    }
+  .nav a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.04);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1;           /* 导航内行距固定，视觉更干净 */
+  }
 
-    /* 4. 确保底部有足够的空间 */
-    footer, .footer {
-        padding: 40px 0 !important;
-        margin-top: 30px !important;
-    }
+  /* 3) 顶部“海报区”：改为单列；头像加大（像海报） */
+  .heroInner{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  /* 头像容器铺屏但保留一点页边距 */
+  .poster{
+    width: 100%;
+    max-width: 520px;         /* 防止极大屏手机过宽 */
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 3 / 4;      /* 海报比例：你可改成 4/5 更“长” */
+    border-radius: 22px;
+    overflow: hidden;
+  }
+  .poster img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 10%;
+    transform: none;          /* 手机端别再强行缩放，避免裁切怪 */
+  }
+
+  /* 标题区（姓名/单位/方向）排版更像手机阅读 */
+  .hero h1, .hero h2, .hero h3{
+    text-align: center;
+    margin: 0;
+  }
+  .hero h1{
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    margin-top: 6px;
+  }
+  .hero .subtitle{
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: .92;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* 4) 各部分内容：尽量铺屏 + 统一间距/行距/段落节奏 */
+  section{
+    width: 100%;
+    max-width: 100%;
+    margin: 14px 0;
+    padding: 18px 16px;
+    border-radius: 22px;
+  }
+
+  /* 标题统一 */
+  section h2{
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+
+  /* 正文统一：始终一致的行距/字间距，不要每块都不一样 */
+  p, li{
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: .2px;
+    text-align: justify;
+    margin: 0 0 12px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  ul{
+    padding-left: 18px;
+    margin: 0;
+  }
+  li{ margin-bottom: 10px; }
+
+  /* 5) 按钮/链接区：一列铺满更符合手机 */
+  .actions, .btnGroup, .ctaGroup{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .actions a, .btnGroup a, .ctaGroup a, .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 6) 关键：不要再对 “所有 div/a/img/section” 做 100%/block 的粗暴重置！
+        这里仅做必要的安全项，避免横向溢出 */
+  img, video, iframe{
+    max-width: 100%;
+    height: auto;
+  }
 }
+
 </style>
   
 
