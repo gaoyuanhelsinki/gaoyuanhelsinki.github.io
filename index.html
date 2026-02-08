@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="canonical" href="https://gaoyuanhelsinki.cn/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
 
   <!-- ✅ 搜索结果标题（强匹配：高源 + 上海交通大学 + 北欧 + 欧洲文化高等研究院 + 人文学院 + 芬兰赫尔辛基大学 + 冰上丝绸之路 + 区域国别学 + 北极命运共同体） -->
   <title>高 源 芬兰赫尔辛基大学 · 北欧芬兰学派 · 欧洲区域国别学 </title>
@@ -863,53 +864,54 @@ body{
   -webkit-backdrop-filter: blur(10px);
 }
 
-  /* 仅针对手机端的布局修正，不改动颜色和背景 */
+ /* --- 手机端强效适配方案（不改颜色，只改排版） --- */
 @media screen and (max-width: 768px) {
-    /* 1. 消除页面变形，确保内容在屏幕内 */
-    html, body {
-        width: 100% !important;
-        overflow-x: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 2. 核心：解除绝对定位导致的重叠和文字竖排 */
-    div, p, span, a, img {
-        position: static !important; /* 关键：让元素回归正常文档流，不再互相重叠 */
-        width: 92% !important;        /* 左右留出一点边距 */
-        max-width: 92% !important;
+    /* 1. 强制重置所有带坐标的元素，解决堆叠和变形 */
+    div, p, span, a, img, header, footer {
+        position: static !important; /* 彻底废除电脑端的 left, top 坐标 */
+        width: auto !important;
+        max-width: 94% !important;   /* 确保不超出屏幕 */
         height: auto !important;
-        margin: 15px auto !important; /* 上下留出间距，左右居中 */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+        display: block !important;    /* 解决文字竖排，强制横向撑开 */
         left: auto !important;
         top: auto !important;
-        display: block !important;    /* 解决文字竖排问题，让每段文字占满一行 */
-        word-wrap: break-word !important; /* 解决长字符串导致的乱码感和溢出 */
+        float: none !important;      /* 防止浮动导致乱码堆叠 */
         transform: none !important;
+        box-sizing: border-box !important;
     }
 
-    /* 3. 字体大小与行间距优化 */
-    p, span, div {
-        font-size: 17px !important;   /* 适配手机阅读的最佳字号 */
-        line-height: 1.6 !important;  /* 增加行间距，防止文字挤在一起 */
-        text-align: left !important;  /* 保持左对齐 */
+    /* 2. 修正行间距与字体大小 */
+    p, span, div, li {
+        font-size: 18px !important;   /* 手机端稍微加大字号方便阅读 */
+        line-height: 1.8 !important;  /* 增加行高，防止文字挤在一起 */
+        letter-spacing: 0.5px !important; /* 修正字间距 */
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important; /* 强制正常换行，解决乱码感 */
     }
 
-    /* 4. 图片自适应 */
-    img {
-        max-width: 100% !important;
-        margin: 10px auto !important;
-    }
-
-    /* 5. 底端乱码修复：强制清除浮动和重叠 */
-    footer, .footer, div[style*="bottom"] {
+    /* 3. 针对底端乱码和间距的特别修正 */
+    #footer, .footer, footer, div[style*="bottom"] {
+        width: 100% !important;
+        padding: 40px 10px !important;
+        margin-top: 50px !important;
+        text-align: center !important;
         position: relative !important;
         clear: both !important;
-        margin-top: 30px !important;
-        padding-bottom: 20px !important;
-        width: 100% !important;
-        text-align: center !important;
+        display: block !important;
     }
-}
+
+    /* 4. 图片居中且不变形 */
+    img {
+        display: block !important;
+        margin: 20px auto !important;
+        max-width: 80% !important;
+    }
+} 
 </style>
   
 
