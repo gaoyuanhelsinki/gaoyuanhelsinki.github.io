@@ -862,64 +862,61 @@ body{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-/* --- 手机端适配与乱码修复代码开始 --- */
-
-/* 强制全局使用微软雅黑或无衬线字体，防止部分手机系统乱码 */
-body {
-    font-family: "Microsoft YaHei", -apple-system, sans-serif !important;
-}
-
+  
+/* --- 手机端精美适配方案 --- */
 @media screen and (max-width: 768px) {
-    /* 1. 强制容器自适应屏幕宽度，消除变形 */
-    html, body, .container, #wrapper, div[style*="width"] {
+    /* 1. 强制重置所有容器，防止叠加 */
+    html, body {
         width: 100% !important;
-        max-width: 100vw !important;
+        overflow-x: hidden !important;
         margin: 0 !important;
         padding: 0 !important;
-        overflow-x: hidden !important; /* 禁止横向滚动 */
-        position: relative !important;
-        left: 0 !important;
-        top: 0 !important;
+        background-color: #ffffff !important;
     }
 
-    /* 2. 将所有绝对定位改为相对定位，防止文字和图片飞出屏幕或堆叠 */
-    div, p, img, a {
-        position: relative !important; 
-        left: 0 !important;
-        top: 0 !important;
-        margin: 10px auto !important; /* 自动居中 */
-        display: block !important;
-        width: 90% !important; /* 留出左右边距 */
+    /* 2. 核心：取消所有绝对定位，让内容按顺序自然排列 */
+    div, p, span, a, img, section {
+        position: static !important; /* 强制取消 absolute，解决重叠 */
+        width: auto !important;
         height: auto !important;
+        left: auto !important;
+        top: auto !important;
+        margin: 0 !important;
+        padding: 10px 15px !important;
+        display: block !important; /* 强制块级显示，解决文字竖排 */
+        transform: none !important;
+        word-wrap: break-word !important; /* 防止长文本撑破屏幕 */
     }
 
-    /* 3. 修复图片变形 */
+    /* 3. 图片精美化 */
     img {
         max-width: 90% !important;
-        height: auto !important;
-        object-fit: contain !important;
+        margin: 20px auto !important;
+        border-radius: 8px; /* 圆角显得更精美 */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* 4. 解决底部乱码与间距奇怪问题 */
-    footer, .footer, #footer, div:last-child {
-        width: 100% !important;
+    /* 4. 彻底解决底部乱码与显示问题 */
+    footer, .footer, #footer, div[style*="bottom"] {
         position: relative !important;
-        margin-top: 50px !important;
-        padding: 20px 0 !important;
+        margin-top: 40px !important;
+        padding: 30px 15px !important;
+        background: #f8f9fa !important; /* 给底部一个浅色背景区分 */
         text-align: center !important;
+        font-size: 13px !important;
+        color: #666 !important;
         clear: both !important;
-        background: transparent !important;
     }
 
-    /* 5. 调整手机端字号，防止文字太小 */
-    p, span, div {
+    /* 5. 针对文字竖排和间距的微调 */
+    p {
+        line-height: 1.8 !important;
         font-size: 16px !important;
-        line-height: 1.6 !important;
-        word-wrap: break-word !important; /* 强制换行 */
+        color: #333 !important;
+        text-align: justify !important;
     }
 }
-
-/* --- 手机端适配代码结束 --- */
+  
 </style>
   
 
