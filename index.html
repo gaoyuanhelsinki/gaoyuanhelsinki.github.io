@@ -862,30 +862,6 @@ body{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-  /* 专门针对小屏幕手机的优化 (如iPhone SE, 普通安卓机) */
-@media (max-width: 600px) {
-    body {
-        font-size: 16px; /* 确保基础字体可读 */
-        line-height: 1.5; /* 增加行高便于阅读 */
-        padding: 10px; /* 增加一些内边距避免内容贴边 */
-    }
-    
-    .h1 { /* 请确认你的主标题是否真的使用.h1这个类名 */
-        font-size: 28px !important; /* 进一步缩小主标题 */
-        text-align: center; /* 可以考虑居中 */
-    }
-    
-    .heroInner, .grid, .cards2 {
-        /* 强制这些容器使用更简单的单列布局，并增加间距 */
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-    
-    img, .poster {
-        max-width: 100% !important; /* 确保所有图片绝不溢出 */
-        height: auto !important;
-    }
-}
 
 </style>
   
