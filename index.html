@@ -426,54 +426,64 @@ main{
 
   </style>
 <style id="desktop-margin-fix">
-/* ============================
-   桌面端：统一“外边距 15% + 卡片内边距更舒适”
-   用 max-width 做左右留白（不挤压卡片内部排版）
-   ============================ */
+/* =========================
+   桌面端：卡片外侧统一留白 15%
+   + 卡片内部统一舒适内边距（参考“论文/著作”）
+   放置位置：<head> 内，</head> 前
+========================= */
 
 @media screen and (min-width: 1024px){
 
   :root{
-    --desktop-gutter: 15vw;     /* 两侧留白（15% 视口宽度） */
-    --desktop-card-pad: 28px;   /* 卡片内部文字留白（接近“论文/著作”观感） */
+    --desktop-gutter: 15vw;      /* 外侧留白：15% 视口宽 */
+    --card-pad: 28px;            /* 卡片内边距：可微调 24~32 */
   }
 
-  /* 0) 防横向溢出（保险） */
-  html, body{ overflow-x: hidden; }
+  /* ① 保证页面本身不出现横向溢出 */
+  html, body{
+    overflow-x: hidden;
+  }
 
-  /* 1) 外部留白：让“整个内容区”居中并左右留 15% */
+  /* ② 关键：主容器左右留白 15% */
   .wrap{
     box-sizing: border-box !important;
     width: 100% !important;
-    max-width: calc(100vw - (var(--desktop-gutter) * 2)) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+
+    padding-left: var(--desktop-gutter) !important;
+    padding-right: var(--desktop-gutter) !important;
   }
 
-  /* 2) 防止某些块被写成 100vw 顶满屏（把它们拉回内容区宽度） */
-  section, .card, .panel, .glass, .block,
-  .intro, .highlights, .projects, .papers, .academic-part-time{
+  /* ③ 关键：把“被写死成 100vw/顶满屏”的区块强制拉回到容器内 */
+  #intro, #highlights, #projects, #papers, #resume, #contact,
+  #jianjie, #liangdian, #zhuchixiangmu,
+  .intro, .highlights, .projects, .papers, .resume, .contact,
+  section, .section, .block, .panel, .card, .glass{
     box-sizing: border-box !important;
-    width: 100% !important;
+    width: auto !important;
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  /* 3) 卡片内部留白：让“简介/亮点/主持项目”等文字别贴边框 */
-  /*   覆盖常见“阴影卡片容器”写法：card / panel / glass */
-  section .card,
-  section .panel,
-  section .glass,
-  .card, .panel, .glass{
-    padding: var(--desktop-card-pad) !important;
+  /* ④ 卡片内部：统一舒适内边距（参考“论文/著作”效果） */
+  #intro, #highlights, #projects, #papers, #resume, #contact,
+  #jianjie, #liangdian, #zhuchixiangmu,
+  .intro, .highlights, .projects, .papers, .resume, .contact,
+  .panel, .card, .glass{
+    padding: var(--card-pad) var(--card-pad) !important;
   }
 
-  /* 4) 标题别顶到卡片上沿（更像官方阅读排版） */
-  h2, h3{
-    margin-top: 0 !important;
+  /* ⑤ 但 hero 首屏不要被加大内边距（否则头像区会变形） */
+  section.hero, .hero{
+    padding: 0 !important;
+  }
+
+  /* ⑥ 顶部导航保持全宽，不被 wrap 留白影响 */
+  .nav{
+    left: 0 !important;
+    right: 0 !important;
   }
 }
 </style>
