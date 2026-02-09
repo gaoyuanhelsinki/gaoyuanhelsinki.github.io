@@ -426,75 +426,79 @@ main{
 
   </style>
 <style id="desktop-margin-fix">
-/* =========================
-   Desktop layout hard-fix:
-   1) 外侧留白 15vw
-   2) 取消一切 full-bleed/100vw/translateX 突破容器的写法
-   3) 卡片内边距参考“论文/著作”
-========================= */
+/* ===============================
+   桌面端统一“版心”：
+   - 卡片外：左右留白 15%（通过 max-width + auto 实现）
+   - 卡片内：舒适阅读内边距（参考“论文/著作”）
+   放置位置：<head> 内，</head> 前
+================================ */
 
 @media screen and (min-width: 1024px){
+
+  /* 1) 桌面端版心宽度 = 70vw（两侧自然各 15vw 留白） */
   :root{
-    --desktop-gutter: 15vw;
-    --card-pad: 28px;
+    --desktop-content-max: 70vw;   /* 100 - 15 - 15 */
+    --card-pad-x: 34px;
+    --card-pad-y: 30px;
   }
 
-  html, body{ overflow-x: hidden; }
+  html, body{
+    overflow-x: hidden;
+  }
 
-  /* 主容器留白 */
-  .wrap{
-    box-sizing: border-box !important;
+  /* 2) 关键：给“网格容器”做版心（你的简介/亮点就在 .grid 里） */
+  .grid{
     width: 100% !important;
-    max-width: none !important;
-    margin: 0 auto !important;
-    padding-left: var(--desktop-gutter) !important;
-    padding-right: var(--desktop-gutter) !important;
+    max-width: var(--desktop-content-max) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
   }
 
-  /* 关键：把 wrap 里“一级区块”全部拉回容器内（防 100vw / 负边距 / translateX） */
-  .wrap > section,
-  .wrap > div{
-    box-sizing: border-box !important;
-
-    width: auto !important;
-    max-width: 100% !important;
-
+  /* 3) 网格里的卡片不要再自己搞外边距（让 grid 控制外侧留白） */
+  .grid > .card,
+  .grid > section.card{
+    max-width: none !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-
-    /* 常见 full-bleed hack：50% - 50vw */
-    position: relative !important;
-  }
-
-  /* 再补一刀：任何元素若被写了 100vw，也强制回到 100% */
-  .wrap *{
     box-sizing: border-box !important;
-    max-width: 100% !important;
-  }
-  .wrap [style*="100vw"],
-  .wrap [style*="50vw"]{
-    width: auto !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    transform: none !important;
   }
 
-  /* 卡片内部：舒适内边距（让文字别贴边） */
-  .card, .panel, .glass,
-  #intro, #highlights, #projects, #papers, #resume, #contact,
-  #jianjie, #liangdian, #zhuchixiangmu{
-    padding: var(--card-pad) var(--card-pad) !important;
+  /* 4) 非网格中的“大卡片”（例如：主持项目、论文/著作等）也统一版心 */
+  section.card,
+  .card,
+  .panel,
+  .glass,
+  .block{
+    max-width: var(--desktop-content-max) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
   }
 
-  /* hero 首屏别被加 padding（防止头像/首屏错位） */
-  section.hero, .hero{ padding: 0 !important; }
+  /* 5) 卡片内部的舒适内边距（你说“简介/亮点/主持项目”太挤就是这里） */
+  section.card,
+  .card,
+  .panel,
+  .glass,
+  .block{
+    padding: var(--card-pad-y) var(--card-pad-x) !important;
+  }
 
-  /* 导航保持全宽 */
-  .nav{ left: 0 !important; right: 0 !important; }
+  /* 6) 但：如果某些卡片里面还有一层 .card（嵌套），避免双重 padding */
+  .card .card,
+  .panel .panel,
+  .glass .glass{
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* 7) 导航仍全宽贴边（不受版心影响） */
+  .nav{
+    left: 0 !important;
+    right: 0 !important;
+  }
 }
 </style>
  
