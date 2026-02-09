@@ -1185,6 +1185,51 @@ body{
     margin-top: 10px !important;
   }
 }
+  
+/* =========================
+   桌面端：让“简介 / 亮点与贡献 / 主持项目（部分）”左右页边距=15%
+   粘贴位置：CSS 最末尾（</style> 前）
+   ========================= */
+@media screen and (min-width: 769px){
+
+  /* 1) 如果你的这三块 section 本身已有 id（常见写法），直接命中 */
+  #intro, #highlights, #projects,
+  #jianjie, #liangdian, #zhuchixiangmu{
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+  }
+
+  /* 2) 如果这三块没有 id，但它们是“卡片容器”类（常见：panel/card/block/glass），
+        你可以给对应 section 加 class（见下面“可选：HTML 最小改动”） */
+  .desktop-15{
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+  }
+
+  /* 3) 让三块内容在桌面端更像“官方排版”：内边距、行距、标题间距统一 */
+  #intro, #highlights, #projects,
+  #jianjie, #liangdian, #zhuchixiangmu,
+  .desktop-15{
+    padding: 22px 22px !important;
+    border-radius: 22px;
+  }
+
+  #intro h2, #highlights h2, #projects h2,
+  #jianjie h2, #liangdian h2, #zhuchixiangmu h2,
+  .desktop-15 h2{
+    margin: 0 0 14px !important;
+    line-height: 1.25;
+  }
+
+  #intro p, #highlights p, #projects p,
+  #jianjie p, #liangdian p, #zhuchixiangmu p,
+  .desktop-15 p,
+  #intro li, #highlights li, #projects li,
+  #jianjie li, #liangdian li, #zhuchixiangmu li,
+  .desktop-15 li{
+    line-height: 1.85;
+  }
+}
 
 </style>
   
