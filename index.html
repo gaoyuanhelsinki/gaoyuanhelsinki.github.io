@@ -1298,6 +1298,64 @@ main{
     box-sizing: border-box !important;
   }
 }
+  /* =========================
+   Desktop FINAL ALIGN (75% container + same inner padding)
+   只影响桌面端（>=1024px）
+   ========================= */
+@media (min-width: 1024px){
+  :root{
+    --desk-container: 75vw;   /* 外框总宽度 = 75% */
+    --desk-side-pad: 32px;    /* 卡片内部左右留白（你想更宽可改 28/24 等） */
+  }
+
+  /* 1) 先把“承载卡片的容器”也统一：避免 .grid 自己撑满屏导致视觉错位 */
+  .grid{
+    width: 100% !important;
+    max-width: var(--desk-container) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    display: block !important; /* 防止桌面端两张卡并排挤在一行 */
+  }
+
+  /* 2) 所有卡片外框统一同宽居中 */
+  .hero,
+  section.card,
+  .card,
+  #projects,
+  #contact,
+  .grid > *{
+    width: 100% !important;
+    max-width: var(--desk-container) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3) 关键：统一所有卡片“内部左右 padding”，否则看起来还是不齐 */
+  .hero,
+  section.card,
+  .card,
+  #projects,
+  #contact,
+  .grid > *{
+    padding-left: var(--desk-side-pad) !important;
+    padding-right: var(--desk-side-pad) !important;
+  }
+
+  /* 4) 防止长英文/长链接把某些卡片视觉撑宽 */
+  .hero *,
+  section.card *,
+  .card *,
+  #projects *,
+  #contact *{
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+  }
+}
 html, body { overflow-x: hidden; }
 </style>
   
