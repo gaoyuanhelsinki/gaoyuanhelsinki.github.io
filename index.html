@@ -1230,6 +1230,45 @@ body{
     line-height: 1.85;
   }
 }
+  
+/* =========================
+   桌面端：统一左右“官方页边距”（15%）
+   追加到 CSS 最末尾（</style> 前）
+   ========================= */
+@media screen and (min-width: 1024px){
+
+  /* 1) 全站主容器：左右留白 15%（用 vw 更稳） */
+  .wrap{
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15vw !important;
+    padding-right: 15vw !important;
+  }
+
+  /* 2) 如果你希望导航/海报区仍然“铺满屏幕”，就把它们放开 */
+  /* 导航一般是 sticky，保持不受 wrap 的左右 padding 影响 */
+  .nav{
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* 让海报首屏不被左右 padding 挤窄（如你希望首屏仍宽） */
+  section.hero{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 但 hero 内部内容仍保持正常宽度 */
+  .heroInner{
+    width: 100%;
+  }
+
+  /* 3) 防止“手机端全局 !important”误伤桌面端：恢复 section 的正常布局 */
+  section{
+    width: auto !important;
+  }
+}
 
 </style>
   
