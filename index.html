@@ -1292,58 +1292,115 @@ code{
   }
 
 /* =========================
-   FIX: 全端禁止横向溢出 + 桌面“联系与链接”卡片全宽贴边
-   粘贴位置：<style> 最末尾、</style> 之前
+   PATCH vFinal: 统一对齐 + 禁止溢出（桌面/手机）
+   目标：
+   1) 桌面端：内容区宽度 75%，左右各留 12.5%（所有卡片两端强制对齐）
+   2) 手机端：卡片左右留 12px~16px 安全边距
+   3) 任意长链接/长英文/代码块：不再撑破页面（不再出现底部“代码溢出”）
+   4) “联系与链接”可做全宽贴边（可选），但内容仍按 12.5% 内边距对齐
    ========================= */
 
-/* 1) 全端：彻底禁止横向溢出（根治“底部出现横向滚动/溢出”） */
-html, body{
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-}
-
-/* 所有常见内容都允许断行，避免长链接/长英文顶破布局 */
-*, *::before, *::after{
+/* 0) 全局：别让任何元素把页面撑出横向滚动 */
+*,
+*::before,
+*::after{
   box-sizing: border-box;
-}
-
-p, li, a, span, div, section, article{
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-/* 如果你页面里有 code/pre（或某些块被当作代码），也不允许顶破 */
-pre, code{
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
   max-width: 100%;
 }
 
-/* 图片/视频/iframe 不许撑破 */
+html, body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;           /* 比 hidden 更稳（不产生横向滚动条） */
+}
+
+/* 1) 最常见的“撑破元凶”：长链接/长英文/inline code */
+a, p, li, span, div, section, article{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 2) 代码块：永远不允许撑破（必要时自动换行；也可横向滚动二选一） */
+pre, code{
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 3) 媒体元素不许超宽 */
 img, video, iframe{
   max-width: 100% !important;
   height: auto !important;
 }
 
-/* 2) 桌面端：让最后“联系与链接”卡片两端贴齐屏幕 */
-@media (min-width: 1024px){
+/* 4) 统一“卡片容器”选择器：尽量覆盖你页面里所有卡片形态 */
+:root{
+  --m-side: 12px;     /* 手机端左右安全边距 */
+  --d-side: 12.5vw;   /* 桌面端左右边距：12.5% */
+}
 
-  /* 让 #contact 这张卡铺满屏幕宽（full-bleed），卡片边缘对齐屏幕边缘 */
-  section#contact.card,
-  #contact.card{
-    width: 100vw !important;
-    max-width: none !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-    border-radius: 0 !important;          /* 贴边全宽时建议去圆角，避免两侧被切 */
+/* 手机端：所有卡片/hero 一律同宽同居中 */
+.hero,
+section.card,
+.card,
+#projects,
+#academic-part-time,
+#contact{
+  width: calc(100% - 2 * var(--m-side)) !important;
+  max-width: calc(100% - 2 * var(--m-side)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-width: 0 !important; /* 防止 flex 子项撑破 */
+}
+
+/* 5) 桌面端：内容区宽 75%（左右各 12.5%），所有卡片强制同宽对齐 */
+@media (min-width: 1024px){
+  .hero,
+  section.card,
+  .card,
+  #projects,
+  #academic-part-time{
+    width: calc(100vw - 2 * var(--d-side)) !important;      /* = 75vw */
+    max-width: calc(100vw - 2 * var(--d-side)) !important;  /* = 75vw */
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  /* 但卡片内部内容仍保持阅读页边距：左右各 12.5%（跟你“75%容器”逻辑一致） */
+  /* 如果你某些区域用了 .grid 横排导致“卡片混乱”，强制每项独占一行 */
+  .grid{
+    display: block !important;
+  }
+  .grid > *{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 6) 可选：让“联系与链接”卡片在桌面端真正贴满屏幕两侧（full-bleed）
+      但内容仍按 12.5% 内边距对齐（视觉上=全宽卡片 + 内容与其它卡片对齐）
+      如果你不想它全宽，把这段整块注释/删除即可。 */
+@media (min-width: 1024px){
   section#contact.card,
   #contact.card{
-    padding-left: 12.5vw !important;
-    padding-right: 12.5vw !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 0 !important;          /* 全宽贴边建议去圆角，避免两侧被切 */
+    padding-left: var(--d-side) !important;  /* 内容仍与 75% 容器对齐 */
+    padding-right: var(--d-side) !important;
+  }
+}
+
+/* 7) 专门补一刀：手机端“欧洲学术兼职”如果你想更铺满（左右 12px），确保生效 */
+@media (max-width: 1023px){
+  #academic-part-time,
+  .academic-part-time{
+    width: calc(100% - 24px) !important;
+    max-width: calc(100% - 24px) !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
   }
 }
 </style>
