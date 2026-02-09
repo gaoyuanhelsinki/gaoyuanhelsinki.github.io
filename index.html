@@ -462,6 +462,60 @@ main{
     width: auto;
   }
 }
+   /* =========================
+   桌面端：统一左右页边距 15%
+   （修复：简介/亮点与贡献/主持项目 等被顶到边缘）
+   放到 <style> 末尾、</style> 前
+========================= */
+@media screen and (min-width: 1024px){
+
+  :root{
+    --desktop-gutter: 15%;
+  }
+
+  /* 1) 全局防横向溢出（有些块被 100vw 搞坏会溢出） */
+  html, body{
+    overflow-x: hidden;
+  }
+
+  /* 2) 主容器：用 padding 做“官方式留白”，最稳定 */
+  .wrap{
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: var(--desktop-gutter) !important;
+    padding-right: var(--desktop-gutter) !important;
+  }
+
+  /* 3) 如果某些 section / 卡片自己被写死为 100vw/0 边距，统一拉回 */
+  section, .card, .panel, .glass, .block,
+  .intro, .highlights, .projects, .papers,
+  .academic-part-time{
+    box-sizing: border-box !important;
+    width: 100% !important;          /* 关键：把 100vw 拉回 100% */
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 4) 重点：把“简介/亮点与贡献/主持项目”这些块，无论是否在 wrap 内，都强制套上 15% 留白 */
+  #intro, #highlights, #projects, #papers, #resume, #contact,
+  #jianjie, #liangdian, #zhuchixiangmu{
+    box-sizing: border-box !important;
+    padding-left: var(--desktop-gutter) !important;
+    padding-right: var(--desktop-gutter) !important;
+  }
+
+  /* 5) 若这些块内部还有“卡片容器”自己在顶边，给它们一个统一内边距（更像官方排版） */
+  #intro .card, #highlights .card, #projects .card, #papers .card, #zhuchixiangmu .card,
+  #intro .panel, #highlights .panel, #projects .panel, #papers .panel, #zhuchixiangmu .panel,
+  #intro .glass, #highlights .glass, #projects .glass, #papers .glass, #zhuchixiangmu .glass{
+    padding: 22px 22px !important;
+    border-radius: 22px;
+  }
+}
 </style>
  
 </head>
