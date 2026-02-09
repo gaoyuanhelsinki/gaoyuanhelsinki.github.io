@@ -1215,50 +1215,54 @@ main{
   }
 }
   /* =========================
-   Desktop only: 统一全站卡片左右留白=15%，并强制每张卡片独占一行
-   不影响手机端（<1024px）
-   ========================= */
+   Desktop统一排版（只保留这一段）
+   目标：
+   1) 全站所有“卡片”左右留白一致（15%）
+   2) 每个卡片独占一行（不并排）
+   3) 所有卡片与最上端 hero 卡两端对齐
+   手机端不受影响
+========================= */
 @media (min-width: 1024px){
 
-  /* 1) 所有“卡片类容器”统一宽度与居中（等同“论文/著作”那种居中卡片观感） */
+  /* 统一桌面卡片宽度：100% - 15% - 15% = 70% */
+  :root{
+    --desk-card-w: 70%;
+  }
+
+  /* 1) 所有主要卡片容器：统一宽度+居中 */
+  .hero,
   section.card,
   .card,
-  .academic-part-time{
-    width: 70% !important;        /* 100% - 15% - 15% = 70% */
-    max-width: 70% !important;
+  .academic-part-time,
+  .grid{
+    width: var(--desk-card-w) !important;
+    max-width: var(--desk-card-w) !important;
     margin-left: auto !important;
     margin-right: auto !important;
-
-    /* 统一卡片外边距（上下间距） */
-    margin-top: 18px !important;
-    margin-bottom: 18px !important;
-
-    /* 统一卡片内边距（让内容“铺满卡片但不顶边”，接近论文/著作那张） */
-    padding: 28px 32px !important;
     box-sizing: border-box !important;
   }
 
-  /* 2) 强制“简介/亮点与贡献”等原来并排的 grid 变成单列（每张卡片一行） */
+  /* 2) 卡片内部统一内边距（对齐“论文/著作”那种阅读感） */
+  section.card,
+  .card,
+  .academic-part-time{
+    padding: 28px 32px !important;
+  }
+
+  /* 3) 强制“简介/亮点与贡献”等不要并排：grid改为单列 */
   .grid{
-    display: block !important;     /* 最干净：直接取消并排布局 */
-    width: 70% !important;
-    max-width: 70% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
 
-  /* 如果 grid 里有子卡片之前被设置成 50%/flex/grid 列宽，这里统一归一 */
-  .grid > *{
-    width: 100% !important;
+  /* 4) 防止个别块被写死宽度导致溢出/错位 */
+  .hero *,
+  section.card *,
+  .card *,
+  .academic-part-time *{
     max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* 3) 防止某些卡片被写了 width:100% 的 inline style 顶满（不要再用“style*=width:100”的补丁） */
-  section.card[style],
-  .card[style]{
-    max-width: 70% !important;
+    box-sizing: border-box !important;
   }
 }
 </style>
