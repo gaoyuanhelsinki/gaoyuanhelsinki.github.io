@@ -1304,45 +1304,6 @@ code{
     height: auto !important;
   }
 }
-  /* =========================
-   Mobile ONLY: “欧洲学术兼职”全宽 + 两端对齐
-   只影响手机端（<=1023px）
-   粘贴到 <style> 最末尾，</style> 之前
-   ========================= */
-@media (max-width: 1023px){
-
-  /* 1) 让“欧洲学术兼职”这张卡铺满屏幕宽（留一点安全边距，避免贴边难看） */
-  .academic-part-time,
-  #academic-part-time{
-    width: calc(100% - 24px) !important;   /* 左右各留 12px */
-    max-width: none !important;
-    margin-left: 12px !important;
-    margin-right: 12px !important;
-  }
-
-  /* 2) 卡片内部文字两端对齐（仅这张卡内生效） */
-  .academic-part-time,
-  #academic-part-time{
-    text-align: justify !important;
-    text-justify: inter-word !important;
-  }
-
-  /* 3) 避免最后一行被“强行拉伸”得很怪：标题/短行保持正常 */
-  .academic-part-time h1,
-  .academic-part-time h2,
-  .academic-part-time h3,
-  #academic-part-time h1,
-  #academic-part-time h2,
-  #academic-part-time h3{
-    text-align: left !important;
-  }
-
-  /* 4) 列表也对齐（如果该卡里是 ol/ul） */
-  .academic-part-time li,
-  #academic-part-time li{
-    text-align: justify !important;
-  }
-}
 </style>
   
 
