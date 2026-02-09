@@ -417,13 +417,53 @@ main{
 }
 
 /* 如果你之前给 body 有 padding，可能会叠加，这里清掉 */
-body{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+@media screen and (max-width: 768px){
+  body{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
   </style>
-  
+ <style id="desktop-margin-fix">
+/* =========================
+   桌面端：恢复官方左右页边距（约 15%）
+   放置位置：<head> 内，</head> 前
+   ========================= */
+
+@media screen and (min-width: 1024px){
+
+  /* 全站主内容容器：左右留白（15%视口宽） */
+  .wrap{
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    /* 用 padding 做“页边距”，最稳定 */
+    padding-left: 15vw !important;
+    padding-right: 15vw !important;
+  }
+
+  /* 如果你希望导航仍然贴顶且不被 wrap 的 padding 影响 */
+  .nav{
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* hero 首屏保持你原来的布局（不强行改宽） */
+  section.hero{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 防止你之前“手机端全局规则”误伤桌面端导致满宽贴边 */
+  section, .card, .panel{
+    width: auto;
+  }
+}
+</style>
+ 
 </head>
 
 <body>
@@ -1185,88 +1225,7 @@ body{
     margin-top: 10px !important;
   }
 }
-/* =========================
-   桌面端：让“简介 / 亮点与贡献 / 主持项目（部分）”左右页边距=15%
-   粘贴位置：CSS 最末尾（</style> 前）
-   ========================= */
-@media screen and (min-width: 769px){
 
-  /* 1) 如果你的这三块 section 本身已有 id（常见写法），直接命中 */
-  #intro, #highlights, #projects,
-  #jianjie, #liangdian, #zhuchixiangmu{
-    margin-left: 15% !important;
-    margin-right: 15% !important;
-  }
-
-  /* 2) 如果这三块没有 id，但它们是“卡片容器”类（常见：panel/card/block/glass），
-        你可以给对应 section 加 class（见下面“可选：HTML 最小改动”） */
-  .desktop-15{
-    margin-left: 15% !important;
-    margin-right: 15% !important;
-  }
-
-  /* 3) 让三块内容在桌面端更像“官方排版”：内边距、行距、标题间距统一 */
-  #intro, #highlights, #projects,
-  #jianjie, #liangdian, #zhuchixiangmu,
-  .desktop-15{
-    padding: 22px 22px !important;
-    border-radius: 22px;
-  }
-
-  #intro h2, #highlights h2, #projects h2,
-  #jianjie h2, #liangdian h2, #zhuchixiangmu h2,
-  .desktop-15 h2{
-    margin: 0 0 14px !important;
-    line-height: 1.25;
-  }
-
-  #intro p, #highlights p, #projects p,
-  #jianjie p, #liangdian p, #zhuchixiangmu p,
-  .desktop-15 p,
-  #intro li, #highlights li, #projects li,
-  #jianjie li, #liangdian li, #zhuchixiangmu li,
-  .desktop-15 li{
-    line-height: 1.85;
-  }
-}
-/* =========================
-   桌面端：统一左右“官方页边距”（15%）
-   追加到 CSS 最末尾（</style> 前）
-   ========================= */
-@media screen and (min-width: 1024px){
-
-  /* 1) 全站主容器：左右留白 15%（用 vw 更稳） */
-  .wrap{
-    max-width: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 15vw !important;
-    padding-right: 15vw !important;
-  }
-
-  /* 2) 如果你希望导航/海报区仍然“铺满屏幕”，就把它们放开 */
-  /* 导航一般是 sticky，保持不受 wrap 的左右 padding 影响 */
-  .nav{
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  /* 让海报首屏不被左右 padding 挤窄（如你希望首屏仍宽） */
-  section.hero{
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* 但 hero 内部内容仍保持正常宽度 */
-  .heroInner{
-    width: 100%;
-  }
-
-  /* 3) 防止“手机端全局 !important”误伤桌面端：恢复 section 的正常布局 */
-  section{
-    width: auto !important;
-  }
-}
 </style>
   
 
