@@ -1363,12 +1363,20 @@ section.card,
 section#academic-part-time,
 section#academic-part-time.card,
 #academic-part-time.card,
+  .academic-part-time,
+section.academic-part-time,
+.academic-part-time.card,
+#academic-part-time > .card,
 #academic-part-time{
-    width: calc(100vw - 2 * var(--d-side)) !important;      /* = 75vw */
-    max-width: calc(100vw - 2 * var(--d-side)) !important;  /* = 75vw */
+width: calc(100vw - 25vw) !important;      /* = 75vw */
+max-width: calc(100vw - 25vw) !important;  /* = 75vw */
     margin-left: auto !important;
     margin-right: auto !important;
   }
+  #academic-part-time,
+.academic-part-time{
+  display: block !important;
+}
 
   /* 如果你某些区域用了 .grid 横排导致“卡片混乱”，强制每项独占一行 */
   .grid{
