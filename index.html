@@ -1258,7 +1258,27 @@ main{
     margin-top: 10px !important;
   }
 }
+/* ===== 仅桌面端：全站卡片统一左右留白 15%（手机端不变） ===== */
+@media (min-width: 1024px){
+  /* 让所有卡片统一“论文/著作”那种居中阅读宽度 */
+  section.card{
+    width: 70% !important;        /* 左右各留白约 15% */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 
+  /* 如果你的“简介+亮点”是用 .grid 组合两张卡片，需要它也在同一容器宽度内 */
+  .grid{
+    width: 70% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 如果有某些卡片被写了 width:100% 或被父级拉满，这句兜底 */
+  section.card, .grid{
+    max-width: none !important;
+  }
+}
 </style>
   
 
