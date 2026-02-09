@@ -20,7 +20,7 @@
 
   <!-- ✅ 分享卡片（微信/社交平台更好看，也有助于抓取） -->
   <meta property="og:title" content="高 源 - 芬兰赫尔辛基大学｜北欧芬兰学派｜欧洲特色区域国别学｜冰上丝绸之路｜北极命运共同体" />
-  <meta property="og:description" content="高源学术主页：简介、研究方向、学术贡献、论文项目、联系方式。" />
+  <meta property="og:description" content="高源学术主页：简介、研究方向、学术贡献、论文项目、联系方式||" />
   <meta property="og:url" content="https://gaoyuanhelsinki.github.io/" />
   <meta property="og:image" content="https://gaoyuanhelsinki.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -1356,7 +1356,57 @@ main{
     box-sizing: border-box !important;
   }
 }
-html, body { overflow-x: hidden; }
+  /* =========================
+   Desktop cards: force same edges (75% width)
+   Only desktop (>=1024px). Mobile untouched.
+   ========================= */
+@media (min-width: 1024px){
+
+  :root{
+    --desk-container: 75%;     /* 左右各留 12.5% */
+    --desk-side-pad: 32px;     /* 卡片内部左右留白（可改 24/28/36） */
+  }
+
+  /* 防止任何规则把页面撑出横向滚动 */
+  html, body{
+    overflow-x: hidden;
+  }
+
+  /* 1) 兜底：把“主要卡片容器”全部统一宽度 + 居中 + 盒模型 */
+  .hero,
+  section.card,
+  section#projects, section#contact, section#papers, section#pubs, section#publications,
+  section#writing, section#cv, section#resume, section#service, section#teaching,
+  .card,
+  .academic-part-time{
+    width: var(--desk-container) !important;
+    max-width: var(--desk-container) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2) 统一这些卡片的左右内边距（保证“内容边”也一致） */
+  .hero,
+  section.card,
+  section#projects, section#contact, section#papers, section#pubs, section#publications,
+  section#writing, section#cv, section#resume, section#service, section#teaching,
+  .card,
+  .academic-part-time{
+    padding-left: var(--desk-side-pad) !important;
+    padding-right: var(--desk-side-pad) !important;
+  }
+
+  /* 3) 让 grid 里不要出现“两张卡并一行”的情况：每张卡独占一行 */
+  .grid{
+    display: block !important;
+  }
+  .grid > *{
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
 </style>
   
 
