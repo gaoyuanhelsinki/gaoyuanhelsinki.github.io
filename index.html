@@ -425,83 +425,74 @@ main{
 }
 
   </style>
- <style id="desktop-margin-fix">
-/* =========================
-   桌面端：恢复官方左右页边距（约 15%）
-   放置位置：<head> 内，</head> 前
-   ========================= */
+<style id="desktop-margin-fix">
+/* ============================
+   DESKTOP FIX (>=1024px)
+   目标：
+   1) 卡片外：左右留白 15%（与“论文/著作”一致的桌面阅读习惯）
+   2) 卡片内：统一更舒适的内边距（避免文字贴边）
+   3) 纠正某些区块被写成 100vw / left:50% / transform 导致顶满
+   ============================ */
 
 @media screen and (min-width: 1024px){
 
-  /* 全站主内容容器：左右留白（15%视口宽） */
-  .wrap{
-    max-width: none !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  /* 0) 防横向溢出（某些块 100vw 会把页面撑出滚动条） */
+  html, body{ overflow-x: hidden; }
 
-    /* 用 padding 做“页边距”，最稳定 */
-    padding-left: 15vw !important;
-    padding-right: 15vw !important;
-  }
-
-  /* 如果你希望导航仍然贴顶且不被 wrap 的 padding 影响 */
-  .nav{
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  /* hero 首屏保持你原来的布局（不强行改宽） */
-  section.hero{
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* 防止你之前“手机端全局规则”误伤桌面端导致满宽贴边 */
-  section, .card, .panel{
-    width: auto;
-  }
-}
-  /* ============ 桌面端：外侧留白 15%，卡片内部文字铺满 ============ */
-@media screen and (min-width: 1024px){
-
-  :root{
-    --desktop-gutter: 15vw;  /* 两侧各 15% */
-  }
-
-  /* 1) 只控制“页面内容区域”的外侧留白：让 wrap 变成居中容器 */
+  /* 1) 外留白：把主内容容器收成“左右各15%” */
   .wrap{
     box-sizing: border-box !important;
-    width: calc(100vw - (2 * var(--desktop-gutter))) !important;   /* 70vw */
-    max-width: calc(100vw - (2 * var(--desktop-gutter))) !important;
+    width: 70vw !important;              /* 100 - 15*2 = 70 */
+    max-width: 70vw !important;
     margin-left: auto !important;
     margin-right: auto !important;
-
-    /* 关键：不要用 padding 做左右留白，否则会挤压卡片内部内容 */
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
-  /* 2) 防止某些块被写成 100vw 造成“顶满屏幕” */
-  section, .card, .panel, .glass, .block,
-  .intro, .highlights, .projects, .papers, .academic-part-time{
+  /* 2) 把“顶满全屏”的区块拉回容器（常见：width:100vw + 位移） */
+  section, .block, .panel, .glass, .card,
+  .intro, .highlights, .projects, .papers, .resume, .contact{
     box-sizing: border-box !important;
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
   }
 
-  /* 3) 重点：不要再给这些区块左右 padding（否则文字会被挤窄） */
+  /* 3) 如果你这些区块用的是 id（很常见），再强力兜底一次 */
   #intro, #highlights, #projects, #papers, #resume, #contact,
   #jianjie, #liangdian, #zhuchixiangmu{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
   }
 
-  /* 4) 如果曾经出现横向溢出（100vw/阴影等），桌面端兜底 */
-  html, body{
-    overflow-x: hidden;
+  /* 4) 卡片外的纵向节奏：与“论文/著作”相近 */
+  section{ margin-top: 22px !important; }
+
+  /* 5) 卡片内边距：让“简介/亮点/主持项目”等不要贴边（参考论文/著作） */
+  .glass, .panel, .card{
+    padding: 30px 34px !important;   /* 你觉得仍贴边：把 30/34 再加大即可 */
+  }
+
+  /* 6) 标题/正文的舒适间距（避免标题紧贴边框） */
+  .glass h2, .panel h2, .card h2,
+  section h2{
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+  }
+  .glass p, .panel p, .card p,
+  .glass li, .panel li, .card li{
+    line-height: 1.85 !important;
   }
 }
 </style>
