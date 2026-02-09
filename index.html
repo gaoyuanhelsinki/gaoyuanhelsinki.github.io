@@ -477,43 +477,48 @@ main{
     max-width: 100% !important;
   }
 }
-  /* ===== 桌面端统一排版：左右留白≈15%，所有卡片单列；手机端不受影响 ===== */
+ /* =========================
+   ✅ 桌面端统一版式（不影响手机）
+   - 全站左右留白 15%
+   - 所有卡片单列，占满容器
+   - “简介/亮点与贡献”不再并排
+   ========================= */
 @media (min-width: 1024px){
 
-  /* 1) 全站内容容器：宽度70%（左右各≈15%留白） */
+  /* 1) 桌面端统一页面左右留白：15% */
   .wrap{
-    width: 70% !important;
+    width: 70% !important;        /* 100% - 15% - 15% = 70% */
     max-width: 70% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
-  /* 2) 所有卡片：在容器内占满（=70%区域内铺满），且统一外边距 */
+  /* 2) 所有卡片统一：占满容器宽度 + 统一外边距 */
   section.card,
   .card{
     width: 100% !important;
-    max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 18px !important;
-    margin-bottom: 0 !important;
+    max-width: 100% !important;
+    margin: 18px 0 !important;
     box-sizing: border-box !important;
   }
 
-  /* 3) 卡片内部留白：统一成“论文/著作”那种阅读感（你可按喜好微调） */
+  /* 3) 卡片内部 padding 统一成“论文/著作”那种观感（你可按喜好改紧/松） */
   section.card,
   .card{
     padding: 28px 32px !important;
   }
 
-  /* 4) “简介 + 亮点”所在 .grid：强制改为单列（不并排） */
+  /* 4) 强制“简介/亮点与贡献”所在的 grid 变成单列（不再并排） */
   .grid{
-    width: 100% !important;
-    max-width: none !important;
-    display: block !important;     /* 关键：别再用两列grid */
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
-  .grid > section.card{
-    margin-top: 18px !important;   /* 两张卡片上下间距 */
+
+  /* 5) 防止某些子块（如 academic-part-time）自带左右 margin 再次破坏对齐 */
+  .academic-part-time{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 </style>
@@ -905,9 +910,6 @@ main{
 }
   /* ✅让“欧洲学术兼职”卡片底色/阴影与上面卡片一致（覆盖旧样式） */
 .academic-part-time{
-  margin-left: 15 !important;
-  margin-right: 15 !important;
-
   /* 关键：用卡片底色变量，而不是页面背景 */
   background: var(--card) !important;
 
@@ -1308,6 +1310,53 @@ main{
     overflow: hidden !important;
 
     margin-top: 10px !important;
+  }
+}
+  /* =========================
+   Desktop only: 统一全站卡片左右留白=15%，并强制每张卡片独占一行
+   不影响手机端（<1024px）
+   ========================= */
+@media (min-width: 1024px){
+
+  /* 1) 所有“卡片类容器”统一宽度与居中（等同“论文/著作”那种居中卡片观感） */
+  section.card,
+  .card,
+  .academic-part-time{
+    width: 70% !important;        /* 100% - 15% - 15% = 70% */
+    max-width: 70% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    /* 统一卡片外边距（上下间距） */
+    margin-top: 18px !important;
+    margin-bottom: 18px !important;
+
+    /* 统一卡片内边距（让内容“铺满卡片但不顶边”，接近论文/著作那张） */
+    padding: 28px 32px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2) 强制“简介/亮点与贡献”等原来并排的 grid 变成单列（每张卡片一行） */
+  .grid{
+    display: block !important;     /* 最干净：直接取消并排布局 */
+    width: 70% !important;
+    max-width: 70% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 如果 grid 里有子卡片之前被设置成 50%/flex/grid 列宽，这里统一归一 */
+  .grid > *{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 3) 防止某些卡片被写了 width:100% 的 inline style 顶满（不要再用“style*=width:100”的补丁） */
+  section.card[style],
+  .card[style]{
+    max-width: 70% !important;
   }
 }
 </style>
