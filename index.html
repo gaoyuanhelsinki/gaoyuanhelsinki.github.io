@@ -1241,6 +1241,15 @@ main{
     margin-right: auto !important;
     box-sizing: border-box !important;
   }
+  /* 补丁：强制“主持项目（部分）/#projects”与全站卡片同宽同居中 */
+  #projects{
+    width: var(--desk-card-w) !important;
+    max-width: var(--desk-card-w) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    padding: 28px 32px !important;
+  }
 
   /* 2) 卡片内部统一内边距（对齐“论文/著作”那种阅读感） */
   section.card,
