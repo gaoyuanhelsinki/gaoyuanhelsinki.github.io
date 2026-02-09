@@ -1214,7 +1214,65 @@ main{
     margin-top: 10px !important;
   }
 }
-  
+  /* ✅ DESKTOP ALIGN PATCH (只影响桌面端；务必放在 </style> 之前) */
+@media (min-width: 1024px) {
+
+  /* 1) 设定“全站统一卡片宽度”
+        你要“对齐主持项目那张卡片”，就让全站都用同一宽度
+        建议先用 92%，如果你想更宽改成 94%/96% */
+  :root{
+    --desk-card-w: 92%;
+  }
+
+  /* 2) 强制所有卡片/hero 宽度一致、居中、两端对齐 */
+  .hero,
+  section.card,
+  .card,
+  .academic-part-time,
+  #projects{
+    width: var(--desk-card-w) !important;
+    max-width: var(--desk-card-w) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3) 如果你某些 section 写过 style="..."（内联宽度/边距），桌面端统一覆盖掉 */
+  section.card[style],
+  .card[style],
+  #projects[style]{
+    width: var(--desk-card-w) !important;
+    max-width: var(--desk-card-w) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 4) 修复“卡片两行并为一行”（通常是 grid/flex 让卡片并排）
+        桌面端强制所有卡片独占一行 */
+  .grid{
+    display: block !important;
+  }
+  .grid > *{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 5) 修复“主持项目（部分）”撑破卡片导致超宽：
+        允许长串强制换行 + 防止子元素 min-width 把父级撑开 */
+  #projects,
+  #projects *{
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  /* 6) 如果仍有个别元素视觉上溢出（比如阴影/绝对定位），桌面端隐藏横向溢出 */
+  body{
+    overflow-x: hidden;
+  }
+}
 </style>
   
 
@@ -1235,5 +1293,3 @@ main{
 </div><!-- end .wrap -->
 </body>
 </html>
-
-   
