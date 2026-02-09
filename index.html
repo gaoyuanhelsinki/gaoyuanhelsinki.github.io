@@ -427,64 +427,74 @@ main{
   </style>
 <style id="desktop-margin-fix">
 /* =========================
-   桌面端：卡片外侧统一留白 15%
-   + 卡片内部统一舒适内边距（参考“论文/著作”）
-   放置位置：<head> 内，</head> 前
+   Desktop layout hard-fix:
+   1) 外侧留白 15vw
+   2) 取消一切 full-bleed/100vw/translateX 突破容器的写法
+   3) 卡片内边距参考“论文/著作”
 ========================= */
 
 @media screen and (min-width: 1024px){
-
   :root{
-    --desktop-gutter: 15vw;      /* 外侧留白：15% 视口宽 */
-    --card-pad: 28px;            /* 卡片内边距：可微调 24~32 */
+    --desktop-gutter: 15vw;
+    --card-pad: 28px;
   }
 
-  /* ① 保证页面本身不出现横向溢出 */
-  html, body{
-    overflow-x: hidden;
-  }
+  html, body{ overflow-x: hidden; }
 
-  /* ② 关键：主容器左右留白 15% */
+  /* 主容器留白 */
   .wrap{
     box-sizing: border-box !important;
     width: 100% !important;
     max-width: none !important;
     margin: 0 auto !important;
-
     padding-left: var(--desktop-gutter) !important;
     padding-right: var(--desktop-gutter) !important;
   }
 
-  /* ③ 关键：把“被写死成 100vw/顶满屏”的区块强制拉回到容器内 */
-  #intro, #highlights, #projects, #papers, #resume, #contact,
-  #jianjie, #liangdian, #zhuchixiangmu,
-  .intro, .highlights, .projects, .papers, .resume, .contact,
-  section, .section, .block, .panel, .card, .glass{
+  /* 关键：把 wrap 里“一级区块”全部拉回容器内（防 100vw / 负边距 / translateX） */
+  .wrap > section,
+  .wrap > div{
     box-sizing: border-box !important;
+
+    width: auto !important;
+    max-width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+
+    /* 常见 full-bleed hack：50% - 50vw */
+    position: relative !important;
+  }
+
+  /* 再补一刀：任何元素若被写了 100vw，也强制回到 100% */
+  .wrap *{
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+  .wrap [style*="100vw"],
+  .wrap [style*="50vw"]{
     width: auto !important;
     max-width: 100% !important;
     margin-left: 0 !important;
-    margin-right: 0 !important;
+    transform: none !important;
   }
 
-  /* ④ 卡片内部：统一舒适内边距（参考“论文/著作”效果） */
+  /* 卡片内部：舒适内边距（让文字别贴边） */
+  .card, .panel, .glass,
   #intro, #highlights, #projects, #papers, #resume, #contact,
-  #jianjie, #liangdian, #zhuchixiangmu,
-  .intro, .highlights, .projects, .papers, .resume, .contact,
-  .panel, .card, .glass{
+  #jianjie, #liangdian, #zhuchixiangmu{
     padding: var(--card-pad) var(--card-pad) !important;
   }
 
-  /* ⑤ 但 hero 首屏不要被加大内边距（否则头像区会变形） */
-  section.hero, .hero{
-    padding: 0 !important;
-  }
+  /* hero 首屏别被加 padding（防止头像/首屏错位） */
+  section.hero, .hero{ padding: 0 !important; }
 
-  /* ⑥ 顶部导航保持全宽，不被 wrap 留白影响 */
-  .nav{
-    left: 0 !important;
-    right: 0 !important;
-  }
+  /* 导航保持全宽 */
+  .nav{ left: 0 !important; right: 0 !important; }
 }
 </style>
  
