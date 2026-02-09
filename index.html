@@ -1214,86 +1214,80 @@ main{
     margin-top: 10px !important;
   }
 }
-  /* =========================
-   Desktop统一排版（只保留这一段）
-   目标：
-   1) 全站所有“卡片”左右留白一致（15%）
-   2) 每个卡片独占一行（不并排）
-   3) 所有卡片与最上端 hero 卡两端对齐
-   手机端不受影响
+ /* =========================
+   ✅ Desktop FINAL PATCH（只保留这一段）
+   作用：
+   1) 桌面端所有卡片与顶部 hero 卡片两端对齐
+   2) 全站统一为“论文/著作”卡片的宽度与内边距
+   3) 修复 #projects（主持项目）这张卡片偶发超宽/不齐
+   不影响手机端（<1024px）
 ========================= */
+
 @media (min-width: 1024px){
 
-  /* 统一桌面卡片宽度：100% - 15% - 15% = 70% */
+  /* 统一桌面端卡片宽度：左右各 15% 留白 => 中间 70% */
   :root{
     --desk-card-w: 70%;
+    --desk-card-pad-y: 28px;
+    --desk-card-pad-x: 32px;
   }
 
-  /* 1) 所有主要卡片容器：统一宽度+居中 */
+  /* 让所有“卡片类容器”与 hero 同宽同居中 */
   .hero,
   section.card,
   .card,
   .academic-part-time,
-  .grid{
-    width: var(--desk-card-w) !important;
-    max-width: var(--desk-card-w) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    box-sizing: border-box !important;
-  }
-  /* 补丁：强制“主持项目（部分）/#projects”与全站卡片同宽同居中 */
+  .grid,
   #projects{
     width: var(--desk-card-w) !important;
     max-width: var(--desk-card-w) !important;
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
-    padding: 28px 32px !important;
   }
-/* ✅ 关键补丁：修复“主持项目（部分）”卡片被内容撑宽导致两端不齐（仅桌面端） */
-#projects{
-  width: var(--desk-card-w) !important;
-  max-width: var(--desk-card-w) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-sizing: border-box !important;
-  overflow: hidden; /* 防止个别元素溢出造成视觉超宽 */
-}
 
-/* 允许卡片内部任何长字符串强制换行（最关键） */
-#projects, 
-#projects *{
-  white-space: normal !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-}
-
-/* 如果 #projects 内部用了 grid/flex，避免子项 min-width 导致撑破容器 */
-#projects *{
-  min-width: 0 !important;
-}
-  
-  /* 2) 卡片内部统一内边距（对齐“论文/著作”那种阅读感） */
+  /* 统一所有卡片内部内边距（对齐“论文/著作”的阅读感） */
   section.card,
   .card,
-  .academic-part-time{
-    padding: 28px 32px !important;
-  }
-
-  /* 3) 强制“简介/亮点与贡献”等不要并排：grid改为单列 */
-  .grid{
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-  }
-
-  /* 4) 防止个别块被写死宽度导致溢出/错位 */
-  .hero *,
-  section.card *,
-  .card *,
-  .academic-part-time *{
-    max-width: 100% !important;
+  .academic-part-time,
+  #projects{
+    padding: var(--desk-card-pad-y) var(--desk-card-pad-x) !important;
     box-sizing: border-box !important;
+  }
+
+  /* ✅ 强制：每张卡片单独一行（避免任何并排残留） */
+  .grid{
+    display: block !important;
+  }
+  .grid > *{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ✅ 关键修复：#projects 这张卡片“看起来超出/不齐”通常是内部内容撑破 */
+  #projects{
+    display: block !important;
+    overflow: hidden !important;  /* 防视觉超宽 */
+  }
+
+  /* 允许 #projects 内部任意长文本强制换行，防撑破 */
+  #projects,
+  #projects *{
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  /* 统一卡片上下间距（如果你想更大/更小改这里） */
+  section.card,
+  .card,
+  .academic-part-time,
+  #projects{
+    margin-top: 18px !important;
+    margin-bottom: 18px !important;
   }
 }
 </style>
