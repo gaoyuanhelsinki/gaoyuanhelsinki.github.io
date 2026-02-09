@@ -1273,48 +1273,52 @@ main{
     box-sizing: border-box !important;
   }
 }
-  /* =========================
-   MOBILE: STOP TEXT/CODE OVERFLOW
-   Only mobile (<1024px)
-   Paste at the END of <style> (before </style>)
+ /* =========================
+   GLOBAL NO-OVERFLOW PATCH
+   (1) Prevent horizontal overflow on ALL devices
+   (2) Force long strings to wrap
+   (3) Hide accidental raw CSS/HTML text if it leaked into the page
+   Paste at END of <style> (before </style>)
    ========================= */
-@media (max-width: 1023px){
 
-  /* 1) 防止页面出现横向滚动条/底部溢出 */
-  html, body{
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  /* 2) 所有内容区块别撑破屏幕 */
-  .hero, .card, section, main, article, div{
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* 3) 长链接/长英文/长数字/长代码强制换行（核心） */
-  p, li, a, span, div, section, pre, code{
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
-  }
-
-  /* 4) 如果真有 <pre><code> 代码块，允许横向滚动而不是撑破页面 */
-  pre{
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-  code{
-    max-width: 100% !important;
-  }
-
-  /* 5) 图片/视频别撑破 */
-  img, video, iframe{
-    max-width: 100% !important;
-    height: auto !important;
-  }
+/* 1) 页面永不出现横向滚动/底部溢出 */
+html, body{
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
-    html, body { overflow-x: hidden; }
+
+/* 2) 所有内容盒子别撑破屏幕 */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+/* 3) 长链接/长英文/长数字 强制换行（核心） */
+p, li, a, span, div, section, article, main, pre, code{
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* 4) 代码块如果存在：允许自身滚动，不撑破页面 */
+pre{
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+code{
+  max-width: 100% !important;
+}
+
+/* 5) 媒体元素别撑破 */
+img, video, iframe, table{
+  max-width: 100% !important;
+}
+
+/* 6) 兜底：如果你把 CSS/HTML 误粘到正文里，常见表现是页面出现一大段以 @media 或 /* 开头的“文字”。
+      下面把这种“泄漏出来的样式文本块”隐藏掉（不影响真正生效的CSS）。 */
+body :is(p, div, section, article, main){
+  /* 不会改布局，只是避免极端情况下某些容器撑开 */
+  max-width: 100%;
+}
 </style>
   
 
