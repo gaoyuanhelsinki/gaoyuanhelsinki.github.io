@@ -631,6 +631,128 @@ a {
   color: #7a858e;
 }
 
+/* =========================================================
+   RELATED RESEARCH · TOPIC CLUSTER
+========================================================= */
+
+.related-research {
+  margin-top: 58px;
+  padding-top: 42px;
+  border-top: 1px solid #dfe4e8;
+}
+
+.related-intro {
+  max-width: 760px;
+  margin-bottom: 25px !important;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.related-card {
+  display: block;
+  padding: 25px 26px;
+
+  background: #ffffff;
+  border: 1px solid #e0e5e9;
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  box-shadow: 0 6px 20px rgba(25,40,55,.04);
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+.related-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #c9d2da;
+
+  box-shadow:
+    0 12px 28px rgba(25,40,55,.08);
+}
+
+.related-tag {
+  margin-bottom: 13px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .13em;
+
+  color: #92794e;
+}
+
+.related-card h3 {
+  margin: 0 0 13px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif;
+
+  font-size: 18px;
+  line-height: 1.6;
+
+  color: #263d52;
+}
+
+.related-card p {
+  margin: 0 0 18px;
+
+  font-size: 13px;
+  line-height: 1.85;
+
+  color: #697681;
+}
+
+.related-link {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #48657e;
+}
+
+.cluster-back {
+  margin-top: 24px;
+  padding: 17px 20px;
+
+  background: #f0f3f5;
+  border-left: 3px solid #92794e;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #697681;
+}
+
+.cluster-back a {
+  font-weight: 600;
+  color: #365671;
+  text-decoration: none;
+}
+
+.cluster-back a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+     
 
 /* =========================================================
    MOBILE
@@ -945,15 +1067,99 @@ a {
 
         <p>
           从研究谱系来看，
-          该项研究亦构成高源关于
-          <strong>欧洲思想史、奥古斯丁情感哲学、
+          该项研究亦构成高源教授关于
+          <strong>欧洲思想史、欧洲古典情感哲学、
           政治激情以及基督教—儒家思想对话</strong>
           系列研究的一部分。
         </p>
 
       </section>
+         
+
+<!-- =========================================================
+     RELATED RESEARCH · TOPIC CLUSTER
+========================================================== -->
+
+<section class="section related-research">
+
+  <div class="section-label">
+    RELATED RESEARCH · EUROPEAN INTELLECTUAL HISTORY
+  </div>
+
+  <h2>相关研究 · 欧洲思想史与情感哲学</h2>
+
+  <p class="related-intro">
+    该项研究属于高源教授关于
+    <strong>欧洲思想史与情感哲学</strong>
+    的系列研究。
+    相关成果从古希腊哲学、欧洲古代政治神学思想及现代跨文明对话等不同维度，
+    考察情感、理性、德性、爱与政治激情的思想史演变。
+  </p>
+
+  <div class="related-grid">
+
+    <!-- PLATO -->
+    <a class="related-card"
+       href="/research/plato-emotions/">
+
+      <div class="related-tag">
+        PLATO · PHILOSOPHY OF EMOTIONS
+      </div>
+
+      <h3>
+        柏拉图情感哲学的历史生成与理论转型
+      </h3>
+
+      <p>
+        从古希腊思想史角度考察理性、灵魂与情感关系的形成，
+        分析柏拉图情感哲学的理论结构与历史意义。
+      </p>
+
+      <span class="related-link">
+        衔接研究 →
+      </span>
+
+    </a>
 
 
+    <!-- ARISTOTLE -->
+    <a class="related-card"
+       href="/research/aristotle-emotions/">
+
+      <div class="related-tag">
+        ARISTOTLE · PHILOSOPHY OF EMOTIONS
+      </div>
+
+      <h3>
+        论亚里士多德情感哲学的形成、发展与贡献
+      </h3>
+
+      <p>
+        系统考察亚里士多德情感理论的发展，
+        以及情感、理性、德性与伦理生活之间的思想关系。
+      </p>
+
+      <span class="related-link">
+        衔接研究 →
+      </span>
+
+    </a>
+
+  </div>
+
+
+  <div class="cluster-back">
+
+    <span>研究专题：</span>
+
+    <a href="/research/">
+      欧洲思想史与情感哲学研究成果 →
+    </a>
+
+  </div>
+
+</section>
+         
     </article>
 
 
