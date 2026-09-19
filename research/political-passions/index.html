@@ -169,6 +169,131 @@ a {
   padding: 78px 24px 70px;
 }
 
+   /* =========================================================
+   HERO · TWO-COLUMN LAYOUT
+   左侧标题 + 右侧真实期刊封面
+========================================================= */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 72px;
+  align-items: center;
+}
+
+.hero-content {
+  min-width: 0;
+}
+
+
+/* DOI */
+
+.hero-doi {
+  margin-top: 15px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.74);
+}
+
+.hero-doi a {
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+}
+
+.hero-doi a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* RESEARCH FIELDS */
+
+.hero-fields {
+  margin-top: 5px;
+  max-width: 760px;
+
+  font-size: 13px;
+  line-height: 1.75;
+
+  color: rgba(255,255,255,.74);
+}
+
+
+/* =========================================================
+   HERO JOURNAL COVER
+========================================================= */
+
+.hero-cover-wrap {
+  width: 100%;
+  max-width: 245px;
+  justify-self: end;
+  text-align: center;
+}
+
+.hero-cover-link {
+  display: block;
+  text-decoration: none;
+}
+
+.hero-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  border-radius: 7px;
+
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.24),
+    0 3px 10px rgba(0,0,0,.13);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.hero-cover-link:hover .hero-cover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 20px 44px rgba(0,0,0,.29),
+    0 5px 13px rgba(0,0,0,.16);
+}
+
+.hero-cover-caption {
+  margin-top: 16px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif;
+
+  font-size: 12px;
+  line-height: 1.65;
+
+  color: rgba(255,255,255,.76);
+}
+
+
+/* =========================================================
+   MOBILE HERO
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-cover-wrap {
+    justify-self: start;
+    max-width: 210px;
+  }
+
+}  
+
+     
 .hero-kicker {
   margin-bottom: 17px;
   font-size: 12px;
@@ -178,7 +303,7 @@ a {
 }
 
 .hero h1 {
-  max-width: 900px;
+  max-width: 820px;
   margin: 0;
 
   font-family:
@@ -187,9 +312,9 @@ a {
     "Noto Serif SC",
     serif;
 
-  font-size: clamp(34px, 5vw, 54px);
+  font-size: clamp(32px, 4.2vw, 46px);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .hero-en {
@@ -569,35 +694,79 @@ a {
 
 <section class="hero">
 
-  <div class="hero-inner">
+  <div class="hero-inner hero-grid">
 
-    <div class="hero-kicker">
-      EUROPEAN INTELLECTUAL HISTORY · PHILOSOPHY OF EMOTIONS
+    <!-- LEFT: TITLE & ARTICLE INFO -->
+    <div class="hero-content">
+
+      <div class="hero-kicker">
+        EUROPEAN INTELLECTUAL HISTORY · PHILOSOPHY OF EMOTIONS
+      </div>
+
+      <h1>
+        战争中的政治激情：
+        <br>
+        现代基督教—儒家思想对话
+      </h1>
+
+      <div class="hero-en">
+        Political Passions in Modern Christian-Confucian Dialogue on War
+      </div>
+
+      <div class="hero-meta">
+        <span><strong>作者：</strong>高源 · Gao Yuan</span>
+        <span><em>DIALOG</em></span>
+        <span>Wiley</span>
+        <span>Vol. 62 · Issue 1</span>
+        <span>Spring 2023</span>
+        <span>pp. 18–20</span>
+      </div>
+
+      <div class="hero-doi">
+        DOI:
+        <a href="https://doi.org/10.1111/dial.12792"
+           target="_blank"
+           rel="noopener noreferrer">
+          10.1111/dial.12792
+        </a>
+      </div>
+
+      <div class="hero-fields">
+        研究领域：
+        欧洲思想史 · 欧洲古典情感哲学 ·
+        政治激情 · 基督教—儒家思想对话
+      </div>
+
     </div>
 
-    <h1>
-      战争中的政治激情：
-      <br>
-      现代基督教—儒家思想对话
-    </h1>
 
-    <div class="hero-en">
-      Political Passions in Modern Christian-Confucian Dialogue on War
-    </div>
+    <!-- RIGHT: JOURNAL COVER -->
+    <div class="hero-cover-wrap">
 
-    <div class="hero-meta">
-      <span>高源 · Gao Yuan</span>
-      <span>DIALOG</span>
-      <span>Wiley</span>
-      <span>Vol. 62 · Issue 1</span>
-      <span>Spring 2023</span>
-      <span>pp. 18–20</span>
+      <a href="https://onlinelibrary.wiley.com/toc/15406385/2023/62/1"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="hero-cover-link">
+
+        <img
+          src="/images/political-passions-cover.png"
+          alt="Dialog: A Journal of Theology, Volume 62, Issue 1, Spring 2023"
+          class="hero-cover">
+
+      </a>
+
+      <div class="hero-cover-caption">
+        <em>Dialog: A Journal of Theology</em>
+        <br>
+        Volume 62 · Issue 1 · Spring 2023
+      </div>
+
     </div>
 
   </div>
 
 </section>
-
+     
 
 <!-- =========================================================
      MAIN
@@ -794,38 +963,6 @@ a {
     ====================================================== -->
 
     <aside class="sidebar">
-
-
-      <!-- REAL COVER -->
-
-      <div class="sidebar-card">
-
-        <a href="https://onlinelibrary.wiley.com/toc/15406385/2023/62/1"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <img
-            src="/images/political-passions-cover.png"
-            alt="Dialog Volume 62 Issue 1 Spring 2023 - Political Passions in Modern Christian-Confucian Dialogue on War by Gao Yuan"
-            class="cover">
-
-        </a>
-
-        <div class="cover-caption">
-
-          <div class="cover-journal">
-            <em>Dialog: A Journal of Theology</em>
-          </div>
-
-          <div class="cover-volume">
-            Volume 62 · Issue 1 · Spring 2023
-          </div>
-
-        </div>
-
-      </div>
-
-
 
       <!-- PUBLICATION INFO -->
 
