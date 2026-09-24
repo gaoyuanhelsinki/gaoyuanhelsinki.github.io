@@ -2184,23 +2184,7 @@ a.course-row:hover {
   width: 100%;
 }
 
-
-/* =========================================================
-   中等尺寸屏幕
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-  #courses .course-row {
-    grid-template-columns: 46px minmax(0, 1fr);
-    gap: 17px;
-    padding: 20px 6px;
-  }
-
-  #courses .course-title-cn {
-    font-size: 17px;
-  }
-  /* 课程标题后的独立页面入口 */
+/* 课程标题后的独立页面入口：电脑和手机均生效 */
 #courses .course-title-with-arrow {
   display: flex;
   align-items: center;
@@ -2210,7 +2194,6 @@ a.course-row:hover {
 
 #courses .course-arrow {
   display: inline-block;
-
   color: #aa8738;
 
   font-family:
@@ -2234,6 +2217,22 @@ a.course-row:hover {
   color: #836621;
   transform: translateX(5px);
 }
+  
+ /* =========================================================
+   中等尺寸屏幕
+   ========================================================= */ 
+  
+@media (max-width: 1000px) {
+
+  #courses .course-row {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 17px;
+    padding: 20px 6px;
+  }
+
+  #courses .course-title-cn {
+    font-size: 17px;
+  }
 
   #courses .course-title-en {
     font-size: 14px;
@@ -2244,7 +2243,6 @@ a.course-row:hover {
   }
 
 }
-
 
 /* =========================================================
    手机
