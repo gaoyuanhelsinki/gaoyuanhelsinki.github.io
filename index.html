@@ -2200,6 +2200,40 @@ a.course-row:hover {
   #courses .course-title-cn {
     font-size: 17px;
   }
+  /* 课程标题后的独立页面入口 */
+#courses .course-title-with-arrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#courses .course-arrow {
+  display: inline-block;
+
+  color: #aa8738;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    "Songti SC",
+    serif;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
+  white-space: nowrap;
+
+  transition:
+    transform .2s ease,
+    color .2s ease;
+}
+
+#courses .course-row:hover .course-arrow {
+  color: #836621;
+  transform: translateX(5px);
+}
 
   #courses .course-title-en {
     font-size: 14px;
@@ -2229,7 +2263,14 @@ a.course-row:hover {
     font-size: 16px;
     line-height: 1.5;
   }
+  
+#courses .course-title-with-arrow {
+  gap: 8px;
+}
 
+#courses .course-arrow {
+  font-size: 16px;
+}
   #courses .course-title-en {
     margin-top: 4px;
 
@@ -4587,9 +4628,13 @@ Miikka Ruokanen and Gao Yuan (高源), “The Polar Silk Road: Introducing Moder
 
       <div class="course-row-content">
 
-        <div class="course-title-cn">
-          欧洲情感心理哲学专题 → (详见独立课程页)
-        </div>
+     <div class="course-title-cn course-title-with-arrow">
+  <span>欧洲情感心理哲学专题</span>
+
+  <span class="course-arrow">
+    →(详见独立课程页)
+  </span>
+</div>
 
         <div class="course-title-en">
           The Psychological Philosophy of Emotions in Europe · 通识核心课程
