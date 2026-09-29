@@ -156,16 +156,15 @@
       pointer-events: none;
       background-image: linear-gradient(115deg, transparent 0 67%, rgba(255,255,255,.11) 67.1%, transparent 67.3%);
     }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 326px;
-      align-items: center;
-      gap: clamp(38px, 6vw, 82px);
-    }
+    
+.hero-inner {
+  max-width: 1160px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: center;
+  gap: 48px;
+}
     .hero-copy { min-width: 0; }
     .eyebrow {
       display: flex;
@@ -229,15 +228,20 @@
       border-top: 1px solid var(--gold-light);
       border-right: 1px solid var(--gold-light);
     }
-    .portrait-frame img {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      object-position: center;
-    }
+    
+   .portrait-frame img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 360px;
+  height: auto;
+  margin: 0 auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
     .portrait-frame figcaption {
       padding: 10px 3px 1px;
       color: #e4e8e7;
@@ -485,46 +489,70 @@
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow">国家社会科学基金项目　/　北欧区域国别研究　/　冰上丝绸之路</div>
-          <h1 id="page-title">冰上丝绸之路视域下<br>儒佛道哲学典籍的<br>芬兰文译本研究</h1>
-          <div class="title-rule" aria-hidden="true"></div>
+   <section class="hero">
 
-          <div class="project-facts" aria-label="项目资料">
-            <div class="fact-row">
-              <div class="fact-label">项目团队负责人</div>
-              <div class="fact-value">高源 · Gao Yuan</div>
-            </div>
-            <div class="fact-row">
-              <div class="fact-label">领衔单位</div>
-              <div class="fact-value">上海交通大学</div>
-            </div>
-            <div class="fact-row">
-              <div class="fact-label">外部单位</div>
-              <div class="fact-value">芬兰赫尔辛基大学</div>
-            </div>
-            <div class="fact-row">
-              <div class="fact-label">合作项目</div>
-              <div class="fact-value">芬兰科学院国家重大项目 <em lang="en">“The Impact of Religious Value on Chinese Social Life”</em></div>
-            </div>
-            <div class="fact-row">
-              <div class="fact-label">国家社会科学基金项目</div>
-              <div class="fact-value">批准号：21CZX044</div>
-            </div>
+  <div class="hero-inner">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow">
+        国家社科基金项目 · 北欧区域国别研究 · 冰上丝绸之路
+      </div>
+
+      <h1>
+        冰上丝绸之路视域下<br>
+        儒佛道哲学典籍的<br>
+        芬兰文译本研究
+      </h1>
+
+      <div class="project-meta">
+
+        <div class="project-meta-row">
+          <div class="project-meta-label">项目团队负责人</div>
+          <div class="project-meta-value">高源 · Gao Yuan</div>
+        </div>
+
+        <div class="project-meta-row">
+          <div class="project-meta-label">领衔单位</div>
+          <div class="project-meta-value">上海交通大学</div>
+        </div>
+
+        <div class="project-meta-row">
+          <div class="project-meta-label">外部单位</div>
+          <div class="project-meta-value">芬兰赫尔辛基大学</div>
+        </div>
+
+        <div class="project-meta-row">
+          <div class="project-meta-label">合作项目</div>
+          <div class="project-meta-value">
+            芬兰科学院国家重大项目
+            “The Impact of Religious Value on Chinese Social Life”
           </div>
         </div>
 
-        <figure class="portrait-frame">
-          <img src="/images/helsinki-cathedral-gao-yuan.jpeg"
-               alt="雪中的赫尔辛基大教堂与高源"
-               width="600" height="800"
-               fetchpriority="high" decoding="async">
-          <figcaption>赫尔辛基大教堂雪景与高源</figcaption>
-        </figure>
+        <div class="project-meta-row">
+          <div class="project-meta-label">国家社会科学基金项目</div>
+          <div class="project-meta-value">批准号：21CZX044</div>
+        </div>
+
       </div>
-    </section>
+
+    </div>
+
+    <figure class="project-photo">
+      <img
+        src="/images/helsinki-cathedral-gao-yuan.jpeg"
+        alt="赫尔辛基大白教堂雪景与高源"
+        width="600"
+        height="800"
+        fetchpriority="high"
+        decoding="async">
+      <figcaption>赫尔辛基大白教堂雪景与高源</figcaption>
+    </figure>
+
+  </div>
+
+</section>
 
     <div class="breadcrumb" aria-label="面包屑导航">
       <a href="/">首页</a><span>›</span><a href="/projects/">国家科研项目</a><span>›</span>冰上丝绸之路项目
