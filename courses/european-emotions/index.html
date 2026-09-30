@@ -748,6 +748,77 @@ footer {
 
 }
 
+ /* 课程相关研究：沿用课程页的深蓝、金色与细线风格 */
+.course-related-list {
+  margin-top: 28px;
+}
+
+.course-related-link {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 24px;
+  gap: 18px;
+  align-items: start;
+  padding: 24px 0;
+  border-top: 1px solid #e9ecee;
+}
+
+.course-related-number {
+  padding-top: 3px;
+  color: #ab893f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+}
+
+.course-related-title {
+  display: block;
+  color: #24445e;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.course-related-desc {
+  display: block;
+  margin-top: 8px;
+  color: #71808c;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.course-related-arrow {
+  color: #ab893f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  text-align: right;
+}
+
+.course-related-link:hover .course-related-title {
+  color: #977530;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.course-related-link:focus-visible {
+  outline: 2px solid #b5964c;
+  outline-offset: 5px;
+}
+
+@media (max-width: 760px) {
+  .course-related-link {
+    grid-template-columns: 28px minmax(0, 1fr) 18px;
+    gap: 12px;
+    padding: 21px 0;
+  }
+
+  .course-related-title {
+    font-size: 17px;
+  }
+
+  .course-related-desc {
+    font-size: 14px;
+  }
+}     
 </style>
 
 </head>
@@ -1253,7 +1324,113 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     07 课程相关研究
+     ========================================================= -->
 
+<section class="course-section"
+         id="course-related-research"
+         aria-labelledby="course-related-heading">
+
+  <div class="section-kicker">
+    07 · RELATED RESEARCH
+  </div>
+
+  <h2 id="course-related-heading">
+    课程相关研究
+  </h2>
+
+  <p>
+    以下论文与专题围绕灵魂结构、情感、德性、爱与政治伦理展开，
+    可作为理解课程相关问题的延伸阅读。
+  </p>
+
+  <div class="course-related-list">
+
+    <a class="course-related-link"
+       href="/research/plato-emotions/">
+
+      <span class="course-related-number" aria-hidden="true">01</span>
+
+      <span>
+        <span class="course-related-title">
+          柏拉图情感哲学的历史生成与理论转型
+        </span>
+        <span class="course-related-desc">
+          从灵魂结构、理性与欲望的关系出发，
+          理解柏拉图情感思想的形成及其理论变化。
+        </span>
+      </span>
+
+      <span class="course-related-arrow" aria-hidden="true">→</span>
+
+    </a>
+
+    <a class="course-related-link"
+       href="/research/aristotle-emotions/">
+
+      <span class="course-related-number" aria-hidden="true">02</span>
+
+      <span>
+        <span class="course-related-title">
+          论亚里士多德情感哲学的形成、发展与贡献
+        </span>
+        <span class="course-related-desc">
+          考察情感、理性判断、德性与实践生活之间的联系，
+          延伸理解古希腊情感哲学与道德心理学。
+        </span>
+      </span>
+
+      <span class="course-related-arrow" aria-hidden="true">→</span>
+
+    </a>
+
+    <a class="course-related-link"
+       href="/research/political-passions/">
+
+      <span class="course-related-number" aria-hidden="true">03</span>
+
+      <span>
+        <span class="course-related-title">
+          战争中的政治激情：现代基督教—儒家思想对话
+        </span>
+        <span class="course-related-desc">
+          将政治激情、统治欲与爱的秩序，
+          放入战争、和平及跨文明伦理对话中讨论。
+        </span>
+      </span>
+
+      <span class="course-related-arrow" aria-hidden="true">→</span>
+
+    </a>
+
+    <a class="course-related-link"
+       href="/nordic/finnish-school-emotions/">
+
+      <span class="course-related-number" aria-hidden="true">04</span>
+
+      <span>
+        <span class="course-related-title">
+          北欧芬兰学派与欧洲情感心理哲学研究
+        </span>
+        <span class="course-related-desc">
+          浏览相关研究专题，进一步了解欧洲情感哲学、
+          道德心理学与芬兰学术传统之间的研究联系。
+        </span>
+      </span>
+
+      <span class="course-related-arrow" aria-hidden="true">→</span>
+
+    </a>
+
+  </div>
+
+  <a href="/research/" class="back-home">
+    浏览全部研究成果 →
+  </a>
+
+</section>
+      
 
 <!-- =========================================================
      返回
