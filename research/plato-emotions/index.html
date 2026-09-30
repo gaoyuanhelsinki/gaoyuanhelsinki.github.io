@@ -863,6 +863,76 @@ footer {
 
 }
 
+  /* 柏拉图论文页：研究专题与课程 */
+.plato-related-list {
+  margin-top: 22px;
+}
+
+.plato-related-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22px;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.plato-related-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #967638;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.plato-related-title {
+  display: block;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.plato-related-desc {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.plato-related-arrow {
+  padding-top: 22px;
+  color: #a3833c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  text-align: right;
+}
+
+.plato-related-link:hover .plato-related-title {
+  color: #967638;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.plato-related-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .plato-related-link {
+    gap: 10px;
+    padding: 17px 0;
+  }
+
+  .plato-related-title {
+    font-size: 16px;
+  }
+}    
 </style>
 
 
@@ -1580,7 +1650,60 @@ The Theoretical Development and the Renewal of Plato's Philosophy of Emotions
 </p>
 
 
+<!-- 研究专题与课程：位于研究脉络之后、返回链接之前 -->
+<section id="plato-related"
+         aria-labelledby="plato-related-heading">
 
+  <h2 id="plato-related-heading">
+    研究专题与课程
+  </h2>
+
+  <p>
+    本文围绕灵魂结构、理性与情感的关系展开。
+    以下研究专题与课程提供进一步的学术脉络和延伸学习入口。
+  </p>
+
+  <div class="plato-related-list">
+
+    <a class="plato-related-link"
+       href="/nordic/finnish-school-emotions/">
+      <span>
+        <span class="plato-related-label">
+          研究专题 · 学术脉络
+        </span>
+        <span class="plato-related-title">
+          北欧芬兰学派与欧洲情感心理哲学研究
+        </span>
+        <span class="plato-related-desc">
+          浏览欧洲情感哲学与道德心理学的相关研究，
+          了解柏拉图研究与芬兰学术传统之间的联系。
+        </span>
+      </span>
+      <span class="plato-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a class="plato-related-link"
+       href="/courses/european-emotions/">
+      <span>
+        <span class="plato-related-label">
+          相关课程 · 系统学习
+        </span>
+        <span class="plato-related-title">
+          欧洲情感心理哲学专题
+        </span>
+        <span class="plato-related-desc">
+          从柏拉图与亚里士多德出发，
+          延伸至奥古斯丁及现代精神分析，
+          系统了解欧洲情感思想的发展谱系。
+        </span>
+      </span>
+      <span class="plato-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+  </div>
+
+</section>
+      
 <div class="back-links">
 
 ←
