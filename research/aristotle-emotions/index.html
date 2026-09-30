@@ -625,6 +625,76 @@ footer {
 
 }
 
+ /* 亚里士多德论文页：相关研究与课程 */
+.aristotle-related-list {
+  margin-top: 22px;
+}
+
+.aristotle-related-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22px;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.aristotle-related-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #967638;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.aristotle-related-title {
+  display: block;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.aristotle-related-desc {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.aristotle-related-arrow {
+  padding-top: 22px;
+  color: #a3833c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  text-align: right;
+}
+
+.aristotle-related-link:hover .aristotle-related-title {
+  color: #967638;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.aristotle-related-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .aristotle-related-link {
+    gap: 10px;
+    padding: 17px 0;
+  }
+
+  .aristotle-related-title {
+    font-size: 16px;
+  }
+}     
 </style>
 
 
@@ -1007,7 +1077,84 @@ DOI：10.13644/j.cnki.cn31-1112.2023.08.003
 
 </p>
 
+<!-- 相关研究与课程：放在研究脉络之后、返回链接之前 -->
+<section id="aristotle-related"
+         aria-labelledby="aristotle-related-heading">
 
+  <h2 id="aristotle-related-heading">
+    相关研究与课程
+  </h2>
+
+  <p>
+    围绕情感、理性判断、德性与实践生活，
+    以下论文、专题和课程提供进一步的比较与延伸阅读。
+  </p>
+
+  <div class="aristotle-related-list">
+
+    <a class="aristotle-related-link"
+       href="/research/plato-emotions/">
+      <span>
+        <span class="aristotle-related-label">关联论文 · 古希腊思想背景</span>
+        <span class="aristotle-related-title">
+          柏拉图情感哲学的历史生成与理论转型
+        </span>
+        <span class="aristotle-related-desc">
+          从灵魂结构、理性与欲望的关系出发，
+          对照理解柏拉图与亚里士多德情感思想之间的承继与转向。
+        </span>
+      </span>
+      <span class="aristotle-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a class="aristotle-related-link"
+       href="/research/political-passions/">
+      <span>
+        <span class="aristotle-related-label">延伸论文 · 政治激情与伦理</span>
+        <span class="aristotle-related-title">
+          战争中的政治激情：现代基督教—儒家思想对话
+        </span>
+        <span class="aristotle-related-desc">
+          将情感与实践问题延伸至政治激情、统治欲、
+          爱的秩序及战争与和平的跨文明伦理讨论。
+        </span>
+      </span>
+      <span class="aristotle-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a class="aristotle-related-link"
+       href="/nordic/finnish-school-emotions/">
+      <span>
+        <span class="aristotle-related-label">研究专题 · 学术脉络</span>
+        <span class="aristotle-related-title">
+          北欧芬兰学派与欧洲情感心理哲学研究
+        </span>
+        <span class="aristotle-related-desc">
+          浏览相关研究成果，了解欧洲情感哲学、
+          道德心理学与芬兰学术传统之间的研究联系。
+        </span>
+      </span>
+      <span class="aristotle-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a class="aristotle-related-link"
+       href="/courses/european-emotions/">
+      <span>
+        <span class="aristotle-related-label">相关课程 · 系统学习</span>
+        <span class="aristotle-related-title">
+          欧洲情感心理哲学专题
+        </span>
+        <span class="aristotle-related-desc">
+          查看课程介绍，从柏拉图、亚里士多德到奥古斯丁与现代精神分析，
+          系统了解欧洲情感思想的发展谱系。
+        </span>
+      </span>
+      <span class="aristotle-related-arrow" aria-hidden="true">→</span>
+    </a>
+
+  </div>
+
+</section>
 
 <div class="back-links">
 
