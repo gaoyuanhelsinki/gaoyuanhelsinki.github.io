@@ -694,6 +694,91 @@ footer {
   .aristotle-related-title {
     font-size: 16px;
   }
+} 
+
+ /* 亚里士多德页：右侧文献入口 */
+.aristotle-source-links {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.aristotle-source-links .aristotle-source-heading {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.aristotle-source-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.aristotle-source-links a:last-child {
+  border-bottom: 0;
+}
+
+.aristotle-source-links a > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.aristotle-source-links strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.aristotle-source-links small {
+  display: block;
+  margin-top: 3px;
+  color: var(--navy-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.aristotle-source-links .aristotle-source-arrow {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-size: 19px;
+}
+
+.aristotle-source-links a:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.aristotle-source-links a:focus-visible,
+.aristotle-citation summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.aristotle-citation {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.aristotle-citation summary {
+  cursor: pointer;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.aristotle-citation p {
+  padding-top: 6px;
+  overflow-wrap: anywhere;
 }     
 </style>
 
@@ -708,9 +793,9 @@ footer {
   "headline":
   "论亚里士多德情感哲学的形成、发展与贡献",
 
-  "author": {
-
-    "@type": "Person",
+"author": {
+  "@id": "https://gaoyuanhelsinki.cn/#person",
+  "@type": "Person",
 
     "name": "高源",
 
@@ -721,7 +806,14 @@ footer {
 
   },
 
-  "datePublished": "2023",
+ "datePublished": "2023-08",
+"issueNumber": "8",
+"pagination": "46-55",
+"identifier": {
+  "@type": "PropertyValue",
+  "propertyID": "DOI",
+  "value": "10.13644/j.cnki.cn31-1112.2023.08.003"
+},
 
   "isPartOf": {
 
@@ -762,7 +854,16 @@ footer {
 
 </script>
 
-
+<!-- 原论文文献元数据 -->
+<meta name="citation_title" content="论亚里士多德情感哲学的形成、发展与贡献">
+<meta name="citation_author" content="高源">
+<meta name="citation_publication_date" content="2023/08">
+<meta name="citation_journal_title" content="社会科学">
+<meta name="citation_issue" content="8">
+<meta name="citation_firstpage" content="46">
+<meta name="citation_lastpage" content="55">
+<meta name="citation_doi" content="10.13644/j.cnki.cn31-1112.2023.08.003">
+<meta name="citation_language" content="zh">
 </head>
 
 
@@ -1180,89 +1281,73 @@ DOI：10.13644/j.cnki.cn31-1112.2023.08.003
 
 
 
+<!-- 右侧：正式发表信息与数据库入口 -->
 <div class="side-card">
 
-<h3>
-正式发表信息
-</h3>
+  <h3>正式发表信息</h3>
 
-<p>
+  <p>
+    <strong>论文</strong><br>
+    《论亚里士多德情感哲学的形成、发展与贡献》
+  </p>
 
-<strong>
-论文
-</strong>
+  <p>
+    <strong>作者</strong><br>
+    高源
+  </p>
 
-<br>
+  <p>
+    <strong>期刊</strong><br>
+    《社会科学》
+  </p>
 
-《论亚里士多德情感哲学的形成、发展与贡献》
+  <p>
+    <strong>年份 / 期次</strong><br>
+    2023年第8期
+  </p>
 
-</p>
+  <p>
+    <strong>页码</strong><br>
+    46—55
+  </p>
 
+  <p style="overflow-wrap:anywhere;">
+    <strong>DOI</strong><br>
+    10.13644/j.cnki.cn31-1112.2023.08.003
+  </p>
 
-<p>
+  <div class="aristotle-source-links"
+       aria-label="官方数据库入口">
 
-<strong>
-作者
-</strong>
+    <p class="aristotle-source-heading">官方数据库入口</p>
 
-<br>
+    <a href="https://ncpssd.org/Literature/secure/articleinfo?params=RHB6U3hlUSs3Nm9Yek5Ic2NTL254Q2VHYzllelYwbVJQQitjTlpsY3dycHZVNWgzbnV3NUVaSXRHUUNuYVVGSlBrWTg1M2o4N3RJcExYaHBXNHVyWnFGd1E5ZHdqMTNUYStDZUdRK0JubjF1WUplQytadk82WFY1TEgyeE1xTmY&amp;pageUrl=https%253A%252F%252Fncpssd.org%252FLiterature%252Farticlelist%253FsType%253D0%2526search%253DKElLVEU9IuiuuuS6mumHjOWjq%252BWkmuW%252Bt%252BaDheaEn%252BWTsuWtpueahOW9ouaIkCIgT1IgSUtQWVRFPSLorrrkuprph4zlo6vlpJrlvrfmg4XmhJ%252Flk7LlrabnmoTlvaLmiJAiICBPUiBJS1NUPSLorrrkuprph4zlo6vlpJrlvrfmg4XmhJ%252Flk7LlrabnmoTlvaLmiJAiIE9SIElLRVQ9IuiuuuS6mumHjOWjq%252BWkmuW%252Bt%252BaDheaEn%252BWTsuWtpueahOW9ouaIkCIgT1IgSUtTRT0i6K665Lqa6YeM5aOr5aSa5b635oOF5oSf5ZOy5a2m55qE5b2i5oiQIik%253D%2526searchname%253D6aKY5ZCNL%252BWFs%252BmUruivjT0i6K665Lqa6YeM5aOr5aSa5b635oOF5oSf5ZOy5a2m55qE5b2i5oiQIg%253D%253D%2526nav%253D0%2526ajaxKeys%253D6K665Lqa6YeM5aOr5aSa5b635oOF5oSf5ZOy5a2m55qE5b2i5oiQ"
+       target="_blank" rel="noopener">
+      <span>
+        <strong>国家哲学社会科学文献中心</strong>
+        <small>文献查询入口</small>
+      </span>
+      <span class="aristotle-source-arrow" aria-hidden="true">→</span>
+    </a>
 
-高源
+    <a href="https://d.wanfangdata.com.cn/periodical/shkx202308006"
+       target="_blank" rel="noopener">
+      <span>
+        <strong>万方数据</strong>
+        <small>论文文献记录入口</small>
+      </span>
+      <span class="aristotle-source-arrow" aria-hidden="true">→</span>
+    </a>
 
-</p>
+  </div>
 
-
-<p>
-
-<strong>
-期刊
-</strong>
-
-<br>
-
-《社会科学》
-
-</p>
-
-
-<p>
-
-<strong>
-年份 / 期次
-</strong>
-
-<br>
-
-2023年第8期
-
-</p>
-
-
-<p>
-
-<strong>
-页码
-</strong>
-
-<br>
-
-46—55
-
-</p>
-
-
-<p>
-
-<strong>
-DOI
-</strong>
-
-<br>
-
-10.13644/j.cnki.cn31-1112.2023.08.003
-
-</p>
-
+  <details class="aristotle-citation">
+    <summary>引用原论文</summary>
+    <p>
+      高源. 论亚里士多德情感哲学的形成、发展与贡献[J].
+      社会科学, 2023(8): 46-55.
+    </p>
+  </details>
 
 </div>
 
