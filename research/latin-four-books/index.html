@@ -123,14 +123,16 @@
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
+    "@id": "https://gaoyuanhelsinki.cn/research/latin-four-books/#article",
     "headline": "欧洲拉丁文四书首译本新探",
     "alternativeHeadline": "A New Exploration of the First Latin Translation of the Four Books in Europe",
-    "author": {
-      "@type": "Person",
-      "name": "高源",
-      "alternateName": "Gao Yuan",
-      "url": "https://gaoyuanhelsinki.cn/"
-    },
+   "author": {
+  "@type": "Person",
+  "@id": "https://gaoyuanhelsinki.cn/#person",
+  "name": "高源",
+  "alternateName": "Gao Yuan",
+  "url": "https://gaoyuanhelsinki.cn/"
+},
     "datePublished": "2023-07-15",
     "inLanguage": "zh-CN",
     "pageStart": "125",
@@ -412,7 +414,75 @@
     }
 
   </style>
+<!-- Chinese–English page relationship -->
+<link rel="alternate"
+      hreflang="zh-CN"
+      href="https://gaoyuanhelsinki.cn/research/latin-four-books/">
 
+<link rel="alternate"
+      hreflang="en"
+      href="https://gaoyuanhelsinki.cn/research/latin-four-books/en/">
+
+<link rel="alternate"
+      hreflang="x-default"
+      href="https://gaoyuanhelsinki.cn/research/latin-four-books/">
+
+<style>
+.topbar .nav{
+  flex-wrap:wrap;
+}
+
+.topbar .nav .latin-four-books-en-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  margin-left:auto;
+  padding:6px 12px;
+  border:1px solid #b3945b;
+  border-radius:3px;
+  background:#faf6ed;
+  color:#94713b;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.08em;
+  text-decoration:none;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:background .18s ease,color .18s ease;
+}
+
+.topbar .nav .latin-four-books-en-link:hover{
+  background:#b3945b;
+  color:#fff;
+}
+
+.topbar .nav .latin-four-books-en-link:focus-visible{
+  outline:2px solid #b3945b;
+  outline-offset:4px;
+}
+
+@media(max-width:820px){
+  .topbar .nav{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    flex-wrap:wrap;
+    gap:12px 18px;
+    overflow:visible;
+    white-space:normal;
+  }
+
+  .topbar .nav a{
+    white-space:nowrap;
+  }
+
+  .topbar .nav .latin-four-books-en-link{
+    margin-left:auto;
+  }
+}
+</style>
 </head>
 
 
@@ -420,12 +490,20 @@
 
   <header class="topbar">
     <nav class="nav" aria-label="主导航">
-      <a href="/">首页</a>
-      <a href="/research/">研究成果</a>
-      <a href="/research/latin-four-books/">拉丁文四书</a>
-      <a href="/research/deification-sanctification/">中欧思想对话</a>
-      <a href="/research/luther-taoism/">路德与道家</a>
-    </nav>
+  <a href="/">首页</a>
+  <a href="/research/">研究成果</a>
+  <a href="/research/latin-four-books/">拉丁文四书</a>
+  <a href="/research/deification-sanctification/">中欧思想对话</a>
+  <a href="/research/luther-taoism/">路德与道家</a>
+
+  <a class="latin-four-books-en-link"
+     href="/research/latin-four-books/en/"
+     lang="en"
+     hreflang="en"
+     aria-label="Read the English research overview">
+    EN <span aria-hidden="true">↗</span>
+  </a>
+</nav>
   </header>
 
 
