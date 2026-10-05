@@ -868,6 +868,56 @@
   }
 }
   </style>
+
+ <!-- Chinese / English language relationship -->
+<link rel="alternate"
+      hreflang="zh-CN"
+      href="https://gaoyuanhelsinki.cn/research/arctic-corridor-icelandic-literature/">
+
+<link rel="alternate"
+      hreflang="en"
+      href="https://gaoyuanhelsinki.cn/research/arctic-corridor-icelandic-literature/en/">
+
+<link rel="alternate"
+      hreflang="x-default"
+      href="https://gaoyuanhelsinki.cn/research/arctic-corridor-icelandic-literature/">
+
+<!-- Gold English navigation link -->
+<style>
+.topbar .nav .arctic-literature-en-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  margin-left:auto;
+  padding:6px 12px;
+  border:1px solid #b3945b;
+  border-radius:3px;
+  background:#faf6ed;
+  color:#94713b;
+  font-weight:700;
+  line-height:1.4;
+  white-space:nowrap;
+  text-decoration:none;
+}
+
+.topbar .nav .arctic-literature-en-link:hover{
+  background:#b3945b;
+  color:#fff;
+}
+
+.topbar .nav .arctic-literature-en-link:focus-visible{
+  outline:2px solid #b3945b;
+  outline-offset:3px;
+}
+
+@media(max-width:600px){
+  .topbar .nav .arctic-literature-en-link{
+    padding:5px 10px;
+    font-size:12px;
+  }
+}
+</style> 
   
 </head>
 
@@ -875,14 +925,22 @@
 <body>
 
   <header class="topbar">
-    <nav class="nav" aria-label="主导航">
-      <a href="/">首页</a>
-      <a href="/research/">研究成果</a>
-      <a href="/research/arctic-corridor-icelandic-literature/">冰岛汉学</a>
-      <a href="/research/laozi-iceland/">冰岛《老子》</a>
-      <a href="/research/laozi-finland/">芬兰《老子》</a>
-      <a href="/research/laozi-norway/">挪威《老子》</a>
-    </nav>
+   <nav class="nav" aria-label="主导航">
+  <a href="/">首页</a>
+  <a href="/research/">研究成果</a>
+  <a href="/research/arctic-corridor-icelandic-literature/">冰岛汉学</a>
+  <a href="/research/laozi-iceland/">冰岛《老子》</a>
+  <a href="/research/laozi-finland/">芬兰《老子》</a>
+  <a href="/research/laozi-norway/">挪威《老子》</a>
+
+  <a class="arctic-literature-en-link"
+     href="/research/arctic-corridor-icelandic-literature/en/"
+     lang="en"
+     hreflang="en"
+     aria-label="Read the English research overview">
+    EN <span aria-hidden="true">↗</span>
+  </a>
+</nav>
   </header>
 
 
