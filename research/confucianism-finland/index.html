@@ -806,7 +806,53 @@ footer {
 <link rel="alternate"
       hreflang="x-default"
       href="https://gaoyuanhelsinki.cn/research/confucianism-finland/">
-      
+
+
+ <!-- 芬兰儒学页：最右侧金色 EN -->
+<style>
+.topbar .nav .finland-en-link{
+  margin-left:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex:0 0 auto;
+  padding:6px 12px;
+  border:1px solid #b3945b;
+  border-radius:3px;
+  color:#94713b;
+  background:#faf6ed;
+  font-weight:700;
+  font-size:13px;
+  line-height:1.4;
+  letter-spacing:.06em;
+  white-space:nowrap;
+  text-decoration:none;
+  transition:background .2s,color .2s;
+}
+
+.topbar .nav .finland-en-link:hover{
+  background:#b3945b;
+  color:#fff;
+}
+
+.topbar .nav .finland-en-link:focus-visible{
+  outline:2px solid #94713b;
+  outline-offset:3px;
+}
+
+@media(max-width:600px){
+  .topbar .nav{
+    column-gap:14px;
+    row-gap:10px;
+  }
+
+  .topbar .nav .finland-en-link{
+    padding:5px 10px;
+    font-size:12px;
+  }
+}
+</style>     
 </head>
 
 
@@ -834,12 +880,14 @@ footer {
     研究成果
   </a>
 
-  <a href="/research/confucianism-finland/en/"
-     lang="en"
-     hreflang="en"
-     aria-label="English research overview">
-    EN
-  </a>
+ <a
+  class="finland-en-link"
+  href="/research/confucianism-finland/en/"
+  lang="en"
+  hreflang="en"
+  aria-label="English research overview">
+  EN <span aria-hidden="true">↗</span>
+</a>
 
 </nav>
 
