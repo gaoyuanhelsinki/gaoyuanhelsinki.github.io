@@ -337,6 +337,60 @@ h1{font-size:43px;line-height:1.16}
 }
 
 </style>
+
+  <style>
+/* Academic profile: two photographs with natural proportions */
+#about .academic-photo-pair{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:22px;
+  min-width:0;
+  align-self:start;
+}
+
+#about .academic-photo-pair .about-photo{
+  width:100%;
+  min-width:0;
+  margin:0;
+}
+
+#about .academic-photo-pair .about-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:contain;
+  border:1px solid var(--line);
+}
+
+#about .academic-photo-pair figcaption{
+  margin:0;
+  padding:12px 0 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+#about .defence-caption-label{
+  display:block;
+  margin-bottom:4px;
+  color:#8a6a31;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.12em;
+}
+
+@media(max-width:700px){
+  #about .academic-photo-pair{
+    width:100%;
+    max-width:480px;
+    margin:0 auto;
+    gap:20px;
+  }
+}
+</style>
+  
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -407,10 +461,43 @@ h1{font-size:43px;line-height:1.16}
 <a href="https://gaoyuanhelsinki.cn/academic-journey/" target="_blank" rel="noopener">Nordic Academy</a>
 </div>
 </div>
-<figure class="about-photo">
-<img src="https://gaoyuanhelsinki.cn/images/finnish-school-helsinki-defense.png" alt="Gao Yuan with Simo Knuuttila and Miikka Ruokanen at the University of Helsinki" width="523" height="355" loading="lazy">
-<figcaption>With Simo Knuuttila and Miikka Ruokanen, University of Helsinki, 2015.</figcaption>
+  
+<div class="academic-photo-pair">
+
+  <figure class="about-photo">
+    <img
+      src="/images/finnish-school-helsinki-defense.png"
+      alt="Gao Yuan with Simo Knuuttila and Miikka Ruokanen at the University of Helsinki"
+      width="523"
+      height="355"
+      loading="lazy"
+      decoding="async">
+
+    <figcaption>
+      With Simo Knuuttila and Miikka Ruokanen,
+      University of Helsinki, 2015.
+    </figcaption>
+  </figure>
+
+  <figure class="about-photo doctoral-defense-photo">
+  <img
+    src="/images/%E5%8D%9A%E5%A3%AB%E7%AD%94%E8%BE%A9.jpeg"
+    alt="Gao Yuan addressing a Finnish expert review panel in the University of Helsinki’s Main Building"
+    width="960"
+    height="640"
+    loading="lazy"
+    decoding="async">
+
+  <figcaption>
+    <span class="defence-caption-label">
+      UNIVERSITY OF HELSINKI
+    </span>
+    Gao Yuan addressing a Finnish expert review panel
+    in the University’s Main Building.
+  </figcaption>
 </figure>
+
+</div>
 </div>
 </section>
 <section class="strategic-section" id="strategic-research">
