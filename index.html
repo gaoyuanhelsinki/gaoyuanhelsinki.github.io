@@ -3376,7 +3376,39 @@ a.course-row:hover {
 }
 </style>
 
+<style>
+/* Homepage English navigation badge */
+.topbar .navlinks a.lang-switch{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  flex-shrink:0;
+  padding:6px 12px !important;
+  border:1px solid #b3945b;
+  border-radius:3px;
+  background:#faf6ed;
+  color:#94713b !important;
+  font-size:13px !important;
+  font-weight:700;
+  line-height:1.4 !important;
+  letter-spacing:.08em;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .18s ease,color .18s ease;
+}
 
+.topbar .navlinks a.lang-switch:hover{
+  background:#b3945b;
+  color:#fff !important;
+}
+
+.topbar .navlinks a.lang-switch:focus-visible{
+  outline:2px solid #b3945b;
+  outline-offset:4px;
+}
+</style>
+  
 </head>
 
 
@@ -3442,7 +3474,13 @@ a.course-row:hover {
 联系
 </a>
 
-<a href="/en/" lang="en" class="lang-switch">EN</a>  
+<a href="/en/"
+   lang="en"
+   hreflang="en"
+   class="lang-switch"
+   aria-label="Visit Gao Yuan’s English academic website">
+  EN <span aria-hidden="true">↗</span>
+</a>
 
 </div>
 
