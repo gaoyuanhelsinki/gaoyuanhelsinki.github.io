@@ -338,14 +338,28 @@ h1{font-size:43px;line-height:1.16}
 
 </style>
 
-  <style>
-/* Academic profile: two photographs with natural proportions */
-#about .academic-photo-pair{
+ <style>
+/* Academic profile: introduction above a balanced photo gallery */
+#about .about-grid{
   display:grid;
   grid-template-columns:minmax(0,1fr);
-  gap:22px;
+  gap:30px;
+}
+
+#about .about-text{
+  width:100%;
+  max-width:960px;
   min-width:0;
-  align-self:start;
+}
+
+#about .academic-photo-pair{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:28px;
+  width:100%;
+  min-width:0;
+  margin:0;
 }
 
 #about .academic-photo-pair .about-photo{
@@ -381,12 +395,17 @@ h1{font-size:43px;line-height:1.16}
   letter-spacing:.12em;
 }
 
+/* Mobile: photographs stack naturally */
 @media(max-width:700px){
+  #about .about-grid{
+    gap:24px;
+  }
+
   #about .academic-photo-pair{
-    width:100%;
+    grid-template-columns:minmax(0,1fr);
     max-width:480px;
     margin:0 auto;
-    gap:20px;
+    gap:24px;
   }
 }
 </style>
