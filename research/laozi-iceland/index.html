@@ -759,7 +759,67 @@ footer {
 <meta property="article:tag" content="冰岛文《老子》">
 <meta property="article:tag" content="北欧研究">
 <meta property="article:tag" content="冰上丝绸之路">
-      
+
+ <!-- Iceland paper: English navigation and language association -->
+<style>
+.topbar .nav .iceland-en-link{
+  margin-left:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex:0 0 auto;
+  padding:6px 12px;
+  border:1px solid #b3945b;
+  border-radius:3px;
+  color:#94713b;
+  background:#faf6ed;
+  font-weight:700;
+  font-size:13px;
+  line-height:1.4;
+  letter-spacing:.06em;
+  white-space:nowrap;
+  text-decoration:none;
+  transition:background .2s,color .2s;
+}
+
+.topbar .nav .iceland-en-link:hover{
+  background:#b3945b;
+  color:#fff;
+}
+
+.topbar .nav .iceland-en-link:focus-visible{
+  outline:2px solid #94713b;
+  outline-offset:3px;
+}
+
+@media(max-width:600px){
+  .topbar .nav{
+    column-gap:14px;
+    row-gap:10px;
+  }
+
+  .topbar .nav .iceland-en-link{
+    padding:5px 10px;
+    font-size:12px;
+  }
+}
+</style>
+
+<link
+  rel="alternate"
+  hreflang="zh-CN"
+  href="https://gaoyuanhelsinki.cn/research/laozi-iceland/">
+
+<link
+  rel="alternate"
+  hreflang="en"
+  href="https://gaoyuanhelsinki.cn/research/laozi-iceland/en/">
+
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="https://gaoyuanhelsinki.cn/research/laozi-iceland/">     
 </head>
 
 
@@ -775,20 +835,26 @@ footer {
 
 <nav class="nav">
 
-<a class="brand"
-   href="/">
+  <a class="brand" href="/">
+    高源 · Gao Yuan
+  </a>
 
-高源 · Gao Yuan
+  <a href="/">
+    首页
+  </a>
 
-</a>
+  <a href="/research/">
+    研究成果
+  </a>
 
-<a href="/">
-首页
-</a>
-
-<a href="/research/">
-研究成果
-</a>
+  <a
+    class="iceland-en-link"
+    href="/research/laozi-iceland/en/"
+    lang="en"
+    hreflang="en"
+    aria-label="Read the English overview">
+    EN <span aria-hidden="true">↗</span>
+  </a>
 
 </nav>
 
