@@ -250,5 +250,19 @@
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
   </url>
+
+  <url>
+  <loc>https://gaoyuanhelsinki.cn/research/chinese-classics-finland/</loc>
+  <lastmod>2026-10-11</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+  </url>
+  
+  <url>
+  <loc>https://gaoyuanhelsinki.cn/research/chinese-classics-finland/en/</loc>
+  <lastmod>2026-10-11</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority> 
+  </url>
   
 </urlset>
