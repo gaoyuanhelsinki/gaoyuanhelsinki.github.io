@@ -7,7 +7,7 @@
 **中文官网：[gaoyuanhelsinki.cn](https://gaoyuanhelsinki.cn/)**  
 **Official English website：[Gao Yuan | Research and Publications](https://gaoyuanhelsinki.cn/en/)**
 
-## 高源学术主页 | Explore the Website
+## 研究成果与专题 | Explore the Website
 
 - [研究成果 | Research and Publications](https://gaoyuanhelsinki.cn/research/)
 - [北欧学术 | Academic Journey](https://gaoyuanhelsinki.cn/academic-journey/)
