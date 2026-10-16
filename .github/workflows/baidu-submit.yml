@@ -28,7 +28,9 @@ jobs:
           https://gaoyuanhelsinki.cn/research/plato-emotions/
           https://gaoyuanhelsinki.cn/research/aristotle-emotions/
           https://gaoyuanhelsinki.cn/research/luther-taoism/
-          https://gaoyuanhelsinki.cn/research/deification-sanctification/"
+          https://gaoyuanhelsinki.cn/research/deification-sanctification/
+          https://gaoyuanhelsinki.cn/courses/european-emotions/
+          https://gaoyuanhelsinki.cn/courses/european-emotions/en/"
 
           echo "Submitting URLs to Baidu..."
 
