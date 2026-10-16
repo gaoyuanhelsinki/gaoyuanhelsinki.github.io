@@ -47,6 +47,10 @@ jobs:
 
             "https://gaoyuanhelsinki.cn/research/deification-sanctification/"
 
+            "https://gaoyuanhelsinki.cn/courses/european-emotions/"
+
+            "https://gaoyuanhelsinki.cn/courses/european-emotions/en/"
+
           )
 
           JSON_URLS=$(printf '"%s",' "${URLS[@]}")
