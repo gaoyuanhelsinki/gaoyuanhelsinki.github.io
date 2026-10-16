@@ -344,6 +344,76 @@ footer p { margin-bottom: 10px; }
   html { scroll-behavior: auto; }
 }
 </style>
+
+<style>
+/* Course hero: introduction and academic profile card */
+.hero .course-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  align-items: center;
+  gap: 36px;
+}
+
+.hero .course-hero-copy {
+  min-width: 0;
+}
+
+.hero .course-hero-copy h1 {
+  font-size: clamp(36px, 4vw, 50px);
+  line-height: 1.15;
+}
+
+.hero .course-hero-copy .subtitle {
+  font-size: 21px;
+}
+
+.hero .course-hero-copy .hero-summary {
+  margin-bottom: 22px;
+}
+
+.hero .course-hero-card {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+  margin: 0;
+  justify-self: center;
+}
+
+.hero .course-hero-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(225, 201, 149, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 900px) {
+  .hero .course-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hero .course-hero-card {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero .course-hero-copy h1 {
+    font-size: 36px;
+  }
+
+  .hero .course-hero-copy .subtitle {
+    font-size: 20px;
+  }
+
+  .hero .course-hero-grid {
+    gap: 24px;
+  }
+}
+</style> 
+      
 </head>
 
 <body>
@@ -364,19 +434,47 @@ footer p { margin-bottom: 10px; }
 </header>
 
 <section class="hero" aria-labelledby="course-title">
-  <div class="wrap">
-    <div class="kicker">Teaching · Core General Education</div>
-    <h1 id="course-title">European Philosophy<br>of Emotions</h1>
-    <p class="subtitle">Historical and Philosophical Psychology</p>
-    <p class="hero-summary">
-      How have European philosophers understood emotions, desire and love?
-      This course follows changing accounts of the soul, moral judgement
-      and human flourishing from classical philosophy to psychoanalysis.
-    </p>
-    <div class="hero-meta">
-      <span>Instructor: Gao Yuan</span>
-      <span>Chinese–English bilingual instruction</span>
+  <div class="wrap course-hero-grid">
+
+    <!-- Left: course introduction -->
+    <div class="course-hero-copy">
+
+      <div class="kicker">
+        Teaching · Core General Education
+      </div>
+
+      <h1 id="course-title">
+        European Philosophy<br>of Emotions
+      </h1>
+
+      <p class="subtitle">
+        Historical and Philosophical Psychology
+      </p>
+
+      <p class="hero-summary">
+        How have European philosophers understood emotions, desire and love?
+        This course follows changing accounts of the soul, moral judgement
+        and human flourishing from classical philosophy to psychoanalysis.
+      </p>
+
+      <div class="hero-meta">
+        <span>Instructor: Gao Yuan</span>
+        <span>Chinese–English bilingual instruction</span>
+      </div>
+
     </div>
+
+    <!-- Right: academic profile card -->
+    <figure class="course-hero-card">
+      <img
+        src="/images/wechat-share-card.png"
+        alt="Gao Yuan’s academic profile card, featuring his portrait and Helsinki Cathedral"
+        width="1734"
+        height="907"
+        loading="eager"
+        decoding="async">
+    </figure>
+
   </div>
 </section>
 
