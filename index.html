@@ -5531,7 +5531,140 @@ Miikka Ruokanen and Gao Yuan (高源), “The Polar Silk Road: Introducing Moder
 
 </div>
 
+<!-- 冰上丝绸之路数据库：首页入口 -->
+<style>
+#psr-home-entry{
+  max-width:1260px;
+  margin:20px auto 68px;
+  padding:0 24px;
+  box-sizing:border-box;
+}
+#psr-home-entry *{box-sizing:border-box}
 
+#psr-home-entry .psr-entry{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:30px;
+  padding:38px 40px;
+  background:#092943;
+  color:#fff;
+  text-decoration:none;
+  border-top:3px solid #d7b45d;
+}
+#psr-home-entry .psr-kicker{
+  font:11px/1.8 Georgia,serif;
+  letter-spacing:.16em;
+  color:#ead294;
+  margin:0 0 12px;
+}
+#psr-home-entry h2{
+  font-family:"Songti SC",SimSun,serif;
+  font-size:clamp(25px,3vw,34px);
+  font-weight:600;
+  color:#fff;
+  line-height:1.5;
+  margin:0 0 12px;
+}
+#psr-home-entry .psr-intro{
+  font-size:15px;
+  line-height:1.9;
+  color:#e0e8ed;
+  margin:0;
+  max-width:720px;
+}
+#psr-home-entry .psr-topics{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  margin-top:20px;
+  font-size:12px;
+  color:#ead294;
+  line-height:1.8;
+}
+#psr-home-entry .psr-enter{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-end;
+  white-space:nowrap;
+  font-size:15px;
+  color:#fff;
+}
+#psr-home-entry .psr-enter small{
+  font-size:11px;
+  color:#d7e0e6;
+  font-weight:400;
+}
+#psr-home-entry .psr-enter b{
+  font-size:29px;
+  color:#ead294;
+  font-weight:400;
+  line-height:1;
+}
+#psr-home-entry .psr-entry:hover{background:#103b5b}
+#psr-home-entry .psr-entry:focus-visible{
+  outline:3px solid #ae8a43;
+  outline-offset:5px;
+}
+@media(max-width:640px){
+  #psr-home-entry{
+    padding:0 16px;
+    margin-bottom:44px;
+  }
+  #psr-home-entry .psr-entry{
+    grid-template-columns:1fr;
+    padding:26px 23px;
+    gap:22px;
+  }
+  #psr-home-entry .psr-enter{
+    align-items:center;
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+  #psr-home-entry .psr-enter small{
+    flex-basis:100%;
+  }
+}
+</style>
+
+<section id="psr-home-entry"
+         aria-labelledby="psr-home-title">
+
+  <a class="psr-entry"
+     href="/polar-silk-road-database/">
+
+    <div>
+      <p class="psr-kicker" lang="en">
+        POLAR SILK ROAD DATABASE
+      </p>
+
+      <h2 id="psr-home-title">
+        冰上丝绸之路数据库
+      </h2>
+
+      <p class="psr-intro">
+        连接文献、思想与北极研究，探索北欧珍稀文献、
+        中欧思想交流与冰上丝路的历史及当代议题。
+      </p>
+
+      <div class="psr-topics">
+        <span>北欧珍稀文献</span>
+        <span>中欧思想家与研究</span>
+        <span>冰上丝路与北极研究</span>
+      </div>
+    </div>
+
+    <div class="psr-enter">
+      <small>建设中 · 首批研究资源已开放</small>
+      <span>进入数据库</span>
+      <b aria-hidden="true">→</b>
+    </div>
+
+  </a>
+</section>
+<!-- 首页入口结束 -->
+  
 
 <!-- =========================================================
      Footer
