@@ -1,0 +1,4 @@
+  <url><loc>https://gaoyuanhelsinki.cn/polar-silk-road-database/</loc></url>
+  <url><loc>https://gaoyuanhelsinki.cn/polar-silk-road-database/documents/</loc></url>
+  <url><loc>https://gaoyuanhelsinki.cn/polar-silk-road-database/thinkers/</loc></url>
+  <url><loc>https://gaoyuanhelsinki.cn/polar-silk-road-database/arctic/</loc></url>
