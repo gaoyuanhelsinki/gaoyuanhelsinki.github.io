@@ -3612,68 +3612,89 @@ header.topbar > nav.nav > .navlinks > a:focus-visible{
 </style>
 
 <style>
-/* 电脑和平板横屏：名称字号不变，导航保持单行 */
+/* 导航优化：菜单适度放大、等距排列、EN靠右 */
 @media (min-width:601px){
 
   header.topbar > nav.nav{
+    display:flex !important;
     width:100% !important;
-    max-width:1600px !important;
+    max-width:none !important;
+    margin:0 auto !important;
+    padding:10px 24px !important;
     flex-direction:row !important;
     flex-wrap:nowrap !important;
     align-items:center !important;
-    gap:16px !important;
-    padding:10px 20px !important;
+    gap:24px !important;
     overflow:visible !important;
   }
 
-  /* 左侧保留现有字号，不被菜单挤压 */
+  /* 保留左侧名称的现有字号 */
   header.topbar > nav.nav > a.brand{
     flex:0 0 auto !important;
     white-space:nowrap !important;
   }
 
-  /* 右侧导航：不换行，空间不足时可横向滚动 */
+  /* 等距铺满剩余空间，EN自然对齐右边缘 */
   header.topbar > nav.nav > .navlinks{
     display:flex !important;
     flex:1 1 0% !important;
-    min-width:0 !important;
     width:auto !important;
-    flex-wrap:nowrap !important;
-    justify-content:flex-start !important;
-    align-items:center !important;
-    gap:9px !important;
+    min-width:0 !important;
+    margin:0 !important;
     padding:3px 0 !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
     white-space:nowrap !important;
     overflow-x:auto !important;
     overflow-y:hidden !important;
     scrollbar-width:thin;
   }
 
-  /* 仅缩小“首页”到“联系” */
+  /* 首页至联系：统一字号 */
   header.topbar > nav.nav > .navlinks > a{
+    display:inline-flex !important;
     flex:0 0 auto !important;
-    font-size:12px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    margin:0 !important;
+    padding:6px 0 !important;
+    font-size:14px !important;
+    font-weight:600 !important;
     line-height:1.5 !important;
     letter-spacing:0 !important;
     white-space:nowrap !important;
-    padding:6px 0 !important;
   }
 
-  /* EN 按钮同步收紧 */
+  /* EN与其他菜单同字号 */
   header.topbar > nav.nav > .navlinks > a.lang-switch{
-    font-size:12px !important;
-    padding:5px 8px !important;
-    gap:3px !important;
+    margin:0 !important;
+    padding:5px 9px !important;
+    font-size:14px !important;
+    line-height:1.5 !important;
     letter-spacing:0 !important;
+    gap:4px !important;
   }
 }
 
-/* 宽屏适当放大菜单，保持阅读舒适 */
+/* 大屏幕再适度放大 */
 @media (min-width:1400px){
+  header.topbar > nav.nav > .navlinks > a{
+    font-size:15px !important;
+  }
+}
+
+/* 较窄窗口适当收紧，避免挤压左侧名称 */
+@media (min-width:601px) and (max-width:1100px){
+  header.topbar > nav.nav{
+    gap:16px !important;
+    padding:10px 18px !important;
+  }
 
   header.topbar > nav.nav > .navlinks{
-    justify-content:flex-end !important;
-    gap:12px !important;
+    gap:9px !important;
   }
 
   header.topbar > nav.nav > .navlinks > a{
