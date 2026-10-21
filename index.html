@@ -5708,15 +5708,82 @@ Miikka Ruokanen and Gao Yuan (高源), “The Polar Silk Road: Introducing Moder
     transform:none;
   }
 }
+
+ /* 学术资源：与首页相邻栏目统一 */
+#gy-resources{
+  position:relative;
+  max-width:1180px;
+  margin:0 auto;
+  padding:62px 24px;
+  color:var(--ink,#183047);
+}
+
+/* 与前面栏目一致的浅灰分隔线 */
+#gy-resources::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:24px;
+  right:24px;
+  height:1px;
+  background:var(--line,#e5e9ed);
+}
+
+/* 英文在上，中文在下 */
+#gy-resources .gy-heading{
+  display:block;
+  margin:0;
+  padding:0;
+}
+
+/* 直接沿用首页 kicker 的字体与色彩 */
+#gy-resources .gy-heading .kicker{
+  margin:0 0 5px;
+  color:var(--navy-soft,#315a73);
+  font-family:Arial,"Microsoft YaHei",sans-serif;
+  font-size:11px;
+  font-weight:400;
+  line-height:inherit;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+/* 与原有 .section h2 一致 */
+#gy-resources .gy-heading h2{
+  margin:0 0 25px;
+  padding:0;
+  color:var(--ink,#183047);
+  font-family:inherit;
+  font-size:28px;
+  font-weight:700;
+  line-height:inherit;
+  letter-spacing:normal;
+}
+
+/* 手机端保持同样的标题结构 */
+@media(max-width:760px){
+  #gy-resources{
+    margin:0 auto;
+    padding:62px 24px;
+  }
+
+  #gy-resources .gy-heading{
+    display:block;
+    margin:0;
+  }
+
+  #gy-resources .gy-heading h2{
+    font-size:28px;
+  }
+} 
 </style>
 
 <section id="gy-resources"
          aria-labelledby="gy-resources-title">
 
-  <div class="gy-heading">
+    <div class="gy-heading">
+    <div class="kicker" lang="en">Academic Resources</div>
     <h2 id="gy-resources-title">学术资源</h2>
-    <span class="gy-rule" aria-hidden="true"></span>
-    <small lang="en">ACADEMIC RESOURCES</small>
   </div>
 
   <div class="gy-grid">
