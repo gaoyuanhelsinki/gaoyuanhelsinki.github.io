@@ -141,10 +141,10 @@
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/</loc>
-  <lastmod>2026-09-04</lastmod>
+  <lastmod>2026-10-25</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/"/><image:image><image:loc>https://gaoyuanhelsinki.cn/images/nordic/gao-yuan-helsinki-main-building-2013.jpg</image:loc><image:caption>高源于赫尔辛基大学主楼，2013年4月20日</image:caption></image:image></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/polar-silk-road/</loc>
@@ -323,7 +323,7 @@
   <lastmod>2026-10-21</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>     
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/"/></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/polar-silk-road/en/</loc>
