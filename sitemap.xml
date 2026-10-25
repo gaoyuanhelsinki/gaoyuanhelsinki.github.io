@@ -134,10 +134,10 @@
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/</loc>
-  <lastmod>2026-09-02</lastmod>
+  <lastmod>2026-10-25</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/"/><image:image><image:loc>https://gaoyuanhelsinki.cn/images/nordic/gao-yuan-knuuttila-ruokanen-helsinki-2015.jpg</image:loc><image:caption>高源与Simo Knuuttila、Miikka Ruokanen在赫尔辛基大学主楼合影，2015年11月</image:caption></image:image></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/</loc>
@@ -316,7 +316,7 @@
   <lastmod>2026-10-21</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>   
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/"/></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/sino-nordic-dialogue/en/</loc>
