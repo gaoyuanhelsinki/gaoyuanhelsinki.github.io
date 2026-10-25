@@ -148,10 +148,10 @@
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/polar-silk-road/</loc>
-  <lastmod>2026-09-30</lastmod>
+  <lastmod>2026-10-25</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/"/><image:image><image:loc>https://gaoyuanhelsinki.cn/images/nordic/nordic-research-conference-helsinki-2012.jpg</image:loc><image:caption>北欧研究会议合影，赫尔辛基大学，2012年8月10日</image:caption></image:image></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/academic-journey/</loc>
@@ -330,7 +330,7 @@
   <lastmod>2026-10-21</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>     
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/nordic/polar-silk-road/"/></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/polar-silk-road-database/</loc>
