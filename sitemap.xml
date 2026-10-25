@@ -127,10 +127,10 @@
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/courses/european-emotions/</loc>
-  <lastmod>2026-10-12</lastmod>
+  <lastmod>2026-10-25</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/courses/european-emotions/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/courses/european-emotions/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/courses/european-emotions/"/><image:image><image:loc>https://gaoyuanhelsinki.cn/images/courses/gao-yuan-european-emotions.jpg</image:loc><image:caption>高源 Gao Yuan 学术名片</image:caption></image:image></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/</loc>
@@ -309,7 +309,7 @@
   <lastmod>2026-10-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>    
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/courses/european-emotions/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/courses/european-emotions/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/courses/european-emotions/"/></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/nordic/finnish-school-emotions/en/</loc>
