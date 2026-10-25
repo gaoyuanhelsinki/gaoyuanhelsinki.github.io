@@ -15,10 +15,10 @@
 
   <url>
     <loc>https://gaoyuanhelsinki.cn/research/laozi-norway/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/research/laozi-norway/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/research/laozi-norway/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/research/laozi-norway/"/><image:image><image:loc>https://gaoyuanhelsinki.cn/images/research/mchs-2025-02-cover.jpg</image:loc></image:image></url>
 
   <url>
     <loc>https://gaoyuanhelsinki.cn/research/laozi-iceland/</loc>
@@ -190,7 +190,7 @@
   <lastmod>2026-10-05</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://gaoyuanhelsinki.cn/research/laozi-norway/"/><xhtml:link rel="alternate" hreflang="en" href="https://gaoyuanhelsinki.cn/research/laozi-norway/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://gaoyuanhelsinki.cn/research/laozi-norway/"/></url>
 
   <url>
   <loc>https://gaoyuanhelsinki.cn/research/laozi-finland/en/</loc>
