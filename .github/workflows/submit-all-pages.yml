@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       indexnow:
-        description: "Notify IndexNow (leave checked for first run)"
+        description: "Notify IndexNow (already accepted; leave unchecked)"
         type: boolean
-        default: true
+        default: false
       baidu_start:
         description: "Baidu start position (leave 1 for first run)"
         type: number
@@ -66,14 +66,17 @@ jobs:
                   return f'已收到 {len(urls)} 个网址，等待密钥验证（HTTP 202）。'
               raise ValueError(f'IndexNow HTTP {status}; check key file, host, or rate limit.')
           def notify_baidu(urls,token,start,post_fn=post):
+              token=token.strip()
               if not token:
                   print('::warning::BAIDU_PUSH_TOKEN is missing; Baidu was not notified.')
                   return '未提交：仓库缺少 BAIDU_PUSH_TOKEN。请沿用旧 Baidu Submit 使用的同名 Secret。',False
               if not 1<=start<=len(urls):raise ValueError('baidu_start is outside sitemap range.')
               pending=urls[start-1:];accepted=0;budget=None
-              endpoint='http://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':SITE,'token':token})
+              current_site=SITE
+              tried_bare_host=False
+              endpoint='http://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':current_site,'token':token})
               while pending:
-                  # First submit one URL to obtain today's remaining quota; never retry a POST.
+                  # Probe quota with one URL. Retry only an explicitly rejected site-init request.
                   count=1 if budget is None else min(budget,len(pending),2000)
                   if count<=0:break
                   batch=pending[:count]
@@ -86,7 +89,17 @@ jobs:
                       if 'quota' in message:
                           print('::warning::Baidu daily quota exhausted; some URLs were not submitted.')
                           break
-                      raise RuntimeError(f'Baidu API error {error}; check the token, verified site, and platform access.')
+                      if error==400 and message.strip()=='site init fail' and not tried_bare_host:
+                          current_site=urllib.parse.urlsplit(SITE).netloc
+                          endpoint='http://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':current_site,'token':token})
+                          tried_bare_host=True
+                          print('Baidu rejected the site format; retrying once with the same bare hostname.')
+                          continue
+                      safe_message=str(result.get('message','No message returned'))[:1500]
+                      for secret in (token,urllib.parse.quote(token,safe=''),urllib.parse.quote_plus(token)):
+                          safe_message=safe_message.replace(secret,'[REDACTED]')
+                      safe_message=json.dumps(safe_message,ensure_ascii=False)
+                      raise RuntimeError(f'Baidu HTTP {status}; API error {error}; message={safe_message}; site={current_site}')
                   if status!=200:raise RuntimeError(f'Baidu HTTP {status}; no success confirmed.')
                   success=result.get('success');remain=result.get('remain')
                   if not isinstance(success,int) or isinstance(success,bool) or success<0 or success>count:raise RuntimeError('Baidu success count is invalid.')
@@ -110,7 +123,7 @@ jobs:
           def main():
               rows=[];failed=False
               urls=sitemap_urls(fetch(SITE+'/sitemap.xml'));print(f'Sitemap URLs: {len(urls)}')
-              enabled=os.environ.get('INDEXNOW_ENABLED','true').lower()=='true'
+              enabled=os.environ.get('INDEXNOW_ENABLED','false').lower()=='true'
               if enabled:
                   try:rows.append(('IndexNow',notify_indexnow(urls)))
                   except Exception as ex:rows.append(('IndexNow','失败：'+str(ex)));print('::error::IndexNow notification failed.');failed=True
