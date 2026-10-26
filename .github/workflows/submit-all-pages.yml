@@ -1,0 +1,131 @@
+name: Submit All Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      indexnow:
+        description: "Notify IndexNow (leave checked for first run)"
+        type: boolean
+        default: true
+      baidu_start:
+        description: "Baidu start position (leave 1 for first run)"
+        type: number
+        default: 1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: submit-all-pages
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Notify IndexNow and Baidu from live sitemap
+        shell: bash
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          INDEXNOW_ENABLED: ${{ inputs.indexnow }}
+          BAIDU_START: ${{ inputs.baidu_start }}
+        run: |
+          python - <<'PYTHON'
+          import os,json,re,sys
+          import urllib.request,urllib.error,urllib.parse
+          import xml.etree.ElementTree as ET
+          SITE='https://gaoyuanhelsinki.cn'
+          KEY='1bceb95f407d452b8163d392f759aad1'
+          NS='{http://www.sitemaps.org/schemas/sitemap/0.9}'
+          def fetch(url):
+              req=urllib.request.Request(url,headers={'User-Agent':'Gao-Yuan-Site-Update-Notifier/1.0'})
+              with urllib.request.urlopen(req,timeout=40) as response:return response.read(2000000)
+          def post(url,data,kind):
+              req=urllib.request.Request(url,data=data,headers={'Content-Type':kind,'User-Agent':'Gao-Yuan-Site-Update-Notifier/1.0'},method='POST')
+              try:
+                  with urllib.request.urlopen(req,timeout=40) as response:return response.status,response.read(1000000)
+              except urllib.error.HTTPError as ex:return ex.code,ex.read(1000000)
+          def sitemap_urls(raw):
+              root=ET.fromstring(raw)
+              if root.tag!=NS+'urlset':raise ValueError('Expected a standard urlset sitemap.')
+              urls=[]
+              for node in root.findall(NS+'url'):
+                  loc=node.findtext(NS+'loc','').strip();u=urllib.parse.urlsplit(loc)
+                  if u.scheme!='https' or u.netloc!='gaoyuanhelsinki.cn' or u.query or u.fragment:raise ValueError('Invalid sitemap URL.')
+                  if loc not in urls:urls.append(loc)
+              if not urls or len(urls)>10000:raise ValueError('Unexpected sitemap size.')
+              return urls
+          def notify_indexnow(urls,fetch_fn=fetch,post_fn=post):
+              if fetch_fn(SITE+'/'+KEY+'.txt').decode('utf-8-sig').strip()!=KEY:raise ValueError('IndexNow key file validation failed.')
+              payload={'host':'gaoyuanhelsinki.cn','key':KEY,'keyLocation':SITE+'/'+KEY+'.txt','urlList':urls}
+              status,_=post_fn('https://api.indexnow.org/indexnow',json.dumps(payload).encode(),'application/json; charset=utf-8')
+              if status==200:return f'已接收 {len(urls)} 个网址；不代表已抓取或收录。'
+              if status==202:
+                  print('::warning::IndexNow received the request; key validation is pending.')
+                  return f'已收到 {len(urls)} 个网址，等待密钥验证（HTTP 202）。'
+              raise ValueError(f'IndexNow HTTP {status}; check key file, host, or rate limit.')
+          def notify_baidu(urls,token,start,post_fn=post):
+              if not token:
+                  print('::warning::BAIDU_PUSH_TOKEN is missing; Baidu was not notified.')
+                  return '未提交：仓库缺少 BAIDU_PUSH_TOKEN。请沿用旧 Baidu Submit 使用的同名 Secret。',False
+              if not 1<=start<=len(urls):raise ValueError('baidu_start is outside sitemap range.')
+              pending=urls[start-1:];accepted=0;budget=None
+              endpoint='https://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':SITE,'token':token})
+              while pending:
+                  # First submit one URL to obtain today's remaining quota; never retry a POST.
+                  count=1 if budget is None else min(budget,len(pending),2000)
+                  if count<=0:break
+                  batch=pending[:count]
+                  try:status,raw=post_fn(endpoint,('\n'.join(batch)+'\n').encode(),'text/plain; charset=utf-8')
+                  except Exception:raise RuntimeError('Baidu network request failed; endpoint and token omitted from logs.') from None
+                  try:result=json.loads(raw)
+                  except Exception:raise RuntimeError('Baidu did not return JSON; endpoint and token omitted from logs.') from None
+                  if result.get('error'):
+                      error=result.get('error');message=str(result.get('message','')).lower()
+                      if 'quota' in message:
+                          print('::warning::Baidu daily quota exhausted; some URLs were not submitted.')
+                          break
+                      raise RuntimeError(f'Baidu API error {error}; check the token, verified site, and platform access.')
+                  if status!=200:raise RuntimeError(f'Baidu HTTP {status}; no success confirmed.')
+                  success=result.get('success');remain=result.get('remain')
+                  if not isinstance(success,int) or isinstance(success,bool) or success<0 or success>count:raise RuntimeError('Baidu success count is invalid.')
+                  accepted+=success
+                  print(f'Baidu accepted in this request: {success}/{count}; confirmed total: {accepted}.')
+                  if success!=count:
+                      # Do not guess which URLs were rejected when counts disagree.
+                      print('::warning::Baidu accepted only part of a batch; inspect the platform before resubmitting.')
+                      return f'本次接收 {accepted} 个网址；存在部分拒绝，不能确认逐条结果，请检查百度资源平台。',False
+                  pending=pending[count:]
+                  if not pending:break
+                  if not isinstance(remain,int) or isinstance(remain,bool) or remain<0:
+                      print('::warning::Baidu quota was not returned; stopped to avoid excess requests.')
+                      break
+                  budget=remain
+              if pending:
+                  next_start=start+accepted
+                  print(f'::warning::Baidu remaining URLs: {len(pending)}. After quota resets, rerun with baidu_start={next_start} and IndexNow disabled.')
+                  return f'本次接收 {accepted} 个；仍有 {len(pending)} 个待提交。配额恢复后，将 baidu_start 填为 {next_start}，取消 indexnow 勾选，再运行一次。',False
+              return f'本次接收 {accepted} 个网址（从第 {start} 个开始）；不代表已收录。',True
+          def main():
+              rows=[];failed=False
+              urls=sitemap_urls(fetch(SITE+'/sitemap.xml'));print(f'Sitemap URLs: {len(urls)}')
+              enabled=os.environ.get('INDEXNOW_ENABLED','true').lower()=='true'
+              if enabled:
+                  try:rows.append(('IndexNow',notify_indexnow(urls)))
+                  except Exception as ex:rows.append(('IndexNow','失败：'+str(ex)));print('::error::IndexNow notification failed.');failed=True
+              else:rows.append(('IndexNow','本次按设置跳过。'))
+              try:
+                  start=int(os.environ.get('BAIDU_START','1'));message,_=notify_baidu(urls,os.environ.get('BAIDU_TOKEN',''),start);rows.append(('百度普通收录API',message))
+              except Exception as ex:
+                  rows.append(('百度普通收录API','失败：'+str(ex)));print('::error::Baidu notification failed.');failed=True
+              summary='# 全站更新通知结果\n\n'+f'从线上 sitemap 读取 **{len(urls)}** 个网址。\n\n'
+              for name,message in rows:summary+=f'**{name}**：{message}\n\n'
+              summary+='通知接收 ≠ 已抓取 ≠ 已收录 ≠ 标题已更新。\n\nGoogle、搜狗、360、微信不在本工作流的直接提交范围内。Google 请使用 Search Console；其他平台依各自入口和抓取机制更新。\n\n若出现百度配额不足，绿色运行状态也不表示全部网址已提交，请以上述接收数量为准。\n'
+              dest=os.environ.get('GITHUB_STEP_SUMMARY')
+              if dest:
+                  with open(dest,'a',encoding='utf-8') as f:f.write(summary)
+              print(summary)
+              return 1 if failed else 0
+          if __name__=='__main__':sys.exit(main())
+          PYTHON
