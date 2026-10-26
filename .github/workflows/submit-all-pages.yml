@@ -71,7 +71,7 @@ jobs:
                   return '未提交：仓库缺少 BAIDU_PUSH_TOKEN。请沿用旧 Baidu Submit 使用的同名 Secret。',False
               if not 1<=start<=len(urls):raise ValueError('baidu_start is outside sitemap range.')
               pending=urls[start-1:];accepted=0;budget=None
-              endpoint='https://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':SITE,'token':token})
+              endpoint='http://data.zz.baidu.com/urls?'+urllib.parse.urlencode({'site':SITE,'token':token})
               while pending:
                   # First submit one URL to obtain today's remaining quota; never retry a POST.
                   count=1 if budget is None else min(budget,len(pending),2000)
