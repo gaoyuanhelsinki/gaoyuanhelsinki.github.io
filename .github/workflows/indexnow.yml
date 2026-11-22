@@ -1,84 +1,228 @@
 name: IndexNow Auto Submit
 
 on:
-  push:
-    branches:
-      - main
-
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
-  submit-indexnow:
-
+  notify:
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
+      - name: Check out the deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
 
-      - name: Submit URLs to IndexNow
+      - name: Notify IndexNow and Baidu about changed pages
         shell: bash
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
         run: |
+          python3 - <<'PYTHON'
+          import json
+          import os
+          import subprocess
+          import urllib.error
+          import urllib.parse
+          import urllib.request
 
-          KEY="1bceb95f407d452b8163d392f759aad1"
+          SITE = "https://gaoyuanhelsinki.cn"
+          KEY = "1bceb95f407d452b8163d392f759aad1"
+          SUMMARY = os.environ.get("GITHUB_STEP_SUMMARY")
+          lines = ["# 网站更新通知结果", ""]
+          failed = False
 
-          HOST="gaoyuanhelsinki.cn"
+          def post(url, data, content_type):
+              request = urllib.request.Request(
+                  url,
+                  data=data,
+                  method="POST",
+                  headers={
+                      "Content-Type": content_type,
+                      "User-Agent": "Gao-Yuan-Website-Notifier/1.0",
+                  },
+              )
+              try:
+                  with urllib.request.urlopen(request, timeout=40) as response:
+                      return response.status, response.read(100000)
+              except urllib.error.HTTPError as error:
+                  return error.code, error.read(100000)
 
-          KEY_LOCATION="https://gaoyuanhelsinki.cn/1bceb95f407d452b8163d392f759aad1.txt"
+          def save_summary():
+              message = "\n".join(lines) + "\n"
+              print(message)
+              if SUMMARY:
+                  with open(SUMMARY, "a", encoding="utf-8") as output:
+                      output.write(message)
 
-          URLS=(
+          try:
+              changed = subprocess.check_output(
+                  [
+                      "git", "diff", "--name-only", "-z",
+                      "--diff-filter=AM",
+                      "HEAD^", "HEAD",
+                  ]
+              ).decode("utf-8").split("\0")
+          except subprocess.CalledProcessError:
+              lines.append(
+                  "无法读取本次部署的上一条提交，"
+                  "本次没有发送网址。请检查工作流日志。"
+              )
+              save_summary()
+              raise SystemExit(1)
 
-            "https://gaoyuanhelsinki.cn/"
+          urls = []
 
-            "https://gaoyuanhelsinki.cn/research/"
+          for path in changed:
+              if path == "index.html":
+                  url = SITE + "/"
+              elif path.endswith("/index.html"):
+                  directory = path[:-len("index.html")]
+                  url = SITE + "/" + urllib.parse.quote(
+                      directory, safe="/-._~"
+                  )
+              else:
+                  continue
 
-            "https://gaoyuanhelsinki.cn/research/laozi-norway/"
+              if url not in urls:
+                  urls.append(url)
 
-            "https://gaoyuanhelsinki.cn/research/laozi-iceland/"
+          if not urls:
+              lines.append(
+                  "最近一次提交没有新增或修改 index.html 页面，"
+                  "本次没有发送网页通知。"
+              )
+              save_summary()
+              raise SystemExit(0)
 
-            "https://gaoyuanhelsinki.cn/research/confucianism-finland/"
+          lines.append(f"本次识别到 **{len(urls)}** 个新增或修改的页面：")
+          lines.append("")
+          for url in urls:
+              lines.append(f"- {url}")
+          lines.append("")
 
-            "https://gaoyuanhelsinki.cn/research/plato-emotions/"
+          # IndexNow: one request is shared with participating engines.
+          try:
+              key_url = f"{SITE}/{KEY}.txt"
+              with urllib.request.urlopen(key_url, timeout=40) as response:
+                  key_text = response.read(1000).decode("utf-8-sig").strip()
 
-            "https://gaoyuanhelsinki.cn/research/aristotle-emotions/"
+              if key_text != KEY:
+                  raise ValueError("IndexNow 验证文件不匹配")
 
-            "https://gaoyuanhelsinki.cn/research/luther-taoism/"
+              payload = {
+                  "host": "gaoyuanhelsinki.cn",
+                  "key": KEY,
+                  "keyLocation": key_url,
+                  "urlList": urls,
+              }
 
-            "https://gaoyuanhelsinki.cn/research/deification-sanctification/"
+              status, _ = post(
+                  "https://api.indexnow.org/indexnow",
+                  json.dumps(payload).encode("utf-8"),
+                  "application/json; charset=utf-8",
+              )
 
-            "https://gaoyuanhelsinki.cn/courses/european-emotions/"
+              if status == 200:
+                  lines.append(
+                      f"**IndexNow：**已接收 {len(urls)} 个网址。"
+                  )
+              elif status == 202:
+                  lines.append(
+                      "**IndexNow：**请求已收到，等待密钥验证。"
+                  )
+              else:
+                  lines.append(
+                      f"**IndexNow：**提交失败，HTTP {status}。"
+                  )
+                  failed = True
 
-            "https://gaoyuanhelsinki.cn/courses/european-emotions/en/"
+          except Exception as error:
+              lines.append(
+                  f"**IndexNow：**提交失败：{type(error).__name__}。"
+              )
+              failed = True
 
-          )
+          lines.append("")
 
-          JSON_URLS=$(printf '"%s",' "${URLS[@]}")
-          JSON_URLS="[${JSON_URLS%,}]"
+          # Baidu: submit one URL at a time so the summary identifies
+          # URLs still needing attention if quota is exhausted.
+          token = os.environ.get("BAIDU_TOKEN", "").strip()
 
-          echo "Submitting URLs to IndexNow..."
+          if not token:
+              lines.append(
+                  "**百度：**未提交；请检查仓库 Secret "
+                  "`BAIDU_PUSH_TOKEN`。"
+              )
+              failed = True
+          else:
+              endpoint = "http://data.zz.baidu.com/urls?" + (
+                  urllib.parse.urlencode({
+                      "site": SITE,
+                      "token": token,
+                  })
+              )
 
-          HTTP_STATUS=$(curl \
-            -s \
-            -o indexnow-response.txt \
-            -w "%{http_code}" \
-            -X POST \
-            "https://api.indexnow.org/indexnow" \
-            -H "Content-Type: application/json; charset=utf-8" \
-            --data "{
-              \"host\": \"$HOST\",
-              \"key\": \"$KEY\",
-              \"keyLocation\": \"$KEY_LOCATION\",
-              \"urlList\": $JSON_URLS
-            }")
+              accepted = 0
+              pending = []
 
-          echo "IndexNow HTTP status: $HTTP_STATUS"
+              for position, url in enumerate(urls):
+                  try:
+                      status, raw = post(
+                          endpoint,
+                          (url + "\n").encode("utf-8"),
+                          "text/plain; charset=utf-8",
+                      )
+                      result = json.loads(raw)
 
-          cat indexnow-response.txt || true
+                      if (
+                          status == 200
+                          and result.get("success") == 1
+                      ):
+                          accepted += 1
+                      else:
+                          pending = urls[position:]
+                          break
 
-          if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "202" ]; then
-            echo "IndexNow submission successful."
-          else
-            echo "IndexNow submission failed."
-            exit 1
-          fi
+                  except Exception:
+                      pending = urls[position:]
+                      break
+
+              lines.append(f"**百度：**本次确认接收 {accepted} 个网址。")
+
+              if pending:
+                  lines.append("")
+                  lines.append(
+                      "**百度尚未确认接收以下网址：**"
+                      "可能是配额、站点配置或网络问题；"
+                      "请在百度资源平台检查后再提交。"
+                  )
+                  lines.append("")
+                  for url in pending:
+                      lines.append(f"- {url}")
+                  failed = True
+
+          lines.extend([
+              "",
+              "通知接收不等于已抓取、已收录或排名提升。",
+              "",
+              "Google 使用已提交的站点地图；"
+              "搜狗、360、微信和今日头条"
+              "未由此工作流直接提交。",
+              "",
+              "本工作流仅识别最近一次 Git 提交中"
+              "新增或修改的 index.html 页面。",
+          ])
+
+          save_summary()
+          raise SystemExit(1 if failed else 0)
+          PYTHON
